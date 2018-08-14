@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Copen">
 <meta property="og:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-14T03:57:12.568Z">
+<meta property="og:updated_time" content="2018-08-14T14:59:26.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="幂取模">
 <meta name="twitter:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
@@ -179,11 +179,11 @@
 <a id="more"></a>
 <p><strong>Analysis</strong></p>
 <p>就是一个快速幂。在此简单说明一下快速幂原理。</p>
-<p>a^b = a <em> a </em> … * a (b个a)</p>
-<p>a^b = a^x1 <em> a^x2 </em> … * a^xn  (x1+x2+…+xn=b)</p>
+<p>a^b = a · a · … · a (b个a)</p>
+<p>a^b = a^x1 · a^x2 · … · a^xn  (x1+x2+…+xn=b)</p>
 <p>运用二进制很容易求出x1,x2…xn，</p>
 <p>例：2^10 （10在二进制下是1010）</p>
-<p>2^10 = 2^2 <em> 2^8 = 2^(2 ^ 1) </em> 2^(2 ^ 3);</p>
+<p>2^10 = 2^2 · 2^8 = 2^(2 ^ 1) · 2^(2 ^ 3);</p>
 <p>所以只需要在拆分二进制时，判断x%2是否为1，为1就把a^(2 ^ x)乘上即可。</p>
 <p>过程中要不断累乘2^x%k。</p>
 <p><strong>Code：O(log n)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a,b,k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;k;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">"^"</span>&lt;&lt;b&lt;&lt;<span class="string">" mod "</span>&lt;&lt;k&lt;&lt;<span class="string">"="</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans=ans*a%k;<span class="comment">//二进制中数字为1</span></span><br><span class="line">		a=a*a%k;<span class="comment">//a每次都累乘</span></span><br><span class="line">		b=b&gt;&gt;<span class="number">1</span>;<span class="comment">//b就是被拆分的数字</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans%k&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
