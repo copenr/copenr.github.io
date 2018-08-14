@@ -1,0 +1,341 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>方程求解 | Copen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Copen">
+    
+    <meta name="description" content="Problem
+
+问题描述
+有形如：ax^3 + bx^2 + cx + d = 0 这样的一个一元三次方程。
+输入描述
+给出该方程中各项的系数(a，b，c，d 均为实数)，并约定该方程存在三个不同实根(根的范围在-100至100之间)，且根与根之差的绝对值&amp;gt;=1。
+输出描述
+要求由小到大依次在同一行输出这三个实根(根与根之间留有空格)，并精确到小数点后2位。">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Copen" title="Copen"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Copen">Copen</a></h1>
+				<h2 class="blog-motto">Life &amp; Study</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">tags</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:copenlife.top">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/08/12/方程求解/" title="方程求解" itemprop="url">方程求解</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://copenlife.top" title="Copen">Copen</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-08-12T07:15:11.000Z" itemprop="datePublished">2018-08-12</time>
+    更新日期:<time datetime="2018-08-12T07:52:42.321Z" itemprop="dateModified">2018-08-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<p><strong>Problem</strong></p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>有形如：ax^3 + bx^2 + cx + d = 0 这样的一个一元三次方程。</p>
+<p><em>输入描述</em></p>
+<p>给出该方程中各项的系数(a，b，c，d 均为实数)，并约定该方程存在三个不同实根(根的范围在-100至100之间)，且根与根之差的绝对值&gt;=1。</p>
+<p><em>输出描述</em></p>
+<p>要求由小到大依次在同一行输出这三个实根(根与根之间留有空格)，并精确到小数点后2位。</p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p><em>提示</em></p>
+<p>记方程f(x)=0，若存在2个数x1和x2，且x1&lt;x2，f(x1)*f(x2)&lt;0，则在(x1，x2)之间一定有一个根。</p>
+</blockquote>
+<p><strong>Analysis</strong></p>
+<p>这道题因为有了提示和限制条件而变得简单。</p>
+<p>一开始不懂为什么两个根相差大于等于1，后来才知道这是帮我们减少了枚举范围。</p>
+<p>我们只需要把（-100，100）划分成200个不同的区间，每个区间相差1，在每一个有可能出现解的区间里做运算即可。如果没有限制条件，一个区间内可能会有多解，这就会增加二分难度。</p>
+<p><strong>Code：log(200 * logn)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> a,b,c,d;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">f</span><span class="params">(<span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a*x*x*x+b*x*x+c*x+d; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">-100</span>;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">double</span> l=i,r=i+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">double</span> fl=f(l),fr=f(r);</span><br><span class="line">        <span class="keyword">if</span>(!fl) <span class="built_in">printf</span>(<span class="string">"%.2lf "</span>,l);<span class="comment">//这里不能判断fr，因为之后我们会枚举到r，这样会重复</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(fl*fr&lt;<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span>(r-l&gt;=<span class="number">0.001</span>)&#123;<span class="comment">//二分</span></span><br><span class="line">                <span class="keyword">double</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">double</span> fmid=f(mid);</span><br><span class="line">                <span class="keyword">if</span>(fl*fmid&lt;<span class="number">0</span>) r=mid,fr=fmid;</span><br><span class="line">                <span class="keyword">else</span> l=mid,fl=fmid;<span class="comment">//这里就保证最后输出的结果一定是l。</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%.2lf "</span>,l);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*一开始写错了两个地方，一个是没有事先判断fl是否为0，这就会导致最后结果出错。</span></span><br><span class="line"><span class="comment">另外一开始TLE，我是很不理解的，但是后来检查一遍程序，发现我居然把mid定义成了int，罪过啊。</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Conclusion</strong><br>像这种类型不是整型的题目，一定要注意不能把类型定义错。</p>
+<p>二分的时候我觉得最容易出错的就是边界，所以边界一定得事先考虑清楚。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/分治/">分治</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://copenlife.top/2018/08/12/方程求解/" data-title="方程求解 | Copen" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/08/12/幂取模/" title="幂取模">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  幂取模</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/08/12/最大乘积/"  title="最大乘积">
+ <strong>NEXT:</strong><br/> 
+ <span>最大乘积
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/二进制/" title="二进制">二进制<sup>1</sup></a></li>
+		
+			<li><a href="/tags/分治/" title="分治">分治<sup>2</sup></a></li>
+		
+			<li><a href="/tags/数学/" title="数学">数学<sup>3</sup></a></li>
+		
+			<li><a href="/tags/贪心/" title="贪心">贪心<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I&#39;m Copen. <br/>
+			This is my blog.</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com//5254792241" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com//copenr" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="http://copenlife.top" target="_blank" title="Copen">Copen</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
