@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>幂取模 | Copen</title>
+  <title>关押罪犯 | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
-<meta name="keywords" content="分治,数学,二进制">
+  <meta name="description" content="Problem  From：NOIP2010T  问题描述 　　S 城现有两座监狱，一共关押着N　　名罪犯，编号分别为1~N。他们之间的关系自然也极不和谐。很多罪犯之间甚至积怨已久，如果客观条件具备则随时可能爆发冲突。我们用“怨气值”（一个正整数值）来表示某两名罪犯之间的仇恨程度，怨气值越大，则这两名罪犯之间的积怨越多。如果两名怨气值为c　　的罪犯被关押在同一监狱，他们俩之间会发生摩擦，并造成影响">
+<meta name="keywords" content="二分图,并查集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="幂取模">
-<meta property="og:url" content="http://copenlife.top/2018/08/12/幂取模/index.html">
+<meta property="og:title" content="关押罪犯">
+<meta property="og:url" content="http://copenlife.top/2018/08/17/关押罪犯/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
+<meta property="og:description" content="Problem  From：NOIP2010T  问题描述 　　S 城现有两座监狱，一共关押着N　　名罪犯，编号分别为1~N。他们之间的关系自然也极不和谐。很多罪犯之间甚至积怨已久，如果客观条件具备则随时可能爆发冲突。我们用“怨气值”（一个正整数值）来表示某两名罪犯之间的仇恨程度，怨气值越大，则这两名罪犯之间的积怨越多。如果两名怨气值为c　　的罪犯被关押在同一监狱，他们俩之间会发生摩擦，并造成影响">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-14T14:59:26.714Z">
+<meta property="og:image" content="http://www.tsinsen.com/RequireFile.do?fid=hGfyGL3R">
+<meta property="og:updated_time" content="2018-08-17T15:22:42.178Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="幂取模">
-<meta name="twitter:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
+<meta name="twitter:title" content="关押罪犯">
+<meta name="twitter:description" content="Problem  From：NOIP2010T  问题描述 　　S 城现有两座监狱，一共关押着N　　名罪犯，编号分别为1~N。他们之间的关系自然也极不和谐。很多罪犯之间甚至积怨已久，如果客观条件具备则随时可能爆发冲突。我们用“怨气值”（一个正整数值）来表示某两名罪犯之间的仇恨程度，怨气值越大，则这两名罪犯之间的积怨越多。如果两名怨气值为c　　的罪犯被关押在同一监狱，他们俩之间会发生摩擦，并造成影响">
+<meta name="twitter:image" content="http://www.tsinsen.com/RequireFile.do?fid=hGfyGL3R">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,48 +149,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-幂取模" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-关押罪犯" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      幂取模
+      关押罪犯
     </h1>
   
 
         
-        <a href="/2018/08/12/幂取模/" class="archive-article-date">
-  	<time datetime="2018-08-12T07:49:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
+        <a href="/2018/08/17/关押罪犯/" class="archive-article-date">
+  	<time datetime="2018-08-17T15:21:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Problem</strong></p>
+        <p><strong>Problem  From：NOIP2010T</strong></p>
 <blockquote>
-<p><em>问题描述</em></p>
-<p>求a的b次方模k的值，a,b及k*k均是小于231的正整数。</p>
-<p><em>输入描述</em></p>
-<p>一行，三个用空格隔开的整数，a, b, k（2 10 7)</p>
-<p><em>输出描述</em></p>
-<p>输出结果：a^b mod k = 余数（2^10 mod 7=2）</p>
+<p>问题描述</p>
+<p>　　S 城现有两座监狱，一共关押着N　　名罪犯，编号分别为1~N。他们之间的关系自然也极不和谐。很多罪犯之间甚至积怨已久，如果客观条件具备则随时可能爆发冲突。我们用“怨气值”（一个正整数值）来表示某两名罪犯之间的仇恨程度，怨气值越大，则这两名罪犯之间的积怨越多。如果两名怨气值为c　　的罪犯被关押在同一监狱，他们俩之间会发生摩擦，并造成影响力为c 的冲突事件。</p>
 </blockquote>
 <a id="more"></a>
+<blockquote>
+<p>　　每年年末，警察局会将本年内监狱中的所有冲突事件按影响力从大到小排成一个列表，然后上报到S 城Z 市长那里。公务繁忙的Z 市长只会去看列表中的第一个事件的影响力，如果影响很坏，他就会考虑撤换警察局长。<br>　　在详细考察了N名罪犯间的矛盾关系后，警察局长觉得压力巨大。他准备将罪犯们在两座监狱内重新分配，以求产生的冲突事件影响力都较小，从而保住自己的乌纱帽。假设只要处于同一监狱内的某两个罪犯间有仇恨，那么他们一定会在每年的某个时候发生摩擦。那么，应如何分配罪犯，才能使Z市长看到的那个冲突事件的影响力最小？这个最小值是多少？</p>
+<p>输入格式</p>
+<p>　　输入文件的每行中两个数之间用一个空格隔开。</p>
+<p>　第一行为两个正整数N 和M，分别表示罪犯的数目以及存在仇恨的罪犯对数。</p>
+<p>　　接下来的M 行每行为三个正整数aj，bj，cj，表示aj 号和bj 号罪犯之间存在仇恨，其怨气值为cj。数据保证1&lt;=aj&lt;bj&lt;N,0&lt;cj&lt;=1,000,000,000 且每对罪犯组合只出现一次。</p>
+<p>输出格式</p>
+<p>　　输出共1 行，为Z 市长看到的那个冲突事件的影响力。如果本年内监狱中未发生任何冲突事件，请输出0。</p>
+</blockquote>
+<p><img src="http://www.tsinsen.com/RequireFile.do?fid=hGfyGL3R" alt=""></p>
 <p><strong>Analysis</strong></p>
-<p>就是一个快速幂。在此简单说明一下快速幂原理。</p>
-<p>a^b = a · a · … · a (b个a)</p>
-<p>a^b = a^x1 · a^x2 · … · a^xn  (x1+x2+…+xn=b)</p>
-<p>运用二进制很容易求出x1,x2…xn，</p>
-<p>例：2^10 （10在二进制下是1010）</p>
-<p>2^10 = 2^2 · 2^8 = 2^(2 ^ 1) · 2^(2 ^ 3);</p>
-<p>所以只需要在拆分二进制时，判断x%2是否为1，为1就把a^(2 ^ x)乘上即可。</p>
-<p>过程中要不断累乘2^x%k。</p>
-<p><strong>Code：O(log n)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a,b,k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;k;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">"^"</span>&lt;&lt;b&lt;&lt;<span class="string">" mod "</span>&lt;&lt;k&lt;&lt;<span class="string">"="</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans=ans*a%k;<span class="comment">//二进制中数字为1</span></span><br><span class="line">		a=a*a%k;<span class="comment">//a每次都累乘</span></span><br><span class="line">		b=b&gt;&gt;<span class="number">1</span>;<span class="comment">//b就是被拆分的数字</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans%k&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Conclusion</strong></p>
-<p>标程，理解背诵。</p>
+<p>第一直觉<strong>对手并查集</strong>，虽然他和二分关系不大，但是还是写了一下。</p>
+<p>首先这里面有一个贪心的思想，因为我们要输出最大冲突，所以在安排罪犯时，应该按照冲突值从大到小安排，这样可以保证当前罪犯如果没有被安排到同一个监狱，就进行下一组，如果不得不安排在一个监狱（之前冲突值更大的安排完毕），就直接输出当前冲突值（以后都比这个值小）。</p>
+<p>之后就每一次都找到x,y的祖先，分情况</p>
+<ul>
+<li>fx=fy，直接输出</li>
+<li>fx!=fy，将x与y的对手，y与x的对手合并，如果暂时x(y)没有对手，就把y(x)安排为它的对手。</li>
+</ul>
+<p>我开两个数组记录对手和朋友。</p>
+<p>一开始的<font color="Orangered">错误点:</font></p>
+<ul>
+<li>对手合并时没有考虑没有对手的情况，导致祖先变成0了。</li>
+</ul>
+<p><strong>Code O(m+n)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y,num;</span><br><span class="line">&#125;a[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span> <span class="params">(node p,node q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> p.num&gt;q.num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> fa[<span class="number">20010</span>],enemy[<span class="number">20010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(fa[k]==k) <span class="keyword">return</span> k;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> fa[k]=find(fa[k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a[i].x,&amp;a[i].y,&amp;a[i].num);</span><br><span class="line">	sort(a+<span class="number">1</span>,a+m+<span class="number">1</span>,cmp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fa[i]=i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> fx=find(a[i].x);</span><br><span class="line">		<span class="keyword">int</span> fy=find(a[i].y);</span><br><span class="line">		<span class="keyword">if</span>(fx==fy)&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;a[i].num&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!enemy[a[i].x]) enemy[a[i].x]=fy;<span class="comment">//没有对手就直接修改，否则就要把对手合并</span></span><br><span class="line">			<span class="keyword">else</span> fa[find(enemy[a[i].x])]=fy;</span><br><span class="line">		<span class="keyword">if</span>(!enemy[a[i].y]) enemy[a[i].y]=fx;</span><br><span class="line">			<span class="keyword">else</span> fa[find(enemy[a[i].y])]=fx;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"0"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上是之前学习过的并查集算法。</p>
+<p>然而这个题目的确可以二分答案，此中涉及到了<strong>二分图</strong>，定义什么的，我不清楚，在此陈述一下方法：</p>
+<p>首先二分枚举最大的冲突值，那么冲突值大于mid的罪犯必须拆开，我们只需要判定是否有这样的罪犯会属于一个连通图。</p>
+<p>下面说一下判定二分图（网上学来的染色法）：</p>
+<p>首先枚举一个点，如果这个点没有染色，就开始宽搜（其实的确很像宽搜）。首先把这个点染色入队，然后枚举与他有边的点。我们只处理冲突值大于mid的，因为小于mid的没什么意义（无法确定染什么色）。如果当前点已经被染色并且颜色相同，说明已经出现冲突值大于mid的两个点在同一个无向图中，返回false。如果，没有被染色，就把他染成不同的颜色，然后就入队。</p>
+<p>当所有点都被染色过之后没有false，就直接返回true。</p>
+<p>一开始的<font color="Orangered">错误点:</font></p>
+<ul>
+<li>每次的队列忘记清空，因为我一开始认为只有q.empty(),才会停止宽搜，其实我可能是中图退出了，所以一定要记得清空队列。</li>
+<li>又忘记了闭区间需要l&lt;=r。</li>
+<li>数组开小了，这个错误我犯了好多次，并不是忘记+10，而是因为在无向图里面，我每条边用前向星时都入队了两次，所以数组要开两倍大，否则RE了。</li>
+</ul>
+<p><strong>Code O(n · logk) k是最大冲突值，这里的check函数算法复杂度我算的比较牵强</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">        <span class="keyword">int</span> x,y,num;</span><br><span class="line">&#125;a[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span> <span class="params">(node p,node q)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> p.num&gt;q.num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,cnt=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> u[<span class="number">200010</span>],v[<span class="number">200010</span>],w[<span class="number">200010</span>],next[<span class="number">200010</span>],head[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">	u[++cnt]=x; v[cnt]=y; w[cnt]=z;</span><br><span class="line">	next[cnt]=head[x]; head[x]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;<span class="comment">//二分图</span></span><br><span class="line">	<span class="keyword">int</span> col[<span class="number">100010</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty()) q.pop();<span class="comment">//这里一开始写错了，忘记清空队列了</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//开始时没想到枚举i，以为一次宽搜图就分好了。</span></span><br><span class="line">		<span class="keyword">if</span>(!col[i])&#123;</span><br><span class="line">			col[i]=<span class="number">1</span>;</span><br><span class="line">			q.push(i);</span><br><span class="line">			<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">				<span class="keyword">int</span> t=q.front();</span><br><span class="line">				q.pop();</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=head[t];j;j=next[j])</span><br><span class="line">					<span class="keyword">if</span>(w[j]&gt;k)&#123;<span class="comment">//这里一开始把w[j]&lt;=k也想入队，但是后来想想，这样的话太随意了。。</span></span><br><span class="line">						<span class="keyword">if</span>(!col[v[j]])&#123;</span><br><span class="line">							q.push(v[j]);</span><br><span class="line">							<span class="keyword">if</span>(col[t]==<span class="number">1</span>) col[v[j]]=<span class="number">2</span>;</span><br><span class="line">							<span class="keyword">else</span> col[v[j]]=<span class="number">1</span>;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">else</span> <span class="keyword">if</span>(col[v[j]]==col[t]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">					&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">int</span> l=<span class="number">0</span>,r=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y,z;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">		add(x,y,z);</span><br><span class="line">		add(y,x,z);</span><br><span class="line">		r=max(r,z);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans=inf;</span><br><span class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(r+l)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(check(mid)) ans=min(ans,mid),r=mid<span class="number">-1</span>;<span class="comment">//可行就说明可能会有更小的ans</span></span><br><span class="line">		<span class="keyword">else</span> l=mid+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -202,15 +225,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分治</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二分图</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二进制</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">并查集</a>
         		</li>
       		
 		</ul>
@@ -277,7 +296,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/12/幂取模/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/17/关押罪犯/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +310,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/16/循环比赛/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/17/麦森数/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          循环比赛
+          麦森数
         
       </div>
     </a>
   
   
-    <a href="/2018/08/12/方程求解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">方程求解</div>
+    <a href="/2018/08/16/跳石头/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">跳石头</div>
       <i class="icon-circle-right"></i>
     </a>
   

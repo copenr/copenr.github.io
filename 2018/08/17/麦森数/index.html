@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>幂取模 | Copen</title>
+  <title>麦森数 | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
-<meta name="keywords" content="分治,数学,二进制">
+  <meta name="description" content="Problem  From：NOIP2003P  问题描述 　　形如2^P-1的素数称为麦森数，这时P一定也是个素数。但反过来不一定，即如果P是个素数，2^P-1不一定也是素数。">
+<meta name="keywords" content="分治,高精度">
 <meta property="og:type" content="article">
-<meta property="og:title" content="幂取模">
-<meta property="og:url" content="http://copenlife.top/2018/08/12/幂取模/index.html">
+<meta property="og:title" content="麦森数">
+<meta property="og:url" content="http://copenlife.top/2018/08/17/麦森数/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
+<meta property="og:description" content="Problem  From：NOIP2003P  问题描述 　　形如2^P-1的素数称为麦森数，这时P一定也是个素数。但反过来不一定，即如果P是个素数，2^P-1不一定也是素数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-14T14:59:26.714Z">
+<meta property="og:updated_time" content="2018-08-17T15:23:43.190Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="幂取模">
-<meta name="twitter:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
+<meta name="twitter:title" content="麦森数">
+<meta name="twitter:description" content="Problem  From：NOIP2003P  问题描述 　　形如2^P-1的素数称为麦森数，这时P一定也是个素数。但反过来不一定，即如果P是个素数，2^P-1不一定也是素数。">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,48 +147,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-幂取模" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-麦森数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      幂取模
+      麦森数
     </h1>
   
 
         
-        <a href="/2018/08/12/幂取模/" class="archive-article-date">
-  	<time datetime="2018-08-12T07:49:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
+        <a href="/2018/08/17/麦森数/" class="archive-article-date">
+  	<time datetime="2018-08-17T15:21:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Problem</strong></p>
+        <p><strong>Problem  From：NOIP2003P</strong></p>
 <blockquote>
 <p><em>问题描述</em></p>
-<p>求a的b次方模k的值，a,b及k*k均是小于231的正整数。</p>
-<p><em>输入描述</em></p>
-<p>一行，三个用空格隔开的整数，a, b, k（2 10 7)</p>
-<p><em>输出描述</em></p>
-<p>输出结果：a^b mod k = 余数（2^10 mod 7=2）</p>
+<p>　　形如2^P-1的素数称为麦森数，这时P一定也是个素数。但反过来不一定，即如果P是个素数，2^P-1不一定也是素数。</p>
 </blockquote>
 <a id="more"></a>
+<blockquote>
+<p>到1998年底，人们已找到了37个麦森数。最大的一个是P=3021377，它有909526位。麦森数有许多重要应用，它与完全数密切相关。</p>
+<p>任务：从文件中输入P（1000&lt;P&lt;3100000），计算2^P-1的位数和最后500位数字（用十进制高精度数表示）</p>
+<p><em>输入格式</em></p>
+<p>文件中只包含一个整数P（1000&lt;P&lt;3100000）</p>
+<p><em>输出格式</em></p>
+<p>第一行：十进制高精度数2^P-1的位数。</p>
+<p>第二行：十进制高精度数2^P-1的最后500位数字。</p>
+<p>不必验证2^P-1与P是否为素数。</p>
+</blockquote>
 <p><strong>Analysis</strong></p>
-<p>就是一个快速幂。在此简单说明一下快速幂原理。</p>
-<p>a^b = a · a · … · a (b个a)</p>
-<p>a^b = a^x1 · a^x2 · … · a^xn  (x1+x2+…+xn=b)</p>
-<p>运用二进制很容易求出x1,x2…xn，</p>
-<p>例：2^10 （10在二进制下是1010）</p>
-<p>2^10 = 2^2 · 2^8 = 2^(2 ^ 1) · 2^(2 ^ 3);</p>
-<p>所以只需要在拆分二进制时，判断x%2是否为1，为1就把a^(2 ^ x)乘上即可。</p>
-<p>过程中要不断累乘2^x%k。</p>
-<p><strong>Code：O(log n)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a,b,k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;k;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">"^"</span>&lt;&lt;b&lt;&lt;<span class="string">" mod "</span>&lt;&lt;k&lt;&lt;<span class="string">"="</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans=ans*a%k;<span class="comment">//二进制中数字为1</span></span><br><span class="line">		a=a*a%k;<span class="comment">//a每次都累乘</span></span><br><span class="line">		b=b&gt;&gt;<span class="number">1</span>;<span class="comment">//b就是被拆分的数字</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans%k&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Conclusion</strong></p>
-<p>标程，理解背诵。</p>
+<p>快速幂+大整数乘法。</p>
+<p>按照快速幂的格式，写一个重载运算符。</p>
+<p>写程序中出错基本上都是大整数乘法，<font color="orangered">错误点：</font></p>
+<ul>
+<li>位数算错了</li>
+<li>最后的进位处理错了</li>
+</ul>
+<p>位数是一个很重要的点，因为只要输出后500位，所以运算只需要进行到第500位，但是算位数又必须全部计算，所以这里有个矛盾点，一开始我就直接全部计算，只有20分（TLE+RE）然后我就不知道怎么办了。</p>
+<p>然后就开始在网上找计算位数的方法：</p>
+<ul>
+<li>首先，2 ^ k与2 ^ k-1位数相同，因为2^k末尾不可能是0</li>
+<li>其次，10^k有k+1位</li>
+<li>所以只需要把2 ^ p改为10 ^ k就可以知道位数</li>
+<li>也就是 10 ^ k =2 ^ p，10 ^ q=2，q=log10(2)，<br>2 ^ p = (10 ^ log10(2)) ^ p=10 ^(log10(2)*p)</li>
+<li>所以位数是log10(2)*p+1;</li>
+<li>用c++自带函数log</li>
+</ul>
+<p><strong>Code O(logP·len)P是次数</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bigint</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> len,num[<span class="number">5100</span>];</span><br><span class="line">	bigint <span class="keyword">operator</span> = (bigint x)&#123;</span><br><span class="line">		len=x.len;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) num[i]=x.num[i];</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	bigint <span class="keyword">operator</span> = (<span class="built_in">string</span> st)&#123;</span><br><span class="line">		len=st.size();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) num[i]=st[len-i<span class="number">-1</span>]-<span class="string">'0'</span>;</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	bigint <span class="keyword">operator</span> * (bigint x)&#123;<span class="comment">//这个是大整数乘大整数，不是以前的乘常数</span></span><br><span class="line">		bigint ans;</span><br><span class="line">		<span class="built_in">memset</span>(ans.num,<span class="number">0</span>,<span class="keyword">sizeof</span>(ans.num));</span><br><span class="line">		ans.len=min(<span class="number">500</span>,len+x.len);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;x.len;j++)</span><br><span class="line">				<span class="keyword">if</span>(i+j&lt;ans.len) ans.num[i+j]+=num[i]*x.num[j];</span><br><span class="line">		<span class="keyword">int</span> next=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;ans.len;i++)&#123;<span class="comment">//大整数加法的算法</span></span><br><span class="line">			ans.num[i]+=next;</span><br><span class="line">			next=ans.num[i]/<span class="number">10</span>;</span><br><span class="line">			ans.num[i]=ans.num[i]%<span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(next)<span class="comment">//这里要记得把后面的数字加上 ans.len++,ans.num[ans.len-1]=next%10,next/=10;</span></span><br><span class="line">		<span class="keyword">while</span>(!ans.num[ans.len<span class="number">-1</span>]&amp;&amp;ans.len&gt;<span class="number">0</span>) ans.num[ans.len<span class="number">-1</span>]=<span class="number">0</span>,ans.len--;<span class="comment">//去除前导0</span></span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">	bigint <span class="keyword">operator</span> - (<span class="keyword">int</span> x)&#123;<span class="comment">//就是减1</span></span><br><span class="line">		num[<span class="number">0</span>]--;</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">bigint ans,k;</span><br><span class="line"><span class="keyword">int</span> p;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;p;</span><br><span class="line">	k=<span class="string">"2"</span>,ans=<span class="string">"1"</span>;</span><br><span class="line">	<span class="keyword">int</span> s=p*<span class="built_in">log10</span>(<span class="number">2</span>)+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="number">0</span>)&#123;<span class="comment">//快速幂</span></span><br><span class="line">		<span class="keyword">if</span>(p&amp;<span class="number">1</span>) ans=ans*k;</span><br><span class="line">		k=k*k;</span><br><span class="line">		p/=<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ans=ans<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">500</span><span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--) <span class="built_in">cout</span>&lt;&lt;ans.num[i];</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -206,11 +219,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二进制</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">高精度</a>
         		</li>
       		
 		</ul>
@@ -277,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/12/幂取模/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/17/麦森数/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +300,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/16/循环比赛/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/17/聪明的质检员/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          循环比赛
+          聪明的质检员
         
       </div>
     </a>
   
   
-    <a href="/2018/08/12/方程求解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">方程求解</div>
+    <a href="/2018/08/17/关押罪犯/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关押罪犯</div>
       <i class="icon-circle-right"></i>
     </a>
   

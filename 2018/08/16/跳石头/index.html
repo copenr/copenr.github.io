@@ -8,14 +8,18 @@
   <link rel="dns-prefetch" href="http://copenlife.top">
   <title>跳石头 | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="Problem from NOIP2015T  问题描述 　　一年一度的“跳石头”比赛又要开始了！ 　　这项比赛将在一条笔直的河道中进行，河道中分布着一些巨大岩石。组委会已经选择好了两块岩石作为比赛起点和终点。在起点和终点之间，有N块岩石（不含起点和终点的岩石）。在比赛过程中，选手们将从起点出发，每一步跳向相邻的岩石，直至到达终点。">
+<meta name="keywords" content="分治">
+<meta property="og:type" content="article">
 <meta property="og:title" content="跳石头">
 <meta property="og:url" content="http://copenlife.top/2018/08/16/跳石头/index.html">
 <meta property="og:site_name" content="Copen">
+<meta property="og:description" content="Problem from NOIP2015T  问题描述 　　一年一度的“跳石头”比赛又要开始了！ 　　这项比赛将在一条笔直的河道中进行，河道中分布着一些巨大岩石。组委会已经选择好了两块岩石作为比赛起点和终点。在起点和终点之间，有N块岩石（不含起点和终点的岩石）。在比赛过程中，选手们将从起点出发，每一步跳向相邻的岩石，直至到达终点。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-16T15:23:56.043Z">
+<meta property="og:updated_time" content="2018-08-17T15:20:38.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跳石头">
+<meta name="twitter:description" content="Problem from NOIP2015T  问题描述 　　一年一度的“跳石头”比赛又要开始了！ 　　这项比赛将在一条笔直的河道中进行，河道中分布着一些巨大岩石。组委会已经选择好了两块岩石作为比赛起点和终点。在起点和终点之间，有N块岩石（不含起点和终点的岩石）。在比赛过程中，选手们将从起点出发，每一步跳向相邻的岩石，直至到达终点。">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -163,7 +167,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><strong>Problem from NOIP2015T</strong></p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>　　一年一度的“跳石头”比赛又要开始了！</p>
+<p>　　这项比赛将在一条笔直的河道中进行，河道中分布着一些巨大岩石。组委会已经选择好了两块岩石作为比赛起点和终点。在起点和终点之间，有N块岩石（不含起点和终点的岩石）。在比赛过程中，选手们将从起点出发，每一步跳向相邻的岩石，直至到达终点。</p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>　　为了提高比赛难度，组委会计划移走一<br>些岩石，使得选手们在比赛过程中的最短跳跃距离尽可能长。由于预算限制，组委会至多从起点和终点之间移走M块岩石（不能移走起点和终点的岩石）。</p>
+<p><em>输入格式</em></p>
+<p>输入文件第一行包含三个整数L，N，M，分别表示起点到终点的距离，起点和终点之间的岩石数，以及组委会至多移走的岩石数。</p>
+<p>　　接下来N行，每行一个整数，第i行的整数Di（0 &lt; Di &lt; L）表示第i块岩石与起点的距离。这些岩石按与起点距离从小到大的顺序给出，且不会有两个岩石出现在同一个位置。</p>
+<p><em>输出格式</em></p>
+<p>　　输出文件只包含一个整数，即最短跳跃距离的最大值。</p>
+</blockquote>
+<p><strong>Analysis</strong></p>
+<p>通过这一题，理解了二分答案的概念，以前对于二分一直很模糊，不知道二分的主体是什么，这一题的分析就很重要。</p>
+<p>首先我看到这一题的第一想法是算出每两块石头（包括起点和终点）之间的距离，从中选出距离最小的两块，搬走其中一块。然后我就开始想这个应该怎么二分，难道二分找出最短距离？很疑惑，而且后来发现这个搬走石头后的状态很难维护，而且二分是一般是离线的，明显，这个思路不可行。</p>
+<p>后来我想了很久没有思路，然后从别人那里得知二分答案，也就是二分最短跳跃距离，就此方法，我展开了下面的分析。</p>
+<p>如果我们当前最短跳k个距离，那么我们就要搬走所有小于k的石头，这个可以枚举得到（其实有贪心的思想，如果当前点跳不到，搬走当前石头一定是最好的选择），记录上一个没有被搬走的石头的坐标x，如果当前坐标y，y-x&gt;k就不更新x，否则更新为y。更新时把sum++。</p>
+<p>这样，我们就可以得到k情况下需要移走的石头数。</p>
+<p>下面就是二分。</p>
+<ul>
+<li>sum &lt; m,可以移走更多的石头，则k可以取更大值</li>
+<li>sum &gt; m,k需要取更小值</li>
+</ul>
+<p>这样，我们就可以通过二分k的值，每次计算出sum与m进行比较，缩小区间。</p>
+<p><strong>Code O(m·logm)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> L,m,n,a[<span class="number">50010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>,last=<span class="number">0</span>;<span class="comment">//一定要记录last，否则不知道上一块石头搬没搬走。</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m+<span class="number">1</span>;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a[i]-last&lt;k) ans++;</span><br><span class="line">                <span class="keyword">else</span> last=a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;L&gt;&gt;m&gt;&gt;n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        a[m+<span class="number">1</span>]=L;<span class="comment">//需要枚举到终点</span></span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>,r=L,ans=<span class="number">0</span>;<span class="comment">//闭区间，现在我比较习惯于写闭区间，但是要注意与下面对应</span></span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">                <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;<span class="comment">//位运算加速</span></span><br><span class="line">                <span class="keyword">int</span> sum=work(mid);</span><br><span class="line">                <span class="keyword">if</span>(sum&gt;n) r=mid<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">else</span> ans=max(ans,mid),l=mid+<span class="number">1</span>;<span class="comment">//mid有可能是答案</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Conclusion</strong></p>
+<p>以前对于而二分的认识不明确，这一题是一个很好的二分题，主体是二分答案，然后判断答案的可行性，一般优化都是在判断可行性时加一些技巧。while里面基本上固定。</p>
+<p>要记住区间的闭合：</p>
+<ul>
+<li><p>如果是左闭右开，</p>
+<p>while(l+1 &lt; r),好像也可以l &lt; r，这儿我不太清楚。。。但是不要死循环就行；</p>
+<p>一开始r是最大值加1，这个很重要，否则边界就要特判；</p>
+<p>更新：l=mid+1,r=mid;</p>
+</li>
+<li><p>如果是闭区间，l&lt;=r；</p>
+<p>更新：l=mid+1,r=mid-1。</p>
+<p>我还是喜欢用这一种，感觉不容易错。纯个人观点。</p>
+</li>
+</ul>
+
       
 
       
@@ -171,7 +217,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分治</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/分治算法初步//" class="article-tag-list-link color2">分治算法初步</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -234,6 +302,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/17/关押罪犯/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          关押罪犯
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/16/光荣的梦想/" id="article-nav-older" class="article-nav-link-wrap">
@@ -363,7 +440,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二分图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -371,11 +460,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
               </li>
             
             <div class="clearfix"></div>

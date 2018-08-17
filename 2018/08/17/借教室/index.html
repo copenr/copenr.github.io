@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>幂取模 | Copen</title>
+  <title>借教室 | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
-<meta name="keywords" content="分治,数学,二进制">
+  <meta name="description" content="Problem from NOIP2012T  问题描述 　　在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。">
+<meta name="keywords" content="分治,前缀和优化,线段树,线段树优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="幂取模">
-<meta property="og:url" content="http://copenlife.top/2018/08/12/幂取模/index.html">
+<meta property="og:title" content="借教室">
+<meta property="og:url" content="http://copenlife.top/2018/08/17/借教室/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
+<meta property="og:description" content="Problem from NOIP2012T  问题描述 　　在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-14T14:59:26.714Z">
+<meta property="og:updated_time" content="2018-08-17T15:36:52.166Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="幂取模">
-<meta name="twitter:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
+<meta name="twitter:title" content="借教室">
+<meta name="twitter:description" content="Problem from NOIP2012T  问题描述 　　在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,48 +147,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-幂取模" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-借教室" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      幂取模
+      借教室
     </h1>
   
 
         
-        <a href="/2018/08/12/幂取模/" class="archive-article-date">
-  	<time datetime="2018-08-12T07:49:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
+        <a href="/2018/08/17/借教室/" class="archive-article-date">
+  	<time datetime="2018-08-17T15:21:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Problem</strong></p>
+        <p><strong>Problem from NOIP2012T</strong></p>
 <blockquote>
 <p><em>问题描述</em></p>
-<p>求a的b次方模k的值，a,b及k*k均是小于231的正整数。</p>
-<p><em>输入描述</em></p>
-<p>一行，三个用空格隔开的整数，a, b, k（2 10 7)</p>
-<p><em>输出描述</em></p>
-<p>输出结果：a^b mod k = 余数（2^10 mod 7=2）</p>
+<p>　　在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。</p>
 </blockquote>
 <a id="more"></a>
+<blockquote>
+<p>　　面对海量租借教室的信息，我们自然希望编程解决这个问题。</p>
+<p>　　我们需要处理接下来n天的借教室信息，其中第i天学校有ri个教室可供租借。共有m份订单，每份订单用三个正整数描述，分别为dj,sj,tj，表示某租借者需要从第sj天到第tj天租借教室（包括第sj天和第tj天），每天需要租借dj个教室。</p>
+<p>　　我们假定，租借者对教室的大小、地点没有要求。即对于每份订单，我们只需要每天提供dj个教室，而它们具体是哪些教室，每天是否是相同的教室则不用考虑。</p>
+<p>　　借教室的原则是先到先得，也就是说我们要按照订单的先后顺序依次为每份订单分配教室。如果在分配的过程中遇到一份订单无法完全满足，则需要停止教室的分配，通知当前申请人修改订单。这里的无法满足指从第sj天到第tj天中有至少一天剩余的教室数量不足dj个。</p>
+<p>　　现在我们需要知道，是否会有订单无法完全满足。如果有，需要通知哪一个申请人修改订单。</p>
+<p><em>输入格式</em></p>
+<p>　　第一行包含两个正整数n,m，表示天数和订单的数量。</p>
+<p>　　第二行包含n个正整数，其中第i个数为ri，表示第i天可用于租借的教室数量。</p>
+<p>　　接下来有m行，每行包含三个正整数dj,sj,tj，表示租借的数量，租借开始、结束分别在第几天。<br>　　每行相邻的两个数之间均用一个空格隔开。天数与订单均用从1开始的整数编号。</p>
+<p><em>样例输入</em></p>
+<p>4 3</p>
+<p>2 5 4 3</p>
+<p>2 1 3</p>
+<p>3 2 4</p>
+<p>4 2 4</p>
+<p><em>输出格式</em></p>
+<p>如果所有订单均可满足，则输出只有一行，包含一个整数0。否则（订单无法完全满足）输出两行，第一行输出一个负整数-1，第二行输出需要修改订单的申请人编号。</p>
+<p><em>样例输出</em></p>
+<p>-1</p>
+<p>2</p>
+</blockquote>
 <p><strong>Analysis</strong></p>
-<p>就是一个快速幂。在此简单说明一下快速幂原理。</p>
-<p>a^b = a · a · … · a (b个a)</p>
-<p>a^b = a^x1 · a^x2 · … · a^xn  (x1+x2+…+xn=b)</p>
-<p>运用二进制很容易求出x1,x2…xn，</p>
-<p>例：2^10 （10在二进制下是1010）</p>
-<p>2^10 = 2^2 · 2^8 = 2^(2 ^ 1) · 2^(2 ^ 3);</p>
-<p>所以只需要在拆分二进制时，判断x%2是否为1，为1就把a^(2 ^ x)乘上即可。</p>
-<p>过程中要不断累乘2^x%k。</p>
-<p><strong>Code：O(log n)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a,b,k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;k;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">"^"</span>&lt;&lt;b&lt;&lt;<span class="string">" mod "</span>&lt;&lt;k&lt;&lt;<span class="string">"="</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans=ans*a%k;<span class="comment">//二进制中数字为1</span></span><br><span class="line">		a=a*a%k;<span class="comment">//a每次都累乘</span></span><br><span class="line">		b=b&gt;&gt;<span class="number">1</span>;<span class="comment">//b就是被拆分的数字</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans%k&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Conclusion</strong></p>
-<p>标程，理解背诵。</p>
+<p>上课的线段树例题，不过线段树模板忘得差不多了，还是去看看之前写的才想起来。</p>
+<p>结构体用minv记录[l,r]之间的最小值，用一个lazy标记或用标记永久化(效率更高)。</p>
+<p>首先建树，build_tree(1,1,n)</p>
+<p>然后每次读入后，把相应的区间修改(-1)，最后返回根节点的minv，如果minv &lt; 0,就说明至少有一天的状态不合法了，就直接输出-1。</p>
+<p><strong>Code (lazy 标记版)</strong></p>
+<p>由于每次lazy标记都要向下传递，是一个常数的运算，所以在大数据时会被卡，不过日常解决线段树还是不二之选</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tnode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> minv,lft,rgt,lazy;</span><br><span class="line">&#125;a[MAXN*<span class="number">4</span>+<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k,num[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) ch=getchar();</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build_tree</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="comment">//建树</span></span><br><span class="line">    a[r].lft=x,a[r].rgt=y;</span><br><span class="line">    <span class="keyword">if</span>(x==y)&#123;</span><br><span class="line">        a[r].minv=num[x];</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mid=(x+y)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        build_tree(r*<span class="number">2</span>,x,mid),build_tree(r*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,y);</span><br><span class="line">        a[r].minv=min(a[r*<span class="number">2</span>].minv,a[r*<span class="number">2</span>+<span class="number">1</span>].minv);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    a[r].minv-=a[r].lazy;</span><br><span class="line">    a[r*<span class="number">2</span>].lazy+=a[r].lazy,a[r*<span class="number">2</span>+<span class="number">1</span>].lazy+=a[r].lazy;</span><br><span class="line">    a[r].lazy=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    push(r);<span class="comment">//一开始一定要先push，把上一次的标记更新一下，不然之后可能会被清掉</span></span><br><span class="line">    <span class="keyword">int</span> lft=a[r].lft,rgt=a[r].rgt;</span><br><span class="line">    <span class="keyword">if</span>(lft&gt;=x&amp;&amp;rgt&lt;=y)&#123;</span><br><span class="line">        a[r].lazy+=k;</span><br><span class="line">        push(r);</span><br><span class="line">        <span class="keyword">return</span>;<span class="comment">//记得return，不然lazy标记在以后会被重复更新</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(lft&gt;y||rgt&lt;x) <span class="keyword">return</span>;</span><br><span class="line">    update(r*<span class="number">2</span>,x,y);</span><br><span class="line">    update(r*<span class="number">2</span>+<span class="number">1</span>,x,y);</span><br><span class="line">    a[r].minv=min(a[r*<span class="number">2</span>].minv,a[r*<span class="number">2</span>+<span class="number">1</span>].minv);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) num[i]=read();</span><br><span class="line">    build_tree(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> x,y ;</span><br><span class="line">        k=read(),x=read(),y=read();</span><br><span class="line">        update(<span class="number">1</span>,x,y);</span><br><span class="line">        <span class="keyword">if</span>(a[<span class="number">1</span>].minv&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接着就是srz给我介绍的标记永久化，定理比较复杂，我真的不知道如何阐述，复制一下：</p>
+<blockquote>
+<p>原理就是： 在路过该节点的时候把修改对答案的影响加上，来省去标记下放的过程</p>
+</blockquote>
+<p>自我理解（完全凭感觉）：</p>
+<p>想象一下，当前的minv是子树更新来的，也就是当时没有lazy标记但是可能修改到当前的minv，而当前的lazy标记记录的是没有继续搜索的所有更新值，只要把当前的minv-lazy就可以得到目前的状态值。</p>
+<p>举个例子：</p>
+<p>修改[3,5],现在状态是[4,5],就不用再搜索，直接lazy++；</p>
+<p>第二次修改[3,4],现在状态依旧是[4,5]，就需要继续搜索然后更新，而最终[4,5]这个状态的值应该是第二次修改过的-第一次的lazy标记。</p>
+<p>我觉得应该就是这样的吧。</p>
+<p><strong>Code (标记永久化)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tnode</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> minv,lft,rgt,lazy;</span><br><span class="line">&#125;a[MAXN*<span class="number">4</span>+<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k,num[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) ch=getchar();</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build_tree</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="comment">//建树</span></span><br><span class="line">	a[r].lft=x,a[r].rgt=y;</span><br><span class="line">	<span class="keyword">if</span>(x==y)&#123;<span class="comment">//叶子节点</span></span><br><span class="line">		a[r].minv=num[x];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(x+y)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		build_tree(r&lt;&lt;<span class="number">1</span>,x,mid),build_tree(r&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,y);</span><br><span class="line">		a[r].minv=min(a[r&lt;&lt;<span class="number">1</span>].minv,a[r&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].minv);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	a[r].minv=min(a[r&lt;&lt;<span class="number">1</span>].minv-a[r&lt;&lt;<span class="number">1</span>].lazy,a[r&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].minv-a[r&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].lazy);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lft=a[r].lft,rgt=a[r].rgt;</span><br><span class="line">	<span class="keyword">if</span>(lft&gt;=x&amp;&amp;rgt&lt;=y)&#123;<span class="comment">//当前区间属于[x,y]</span></span><br><span class="line">		a[r].lazy+=k;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(lft&gt;y||rgt&lt;x) <span class="keyword">return</span>;</span><br><span class="line">	del(r&lt;&lt;<span class="number">1</span>,x,y);</span><br><span class="line">	del(r&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,x,y);</span><br><span class="line">	update(r);<span class="comment">//每次都要更新(下面全部更新完毕)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=read(),m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) num[i]=read();</span><br><span class="line">	build_tree(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y ;</span><br><span class="line">		k=read(),x=read(),y=read();</span><br><span class="line">		del(<span class="number">1</span>,x,y);</span><br><span class="line">		<span class="keyword">if</span>(a[<span class="number">1</span>].minv-a[<span class="number">1</span>].lazy&lt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i);</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"0\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这一题的永久化还比较简单，因为最后只需要返回根的值，如果返回任意区间的值，需要写函数。把我从网上找的线段树标记永久化标程写一下。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;<span class="comment">//返回i区间和[l,r]的交集中的最小值</span></span><br><span class="line">   <span class="keyword">if</span>(l(i)&gt;r||r(i)&lt;l)</span><br><span class="line">       <span class="keyword">return</span> <span class="number">0x3f3f3f3f</span>;<span class="comment">//没有交集，返回inf</span></span><br><span class="line">   <span class="keyword">if</span>(l(i)&gt;=l&amp;&amp;r(i)&lt;=r) <span class="keyword">return</span> ata(i)-minus(i);<span class="comment">//[l,r]包含i区间，直接返回i区间的最小值</span></span><br><span class="line">   <span class="keyword">return</span> min(query(i&lt;&lt;<span class="number">1</span>,l,r),query(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,l,r))-minus(i);<span class="comment">//否则就往下搜索</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>这题既然放在这里，还是要写一下二分的，二分答案，也就是第几天不能满足要求。只需要把之前的所有教室使用个数算出来，然后看有没有大于教室总数的，如果有返回false。</p>
+<p>如果最后返回false，说明r=mid，反之l=mid;</p>
+<p>因为每次枚举教室的使用不可能把[l,r]全部枚举，然后加1，所以我们可以用前缀和优化：</p>
+<p>举个例子[l,r]=[2,5];</p>
+<p>开始时数组 s[10]={0};</p>
+<p>s[2]++,s[6]–;</p>
+<p>数组变为 s[10]={0,0,1,0,0,0,-1,0,0,0,0};</p>
+<p>此数组前缀和为 pre[10]={0,0,1,1,1,1,0,0,0,0};</p>
+<p>这样就巧妙地用pre数组记录下了每天的使用情况。</p>
+<p><strong>Code O(logm·(m+n))</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k,num[MAXN],pre[MAXN],t[MAXN],x[MAXN],y[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) ch=getchar();</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(pre,<span class="number">0</span>,<span class="keyword">sizeof</span>(pre));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)</span><br><span class="line">		pre[x[i]]+=t[i],pre[y[i]+<span class="number">1</span>]-=t[i];<span class="comment">//其实我之前的s[],pre[]可以合并成一个。</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) pre[i]+=pre[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">if</span>(pre[i]&gt;num[i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=read(),m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) num[i]=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) t[i]=read(),x[i]=read(),y[i]=read();</span><br><span class="line">	<span class="keyword">int</span> l=<span class="number">0</span>,r=m,ans=inf;</span><br><span class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;<span class="comment">//二分</span></span><br><span class="line">		<span class="keyword">int</span> mid=l+((r-l)&gt;&gt;<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span>(check(mid)) l=mid+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> ans=min(ans,mid),r=mid<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans==inf) <span class="built_in">printf</span>(<span class="string">"0\n"</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"-1\n%d\n"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Conclusion</strong>：</p>
+<p>对于线段树lazy标记的使用不是特别清楚，迷迷糊糊的只能画图验证自己的猜想，还是要多写写多想想。</p>
 
       
 
@@ -206,11 +246,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前缀和优化</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二进制</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">线段树优化</a>
         		</li>
       		
 		</ul>
@@ -277,7 +321,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/12/幂取模/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/17/借教室/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +335,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/16/循环比赛/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          循环比赛
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/12/方程求解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">方程求解</div>
+    <a href="/2018/08/17/聪明的质检员/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">聪明的质检员</div>
       <i class="icon-circle-right"></i>
     </a>
   

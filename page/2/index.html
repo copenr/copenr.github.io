@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>幂取模 | Copen</title>
+  <title>Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
-<meta name="keywords" content="分治,数学,二进制">
-<meta property="og:type" content="article">
-<meta property="og:title" content="幂取模">
-<meta property="og:url" content="http://copenlife.top/2018/08/12/幂取模/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Copen">
+<meta property="og:url" content="http://copenlife.top/page/2/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-14T14:59:26.714Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="幂取模">
-<meta name="twitter:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
+<meta name="twitter:title" content="Copen">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,20 +142,22 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-幂取模" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-最大乘积" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      幂取模
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/12/最大乘积/">最大乘积</a>
     </h1>
   
 
         
-        <a href="/2018/08/12/幂取模/" class="archive-article-date">
-  	<time datetime="2018-08-12T07:49:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
+        <a href="/2018/08/12/最大乘积/" class="archive-article-date">
+  	<time datetime="2018-08-12T01:52:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
 </a>
         
       </header>
@@ -169,27 +166,11 @@
       
         <p><strong>Problem</strong></p>
 <blockquote>
-<p><em>问题描述</em></p>
-<p>求a的b次方模k的值，a,b及k*k均是小于231的正整数。</p>
-<p><em>输入描述</em></p>
-<p>一行，三个用空格隔开的整数，a, b, k（2 10 7)</p>
-<p><em>输出描述</em></p>
-<p>输出结果：a^b mod k = 余数（2^10 mod 7=2）</p>
-</blockquote>
-<a id="more"></a>
-<p><strong>Analysis</strong></p>
-<p>就是一个快速幂。在此简单说明一下快速幂原理。</p>
-<p>a^b = a · a · … · a (b个a)</p>
-<p>a^b = a^x1 · a^x2 · … · a^xn  (x1+x2+…+xn=b)</p>
-<p>运用二进制很容易求出x1,x2…xn，</p>
-<p>例：2^10 （10在二进制下是1010）</p>
-<p>2^10 = 2^2 · 2^8 = 2^(2 ^ 1) · 2^(2 ^ 3);</p>
-<p>所以只需要在拆分二进制时，判断x%2是否为1，为1就把a^(2 ^ x)乘上即可。</p>
-<p>过程中要不断累乘2^x%k。</p>
-<p><strong>Code：O(log n)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a,b,k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;k;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">"^"</span>&lt;&lt;b&lt;&lt;<span class="string">" mod "</span>&lt;&lt;k&lt;&lt;<span class="string">"="</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans=ans*a%k;<span class="comment">//二进制中数字为1</span></span><br><span class="line">		a=a*a%k;<span class="comment">//a每次都累乘</span></span><br><span class="line">		b=b&gt;&gt;<span class="number">1</span>;<span class="comment">//b就是被拆分的数字</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans%k&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Conclusion</strong></p>
-<p>标程，理解背诵。</p>
-
+<p><em>题目描述</em></p>
+<p>一个正整数一般可以分为几个互不相同的自然数的和，如3=1+2，4=1+3，5＝1+4=2+3，6=1+5＝2+4…。现在你的任务是将指定的正整数n分解成若干个互不相同的自然数的和，且使这些自然数的乘积最大。<br>
+        
+          <a class="article-more-a" href="/2018/08/12/最大乘积/#more">more >></a>
+        
       
 
       
@@ -202,15 +183,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分治</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二进制</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
         		</li>
       		
 		</ul>
@@ -222,7 +199,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/分治算法初步//" class="article-tag-list-link color2">分治算法初步</a>
+        			<a href="/categories/贪心算法基础//" class="article-tag-list-link color2">贪心算法基础</a>
         		</li>
       		
 		</ul>
@@ -230,84 +207,16 @@
 
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/12/最大乘积/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/12/幂取模/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/08/16/循环比赛/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          循环比赛
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/08/12/方程求解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">方程求解</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -327,14 +236,274 @@
 
 
 
-  
-  
-  
 
   
-
+    <article id="post-Reputation记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/11/Reputation记录/">About Reputation</a>
+    </h1>
   
 
+        
+        <a href="/2018/08/11/Reputation记录/" class="archive-article-date">
+  	<time datetime="2018-08-11T14:50:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第一次经历发专辑全过程"><a href="#第一次经历发专辑全过程" class="headerlink" title="第一次经历发专辑全过程"></a><strong>第一次经历发专辑全过程</strong></h3><h4 id="Album"><a href="#Album" class="headerlink" title="Album"></a>Album</h4><ul>
+<li>2006 《Taylor Swift》             </li>
+<li>2008 《Fearless》            </li>
+<li>2010 《Speak now》                  </li>
+<li>2012 《Red》                        </li>
+<li>2014 《1989》     </li>
+<li><font color="OrangeRed">2017 《Reputation》</font></li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/08/11/Reputation记录/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Taylor//" class="article-tag-list-link color2">Taylor</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/11/Reputation记录/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-国王游戏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/11/国王游戏/">国王游戏</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/11/国王游戏/" class="archive-article-date">
+  	<time datetime="2018-08-11T08:00:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Problem</strong> </p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>恰逢 H 国国庆,国王邀请n位大臣来玩一个有奖游戏。首先,他让每个大臣在左、右手上面分别写下一个整数,国王自己也在左、右手上各写一个整数。然后,让这n位大臣排成一排,国王站在队伍的最前面。排好队后,所有的大臣都会获得国王奖赏的若干金币,每位大臣获得的金币数分别是:排在该大臣前面的所有人的左手上的数的乘积除以他自己右手上的数,然后向下取整得到的结果</p>
+<p>国王不希望某一个大臣获得特别多的奖赏,所以他想请你帮他重新安排一下队伍的顺序,使得获得奖赏最多的大臣,所获奖赏尽可能的少。注意,国王的位置始终在队伍的最前面。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2018/08/11/国王游戏/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/贪心算法基础//" class="article-tag-list-link color2">贪心算法基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/11/国王游戏/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Meet Taylor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/11/Meet Taylor/">Red - Taylor Swift</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/11/Meet Taylor/" class="archive-article-date">
+  	<time datetime="2018-08-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="此生最爱-Red"><a href="#此生最爱-Red" class="headerlink" title="此生最爱 Red"></a><strong>此生最爱 Red</strong></h3><h4 id="Album"><a href="#Album" class="headerlink" title="Album"></a>Album</h4><ul>
+<li>2006 《Taylor Swift》             </li>
+<li>2008 《Fearless》            </li>
+<li>2010 《Speak now》                  </li>
+<li><font color="OrangeRed"> 2012 《Red》                        </font></li>
+<li>2014 《1989》     </li>
+<li>2017 《Reputation》</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/08/11/Meet Taylor/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Taylor//" class="article-tag-list-link color2">Taylor</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/11/Meet Taylor/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -357,8 +526,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

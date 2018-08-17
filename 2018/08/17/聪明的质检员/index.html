@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>幂取模 | Copen</title>
+  <title>聪明的质检员 | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
-<meta name="keywords" content="分治,数学,二进制">
+  <meta name="description" content="Problem from NOIP2011T  问题描述 　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。">
+<meta name="keywords" content="分治,前缀和优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="幂取模">
-<meta property="og:url" content="http://copenlife.top/2018/08/12/幂取模/index.html">
+<meta property="og:title" content="聪明的质检员">
+<meta property="og:url" content="http://copenlife.top/2018/08/17/聪明的质检员/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
+<meta property="og:description" content="Problem from NOIP2011T  问题描述 　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-14T14:59:26.714Z">
+<meta property="og:updated_time" content="2018-08-17T15:24:34.880Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="幂取模">
-<meta name="twitter:description" content="Problem  问题描述 求a的b次方模k的值，a,b及k*k均是小于231的正整数。 输入描述 一行，三个用空格隔开的整数，a, b, k（2 10 7) 输出描述 输出结果：a^b mod k = 余数（2^10 mod 7=2）">
+<meta name="twitter:title" content="聪明的质检员">
+<meta name="twitter:description" content="Problem from NOIP2011T  问题描述 　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,48 +147,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-幂取模" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-聪明的质检员" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      幂取模
+      聪明的质检员
     </h1>
   
 
         
-        <a href="/2018/08/12/幂取模/" class="archive-article-date">
-  	<time datetime="2018-08-12T07:49:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
+        <a href="/2018/08/17/聪明的质检员/" class="archive-article-date">
+  	<time datetime="2018-08-17T15:21:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Problem</strong></p>
+        <p><strong>Problem from NOIP2011T</strong></p>
 <blockquote>
 <p><em>问题描述</em></p>
-<p>求a的b次方模k的值，a,b及k*k均是小于231的正整数。</p>
-<p><em>输入描述</em></p>
-<p>一行，三个用空格隔开的整数，a, b, k（2 10 7)</p>
-<p><em>输出描述</em></p>
-<p>输出结果：a^b mod k = 余数（2^10 mod 7=2）</p>
+<p>　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。</p>
 </blockquote>
 <a id="more"></a>
+<blockquote>
+<p>检验矿产的流程是：</p>
+<p>　　1、给定m 个区间[Li，Ri]；</p>
+<p>　　2、选出一个参数W；</p>
+<p>　　3、对于一个区间[Li，Ri]，计算矿石在这个区间上的检验值Yi ：</p>
+<p>　　这批矿产的检验结果Y 为各个区间的检验值之和。即：</p>
+<p>　　若这批矿产的检验结果与所给标准值S 相差太多，就需要再去检验另一批矿产。小T不想费时间去检验另一批矿产，所以他想通过调整参数W 的值，让检验结果尽可能的靠近标准值S，即使得S-Y 的绝对值最小。请你帮忙求出这个最小值。</p>
+<p><em>输入格式</em></p>
+<p>　　第一行包含三个整数 n，m，S，分别表示矿石的个数、区间的个数和标准值。</p>
+<p>　　接下来的 n 行，每行2 个整数，中间用空格隔开，第i+1 行表示i 号矿石的重量wi 和价值vi 。</p>
+<p>　　接下来的 m 行，表示区间，每行2 个整数，中间用空格隔开，第i+n+1 行表示区间[Li,Ri]的两个端点Li 和Ri。注意：不同区间可能重合或相互重叠。</p>
+<p><em>输出格式</em></p>
+<p>　　输出只有一行，包含一个整数，表示所求的最小值。</p>
+</blockquote>
 <p><strong>Analysis</strong></p>
-<p>就是一个快速幂。在此简单说明一下快速幂原理。</p>
-<p>a^b = a · a · … · a (b个a)</p>
-<p>a^b = a^x1 · a^x2 · … · a^xn  (x1+x2+…+xn=b)</p>
-<p>运用二进制很容易求出x1,x2…xn，</p>
-<p>例：2^10 （10在二进制下是1010）</p>
-<p>2^10 = 2^2 · 2^8 = 2^(2 ^ 1) · 2^(2 ^ 3);</p>
-<p>所以只需要在拆分二进制时，判断x%2是否为1，为1就把a^(2 ^ x)乘上即可。</p>
-<p>过程中要不断累乘2^x%k。</p>
-<p><strong>Code：O(log n)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a,b,k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;k;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">"^"</span>&lt;&lt;b&lt;&lt;<span class="string">" mod "</span>&lt;&lt;k&lt;&lt;<span class="string">"="</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans=ans*a%k;<span class="comment">//二进制中数字为1</span></span><br><span class="line">		a=a*a%k;<span class="comment">//a每次都累乘</span></span><br><span class="line">		b=b&gt;&gt;<span class="number">1</span>;<span class="comment">//b就是被拆分的数字</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans%k&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>题目意思就是，每次找一个参照值mid，m个区间每个区间内都记录w&gt;=mid的矿产的个数和价值和，然和相乘累加得到sum，求出|sum-S|的最小值。</p>
+<p>可以看出二分性质，在区间内二分参照值，求出sum。</p>
+<p>情况如下：</p>
+<ul>
+<li>sum&gt;S,要尽量把sum减小使得更接近S，需要把参照值变大。</li>
+<li>sum&lt;S,要尽量把sum增加使得更接近S，需要把参照值减小。</li>
+<li>sum=S，直接输出0</li>
+</ul>
+<p>然后我就直接写一个裸的二分，没有优化：</p>
+<p><strong>Code O(logmax·m·n) max是质量最大值，m是区间总数，n是矿产总数</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	ll w,v;</span><br><span class="line">&#125;a[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span> <span class="params">(node p,node q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> p.w&lt;q.w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll n,m,s;</span><br><span class="line">ll x[<span class="number">200010</span>],y[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) ch=getchar();</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">work</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	ll sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		ll sum1=<span class="number">0</span>,sum2=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=x[i];j&lt;=y[i];j++)</span><br><span class="line">			<span class="keyword">if</span>(a[j].w&gt;=k) sum1++,sum2+=a[j].v;</span><br><span class="line">		sum+=sum1*sum2;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;s;	</span><br><span class="line">	ll l=<span class="number">0</span>,r=<span class="number">0</span>;</span><br><span class="line">	ll ans=inf;	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i].w=read(),a[i].v=read(),r=max(r,a[i].w);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) x[i]=read(),y[i]=read();</span><br><span class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">		ll mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		ll sum=work(mid);</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">abs</span>(sum-s)&lt;ans) id=mid,ans=<span class="built_in">abs</span>(sum-s);</span><br><span class="line">		<span class="keyword">if</span>(sum&gt;s) l=mid+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>题目中给出m，n的范围，m*n是肯定过不了的，所以在计算sum时需要优化。</p>
+<p>我们发现每次都要在一个区间内求大于mid的个数和价值，这样就会重复计算，比如[1,4]和[2,6]有公共部分。</p>
+<p>在求区间值，而且区间固定没有变化时，通常可以用前缀和，在这里只需要预先处理出[1,n]每个点的前缀和（包括个数和价值），然后枚举1-m，每次直接计算就行。</p>
+<p><strong>Code O(logmax·(m+n)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 9999999999999</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	ll w,v;</span><br><span class="line">&#125;a[<span class="number">200010</span>],pre[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span> <span class="params">(node p,node q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> p.w&lt;q.w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll n,m,s;</span><br><span class="line">ll x[<span class="number">200010</span>],y[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) ch=getchar();</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">work</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	pre[<span class="number">0</span>].w=pre[<span class="number">0</span>].v=<span class="number">0</span>;</span><br><span class="line">	ll sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//计算前缀和</span></span><br><span class="line">		<span class="keyword">if</span>(a[i].w&gt;=k)<span class="comment">//需要更新 pre[i].w=pre[i-1].w+1,pre[i].v=pre[i-1].v+a[i].v;</span></span><br><span class="line">		<span class="keyword">else</span> pre[i].w=pre[i<span class="number">-1</span>].w,pre[i].v=pre[i<span class="number">-1</span>].v;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		sum+=(pre[y[i]].v-pre[x[i]<span class="number">-1</span>].v)*(pre[y[i]].w-pre[x[i]<span class="number">-1</span>].w);</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;s;</span><br><span class="line">	ll l=<span class="number">0</span>,r=<span class="number">0</span>;</span><br><span class="line">	ll ans=inf;	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i].w=read(),a[i].v=read(),r=max(r,a[i].w);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">cin</span>&gt;&gt;x[i]&gt;&gt;y[i];</span><br><span class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">		ll mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		ll sum=work(mid);</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">abs</span>(sum-s)&lt;ans) ans=<span class="built_in">abs</span>(sum-s);</span><br><span class="line">		<span class="keyword">if</span>(sum&gt;s) l=mid+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> r=mid<span class="number">-1</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>Conclusion</strong></p>
-<p>标程，理解背诵。</p>
+<p>又一次感受到前缀和的魅力，至今为止我用过前缀和的地方：</p>
+<ul>
+<li>简单的区间内计算，不仅仅是求和，还可以是各种各样的计算；</li>
+<li>树状数组；</li>
+<li>在一些累加计算的地方，比如求和，魔法阵。大部分是a1·a2+a1·a2+…+a1·an+a2·a3+…+an-1·an之类的，从前往后每次记录sum，直接乘就好了；</li>
+<li>可能还有其他的一时想不起来了，以后慢慢写。</li>
+</ul>
 
       
 
@@ -206,11 +227,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二进制</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前缀和优化</a>
         		</li>
       		
 		</ul>
@@ -277,7 +294,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/12/幂取模/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/17/聪明的质检员/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +308,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/16/循环比赛/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/17/借教室/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          循环比赛
+          借教室
         
       </div>
     </a>
   
   
-    <a href="/2018/08/12/方程求解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">方程求解</div>
+    <a href="/2018/08/17/麦森数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">麦森数</div>
       <i class="icon-circle-right"></i>
     </a>
   
