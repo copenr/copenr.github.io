@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Copen">
 <meta property="og:description" content="Problem from NOIP2012T  问题描述 　　在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-17T15:36:52.166Z">
+<meta property="og:updated_time" content="2018-08-20T14:24:45.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="借教室">
 <meta name="twitter:description" content="Problem from NOIP2012T  问题描述 　　在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。">
@@ -218,6 +218,13 @@
 <p>这一题的永久化还比较简单，因为最后只需要返回根的值，如果返回任意区间的值，需要写函数。把我从网上找的线段树标记永久化标程写一下。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;<span class="comment">//返回i区间和[l,r]的交集中的最小值</span></span><br><span class="line">   <span class="keyword">if</span>(l(i)&gt;r||r(i)&lt;l)</span><br><span class="line">       <span class="keyword">return</span> <span class="number">0x3f3f3f3f</span>;<span class="comment">//没有交集，返回inf</span></span><br><span class="line">   <span class="keyword">if</span>(l(i)&gt;=l&amp;&amp;r(i)&lt;=r) <span class="keyword">return</span> ata(i)-minus(i);<span class="comment">//[l,r]包含i区间，直接返回i区间的最小值</span></span><br><span class="line">   <span class="keyword">return</span> min(query(i&lt;&lt;<span class="number">1</span>,l,r),query(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,l,r))-minus(i);<span class="comment">//否则就往下搜索</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>这题既然放在这里，还是要写一下二分的，二分答案，也就是第几天不能满足要求。只需要把之前的所有教室使用个数算出来，然后看有没有大于教室总数的，如果有返回false。</p>
+<hr>
+<h5 id="课后修改"><a href="#课后修改" class="headerlink" title=" 课后修改"></a><font color="Red"> 课后修改</font></h5><p>为何满足二分性质：</p>
+<ul>
+<li>1.如果存在解，一定在1-m天之间，具有连续性。</li>
+<li>2.对于每一个mid，都能够判断解缩小的范围，具有单调性。</li>
+</ul>
+<hr>
 <p>如果最后返回false，说明r=mid，反之l=mid;</p>
 <p>因为每次枚举教室的使用不可能把[l,r]全部枚举，然后加1，所以我们可以用前缀和优化：</p>
 <p>举个例子[l,r]=[2,5];</p>
@@ -334,6 +341,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/19/Numbertriangle/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数字三角形
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/17/聪明的质检员/" id="article-nav-older" class="article-nav-link-wrap">
@@ -463,15 +479,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Taylor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,6 +496,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,10 +516,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高精度</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Taylor</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Copen">
 <meta property="og:description" content="Problem  问题描述 我们可以把由“0”和“1”组成的字符串分为三类：全“0”串称为B串，全“1”串称为I串，既含“0”又含“1”的串则称为F串。 FBI树是一种二叉树[1]，它的结点类型也包括F结点，B结点和I结点三种。由一个长度为2N的“01”串S可以构造出一棵FBI树T，递归的构造方法如下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-16T15:31:00.490Z">
+<meta property="og:updated_time" content="2018-08-20T14:53:29.969Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FBI树">
 <meta name="twitter:description" content="Problem  问题描述 我们可以把由“0”和“1”组成的字符串分为三类：全“0”串称为B串，全“1”串称为I串，既含“0”又含“1”的串则称为F串。 FBI树是一种二叉树[1]，它的结点类型也包括F结点，B结点和I结点三种。由一个长度为2N的“01”串S可以构造出一棵FBI树T，递归的构造方法如下：">
@@ -189,6 +189,10 @@
 <p>因为数据范围很小，所以每次都将区间内所有字母都枚举一遍，判断输出即可。</p>
 <p>题目要求输出后序遍历，就按照根左右顺序输出就好了。</p>
 <p><strong>Code O(n·logn))</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> st;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;<span class="comment">//闭区间</span></span><br><span class="line">	<span class="keyword">if</span>(r&gt;l)&#123;<span class="comment">//有子树</span></span><br><span class="line">		dfs(l,(l+r)/<span class="number">2</span>);</span><br><span class="line">		dfs((l+r)/<span class="number">2</span>+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++) </span><br><span class="line">		<span class="keyword">if</span>(st[i]==<span class="string">'1'</span>) sum++;</span><br><span class="line">	<span class="keyword">if</span>(sum==r-l+<span class="number">1</span>) <span class="built_in">cout</span>&lt;&lt;<span class="string">"I"</span>;<span class="comment">//判断</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(sum==<span class="number">0</span>) <span class="built_in">cout</span>&lt;&lt;<span class="string">"B"</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"F"</span>;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;st;</span><br><span class="line">	dfs(<span class="number">0</span>,st.size()<span class="number">-1</span>);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h5 id="课后修改"><a href="#课后修改" class="headerlink" title=" 课后修改"></a><font color="OrangeRed"> 课后修改</font></h5><p>程序实现比较冗杂，可以进行修改，把程序设计成有返回值的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> st;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b;</span><br><span class="line">	<span class="keyword">if</span>(r&gt;l)&#123;</span><br><span class="line">		a=dfs(l,(l+r)/<span class="number">2</span>);</span><br><span class="line">		b=dfs((l+r)/<span class="number">2</span>+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> a=b=st[l]-<span class="string">'0'</span>;</span><br><span class="line">	<span class="keyword">if</span>(a!=b||(a==b&amp;&amp;b==<span class="number">2</span>)) &#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"F"</span>;<span class="keyword">return</span> <span class="number">2</span>;&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(a==<span class="number">1</span>) &#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"I"</span>;<span class="keyword">return</span> <span class="number">1</span>;&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"B"</span>;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;st;</span><br><span class="line">	dfs(<span class="number">0</span>,st.size()<span class="number">-1</span>);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
 
       
 
@@ -424,15 +428,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Taylor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -441,6 +445,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,10 +465,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高精度</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Taylor</a>
               </li>
              
               <li class="article-tag-list-item">
