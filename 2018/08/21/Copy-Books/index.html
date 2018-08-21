@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>回文词(待批阅) | Copen</title>
+  <title>书的复制(待批阅) | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述 回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。">
-<meta name="keywords" content="动态规划">
+  <meta name="description" content="Problem  问题描述 现在要把m本有顺序的书分给k给人复制（抄写），每一个人的抄写速度都一样，一本书不允许给两个（或以上）的人抄写，分给每一个人的书，必须是连续的，比如不能把第一、第三、第四本书给同一个人抄写。">
+<meta name="keywords" content="动态规划,前缀和优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="回文词(待批阅)">
-<meta property="og:url" content="http://copenlife.top/2018/08/19/Huiwenword/index.html">
+<meta property="og:title" content="书的复制(待批阅)">
+<meta property="og:url" content="http://copenlife.top/2018/08/21/Copy-Books/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="问题描述 回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。">
+<meta property="og:description" content="Problem  问题描述 现在要把m本有顺序的书分给k给人复制（抄写），每一个人的抄写速度都一样，一本书不允许给两个（或以上）的人抄写，分给每一个人的书，必须是连续的，比如不能把第一、第三、第四本书给同一个人抄写。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T01:27:16.237Z">
+<meta property="og:updated_time" content="2018-08-21T10:20:58.783Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="回文词(待批阅)">
-<meta name="twitter:description" content="问题描述 回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。">
+<meta name="twitter:title" content="书的复制(待批阅)">
+<meta name="twitter:description" content="Problem  问题描述 现在要把m本有顺序的书分给k给人复制（抄写），每一个人的抄写速度都一样，一本书不允许给两个（或以上）的人抄写，分给每一个人的书，必须是连续的，比如不能把第一、第三、第四本书给同一个人抄写。">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,50 +147,39 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Huiwenword" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Copy-Books" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      回文词(待批阅)
+      书的复制(待批阅)
     </h1>
   
 
         
-        <a href="/2018/08/19/Huiwenword/" class="archive-article-date">
-  	<time datetime="2018-08-19T07:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
+        <a href="/2018/08/21/Copy-Books/" class="archive-article-date">
+  	<time datetime="2018-08-21T07:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p><em>问题描述</em></p>
-<p>回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。</p>
-</blockquote>
-<a id="more"></a>
+        <p><strong>Problem</strong></p>
 <blockquote>
-<p>比如字符串“Ab3bd”，在插入两个字符后可以变成一个回文词（“dAb3Ad”，“Adb3bdA”)。然而，插入两个以下的字符无法使它变成一个回文词。</p>
+<p>问题描述</p>
+<p>现在要把m本有顺序的书分给k给人复制（抄写），每一个人的抄写速度都一样，一本书不允许给两个（或以上）的人抄写，分给每一个人的书，必须是连续的，比如不能把第一、第三、第四本书给同一个人抄写。<br><a id="more"></a><br>现在请你设计一种方案，使得复制时间最短。复制时间为抄写页数最多的人用去的时间。</p>
 </blockquote>
 <p><strong>Analysis</strong></p>
-<p>令dp[i][j]表示[i,j]是回文需要插入的字符数。那么i和j存在两种情况：</p>
+<p>因为是连续一段必须给一个人抄写，所以可以和邮局一样处理，用前缀和预处理出[i,j]所有数复制所需时间，得到方程如下</p>
 <ul>
-<li>s[i]=s[j]，也就是s[i]可以和s[j]构成一组，那么只需要求出[i+1，j-1]就可以了。</li>
-<li>s[i]!=s[j],那么就相当于(i,j-1)已经是回文的情况下在i之前添上一个s[j]，或者(i+1,j)已经是回文，在j之后添一个s[i]；这样都可以计算出(i,j)，只需要取一个最小值就可以了。</li>
+<li>dp[i][j]=min(dp[i][j],max(dp[t][j-1],sum[i]-sum[t])</li>
 </ul>
-<p>所以，状态转移方程如下：</p>
-<ul>
-<li>dp[i][j]=dp[i+1][j-1] (s[i]=s[j])</li>
-<li>dp[i][j]=min(dp[i+1][j],dp[i][j-1])+1 (s[i]!=s[j])</li>
-</ul>
-<p>这样做可行是因为每一个长度为l的区间，都是可以在小于l的区间全部计算完成之后，由其扩展而来。而且之前的选择对于之后的选择无影响。</p>
-<p><strong>Code</strong></p>
-<p>我写了两种枚举方法，我觉得枚举区间长度和其中一个端点，比枚举区间的两个端点要更清晰，因为枚举两个端点还要考虑之前的状态一定要全部计算完毕，所以枚举的顺序就要多考虑一点，但是枚举区间长度所牵涉到的状态全部是会被计算完毕的。</p>
-<h6 id="Code-1-枚举端点-O-len-2-2"><a href="#Code-1-枚举端点-O-len-2-2" class="headerlink" title="Code 1 枚举端点 O(len^2/2)"></a>Code 1 枚举端点 O(len^2/2)</h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">5010</span>][<span class="number">5010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;=</span><br><span class="line">	<span class="built_in">string</span> st;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;st;</span><br><span class="line">	<span class="keyword">int</span> len=st.size();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)<span class="comment">//i从大往小，因为可以发现有关i的状态会牵涉到i+1</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;len;j++)</span><br><span class="line">			<span class="keyword">if</span>(st[i]==st[j]) dp[i][j]=dp[i+<span class="number">1</span>][j<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">else</span> dp[i][j]=min(dp[i+<span class="number">1</span>][j],dp[i][j<span class="number">-1</span>])+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[<span class="number">0</span>][len<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="Code-2-枚举长度-O-len-2-2"><a href="#Code-2-枚举长度-O-len-2-2" class="headerlink" title="Code 2 枚举长度 O(len^2/2)"></a>Code 2 枚举长度 O(len^2/2)</h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">5010</span>][<span class="number">5010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">string</span> st;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;st;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i+k&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(st[i]==st[i+k]) dp[i][i+k]=dp[i+<span class="number">1</span>][i+k<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">else</span> dp[i][i+k]=min(dp[i+<span class="number">1</span>][i+k],dp[i][i+k<span class="number">-1</span>])+<span class="number">1</span>;</span><br><span class="line">		&#125; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[<span class="number">0</span>][n<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>意思就是i本书给j个人抄，可以假设前t本书给j-1个人抄，t+1到i本书给第j个人抄，取最大值最小。</p>
+<p>这题的输出是个问题，其实只要从大往小，每次让后面的人抄尽可能多的就行了。一开始我没有考虑人数为0的情况，90分。</p>
+<p><strong>Code O(n^2*k)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k,a[<span class="number">510</span>],sum[<span class="number">510</span>],dp[<span class="number">510</span>][<span class="number">510</span>],ans[<span class="number">510</span>][<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i],sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x7f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=k;i++) dp[<span class="number">0</span>][i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++)</span><br><span class="line">				<span class="keyword">if</span>(i&lt;j) dp[i][j]=<span class="number">0</span>;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> t=i<span class="number">-1</span>;t&gt;=j<span class="number">-1</span>;t--)</span><br><span class="line">						dp[i][j]=min(dp[i][j],max(dp[t][j<span class="number">-1</span>],sum[i]-sum[t]));</span><br><span class="line">	<span class="keyword">int</span> id=n,cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		<span class="keyword">if</span>(sum[id]-sum[i<span class="number">-1</span>]&gt;dp[n][k])&#123;</span><br><span class="line">		    ans[++cnt][<span class="number">1</span>]=i+<span class="number">1</span>;</span><br><span class="line">		    ans[cnt][<span class="number">2</span>]=id;</span><br><span class="line">		    id=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">if</span>(k&gt;=<span class="number">1</span>) ans[++cnt][<span class="number">1</span>]=<span class="number">1</span>,ans[cnt][<span class="number">2</span>]=id;<span class="comment">//这样写就是为了保证人数不为0.</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=cnt;i&gt;=<span class="number">1</span>;i--) <span class="built_in">cout</span>&lt;&lt;ans[i][<span class="number">1</span>]&lt;&lt;<span class="string">" "</span>&lt;&lt;ans[i][<span class="number">2</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -205,6 +194,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前缀和优化</a>
         		</li>
       		
 		</ul>
@@ -271,7 +264,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/19/Huiwenword/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/21/Copy-Books/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,18 +278,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/19/Flowershop/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/21/postoffice/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          花店橱窗布置(待批阅)
+          邮局(待批阅)
         
       </div>
     </a>
   
   
-    <a href="/2018/08/19/LCS/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">最长公共子序列(待批阅)</div>
+    <a href="/2018/08/20/distance/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">字串距离(待批阅)</div>
       <i class="icon-circle-right"></i>
     </a>
   

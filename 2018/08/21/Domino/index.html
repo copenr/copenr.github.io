@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>邮局(待批阅) | Copen</title>
+  <title>多米诺骨牌(待批阅) | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem  问题描述 　　一些村庄建在一条笔直的高速公路边上。我们用一条坐标轴来描述这条高速公路，每一个村庄的坐标都是整数，没有两个村庄坐标相同。两个村庄间的距离，定义为它们的坐标值差的绝对值。我们需要在一些村庄建立邮局――当然，并不是每一个村庄都必须建立邮局 邮局必须被建在村庄里，因此它的坐标和它所在村庄坐标相同。每个村庄便用离它最近的那个邮局，建立这些邮局的原则是：所有村庄到各自所使用的">
+  <meta name="description" content="问题描述 　　多米诺骨牌有上下2个方块组成，每个方块中有1~6个点。现有排成行的n个多米诺骨牌如图所示。">
 <meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="邮局(待批阅)">
-<meta property="og:url" content="http://copenlife.top/2018/08/20/postoffice/index.html">
+<meta property="og:title" content="多米诺骨牌(待批阅)">
+<meta property="og:url" content="http://copenlife.top/2018/08/21/Domino/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="Problem  问题描述 　　一些村庄建在一条笔直的高速公路边上。我们用一条坐标轴来描述这条高速公路，每一个村庄的坐标都是整数，没有两个村庄坐标相同。两个村庄间的距离，定义为它们的坐标值差的绝对值。我们需要在一些村庄建立邮局――当然，并不是每一个村庄都必须建立邮局 邮局必须被建在村庄里，因此它的坐标和它所在村庄坐标相同。每个村庄便用离它最近的那个邮局，建立这些邮局的原则是：所有村庄到各自所使用的">
+<meta property="og:description" content="问题描述 　　多米诺骨牌有上下2个方块组成，每个方块中有1~6个点。现有排成行的n个多米诺骨牌如图所示。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T03:18:50.019Z">
+<meta property="og:image" content="http://www.tsinsen.com/RequireFile.do?fid=Ggb4j9aH">
+<meta property="og:image" content="http://www.tsinsen.com/RequireFile.do?fid=42nAjAJh">
+<meta property="og:updated_time" content="2018-08-21T10:20:58.724Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="邮局(待批阅)">
-<meta name="twitter:description" content="Problem  问题描述 　　一些村庄建在一条笔直的高速公路边上。我们用一条坐标轴来描述这条高速公路，每一个村庄的坐标都是整数，没有两个村庄坐标相同。两个村庄间的距离，定义为它们的坐标值差的绝对值。我们需要在一些村庄建立邮局――当然，并不是每一个村庄都必须建立邮局 邮局必须被建在村庄里，因此它的坐标和它所在村庄坐标相同。每个村庄便用离它最近的那个邮局，建立这些邮局的原则是：所有村庄到各自所使用的">
+<meta name="twitter:title" content="多米诺骨牌(待批阅)">
+<meta name="twitter:description" content="问题描述 　　多米诺骨牌有上下2个方块组成，每个方块中有1~6个点。现有排成行的n个多米诺骨牌如图所示。">
+<meta name="twitter:image" content="http://www.tsinsen.com/RequireFile.do?fid=Ggb4j9aH">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,70 +150,51 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-postoffice" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Domino" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      邮局(待批阅)
+      多米诺骨牌(待批阅)
     </h1>
   
 
         
-        <a href="/2018/08/20/postoffice/" class="archive-article-date">
-  	<time datetime="2018-08-20T08:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
+        <a href="/2018/08/21/Domino/" class="archive-article-date">
+  	<time datetime="2018-08-21T08:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Problem</strong></p>
-<blockquote>
+        <blockquote>
 <p><em>问题描述</em></p>
-<p>　　一些村庄建在一条笔直的高速公路边上。我们用一条坐标轴来描述这条高速公路，每一个村庄的坐标都是整数，没有两个村庄坐标相同。两个村庄间的距离，定义为它们的坐标值差的绝对值。我们需要在一些村庄建立邮局――当然，并不是每一个村庄都必须建立邮局 邮局必须被建在村庄里，因此它的坐标和它所在村庄坐标相同。每个村庄便用离它最近的那个邮局，建立这些邮局的原则是：所有村庄到各自所使用的邮局的距离总和最小。</p>
+<p>　　多米诺骨牌有上下2个方块组成，每个方块中有1~6个点。现有排成行的n个多米诺骨牌如图所示。<br><a id="more"></a><br><img src="http://www.tsinsen.com/RequireFile.do?fid=Ggb4j9aH" alt=""><br><img src="http://www.tsinsen.com/RequireFile.do?fid=42nAjAJh" alt=""></p>
 </blockquote>
-<a id="more"></a>
 <blockquote>
-<p>你的任务是编写一个程序，在给写了每个村庄的坐标和将要建立的邮局数之后，按照上述原则，合理地选择这些邮局的位置。</p>
-<p><em>输入格式</em></p>
-<p>　　输入的第一行包含两个整数；第一个整数是村庄的数目V（1&lt;=V&lt;=300）；第二个整数是将建立的邮局数P(1&lt;=P&lt;=30且P第二行递增顺序列出了V个整数。这V个整数分别表示了各村庄的位置坐标。对于每一个位置坐标X，1&lt;=X&lt;=10000.</p>
-<p><em>输出格式</em></p>
-<p>　　输出只有一个整数S，表示你所求出的所有村庄到距离它最近的邮局的距离总和。</p>
-<p><em>样例输入</em></p>
-<p>10 5</p>
-<p>1 2 3 6 7 9 11 22 44 50</p>
-<p><em>样例输出</em></p>
-<p>9</p>
+<p>　　编程用最少的旋转次数使多米诺骨牌上下2行点数之差达到最小。</p>
+<p>　　对于上图中的例子，只要将最后一个多米诺骨牌旋转180°，可使上下2行点数之差为0。</p>
 </blockquote>
-<p><strong>Analysis(详细)</strong></p>
-<p>这一题就是对我一个动规基础极差的人的致命一击。我可能没救了。</p>
-<p>首先一开始读完题我就蒙了，因为题目中说每一个邮局送信给离他最近的一个村庄，但是我们在动规的过程中一般是不记录当前的选择，只记录答案的。。。所以我怎么知道当前的邮局和之前的邮局哪个离得近。。。想到这儿基本上快放弃了。所以只能重新静下心来努力分析动规。</p>
-<p>我抱着试一试的心态命令dp[i][j]表示到第i个村庄为止，建了j个邮局所需要的最短送信距离。<del>没想到居然对了</del></p>
-<p>但是我还在纠结走到最近邮局这个信息。。。然后我就去看了一下cty的解题报告，发现他一开始和我有一样的想法，他是这么解释的</p>
-<blockquote>
-<p>其实这并不影响动规，虽然题目中说必须走离自己最近的邮局，假设如果不走最近的邮局，那么这样的答案肯定不是最优的，在动规枚举的时候总有一个可以枚举到比它更优的，那么它也会被更新掉。所以这个不需考虑前面的情况，只用考虑这个邮局负责哪一段。</p>
-</blockquote>
-<p>我觉得他说的很有道理，但是还是不怎么太理解，就在纸上手算了一组数据</p>
-<p>A={1,5,9,15,17};</p>
-<p>现在要求dp[5][2];</p>
-<p>假设两个邮局建在5和15位置上，明显9应该走到5，更新过程中我们计算了dp[2][1]+邮局建在15(送信给9,17)和dp[3][1]和邮局建在15(送信给17)，这样的话自然如果9-5 &lt; 15-9,后一种状态会更新掉前一种，所以无需考虑。</p>
-<p>后来又去看了srz的解题报告，<del>不愧是srz理解真透彻</del>，一个邮局一定是连续送[k,i]之间所有的村庄，不可能说中间某一个不用送，那样不符合题意。所以每次的枚举总会是一段区间内的邮局送一段区间（其实我的模拟也是能看出来不过不清晰）。</p>
-<p>然后我就用分析递归的思路分析，当前状态肯定是由之前的状态转移来的，但是如果我考虑之前建a个邮局，之后建b个邮局其实没必要，只需要考虑之前建j-1个，现在建一个，因为建j-1就是由建a扩展来的，这是一个逐渐推导的过程：</p>
+<p><strong>Analysis</strong></p>
+<p>每一块骨牌都可以选择翻或者不翻，像极了01背包。</p>
+<p>不过这题状态的定义我想了好一会。开始我是用dp[i][j]表示前i张骨牌，翻j次所能取得的差值，但是这一题是让记录绝对值，这就让我不能单纯的考虑dp取更小还是更大。</p>
+<p>然后就换了一个思路，答案要输出最小旋转次数，那我就可以考虑i张骨牌差值为j所需要的最小旋转次数。一开始不知道j的范围应该是多少，后来分析了一下，最多1000张牌，每张牌数字为1-6，差值一定在-5000~5000之间，这样算法复杂度1000*10000，可以过的。</p>
+<p>状态转移方程如下：</p>
 <ul>
-<li>dp[i][j]=min(dp[i]][j],dp[k][j-1]+dis[k+1][i])</li>
+<li>dp[i][j]=min(dp[i-1][j-dis],dp[i-1][j+dis]+1) (dis是x-y)</li>
+<li>dp[0][0]=0</li>
 </ul>
-<p>就是说可以由前面一个点扩展来，相当于在之后的一段距离里面算建一个邮局所需要的长度。</p>
-<p>这里dis数组处理还算简单吧，数学老师上课刚讲过，奇数个点取中间，偶数个点取中间两个点任意一个。</p>
-<p>其实我对于这个式子感到很迷茫，感觉以前做过相似的题目，所以就写了一下。</p>
-<p>一开始初始值赋的不好，错了样例,因为我只把dp[1][1]赋值为0，把所有dp[i][1]都赋初值之后才对。</p>
-<p>还有一个点就是动规方程里面一开始写成了dis[k][i]，后来发现必须写dis[k+1][i],因为k这个点被dp[k][j-1]包含在内了。</p>
-<p>我又写了一篇很长但其实题目并不是太难的的解题报告，希望又能进步一点点。</p>
-<p><strong><font color="CornflowerBlue"> 本题的方法总结:</font></strong></p>
-<p>把一段区间看成一个点就好更新了。</p>
-<p><strong>另附：Code  O(n\^3+m*n^2)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[<span class="number">310</span>],dis[<span class="number">310</span>][<span class="number">310</span>];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">310</span>][<span class="number">40</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update_dis</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//dis更新取中间点，其实很怕这里超时，因为三层循环，但是暂时没想到优化方法</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			<span class="keyword">if</span>(i==j) dis[i][j]=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;=j;k++) dis[i][j]+=<span class="built_in">abs</span>(a[(i+j)&gt;&gt;<span class="number">1</span>]-a[k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dp,inf,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[i][<span class="number">1</span>]=dis[<span class="number">1</span>][i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=min(i,m);j++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i<span class="number">-1</span>;k&gt;=j;k--)</span><br><span class="line">			dp[i][j]=min(dp[i][j],dp[k][j<span class="number">-1</span>]+dis[k+<span class="number">1</span>][i]);<span class="comment">//就是这里一开始写错了，转移错了。。。</span></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">	update_dis();</span><br><span class="line">	work();</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n][m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是这里j可能是负数，访问可能越界，所以要想一个方法让它不越界，处理这种问题一般都是把所有数字统一加上一个数，把负的调为正的。这里可以加上5005，不是5000，因为j要减去dis，dis最大为5。</p>
+<p>最终方程如下:</p>
+<ul>
+<li>dp[i][j+N]=min(dp[i-1][j-dis+N],dp[i-1][j+dis+N]+1) (dis是x-y)</li>
+<li>dp[0][0+N]=0</li>
+</ul>
+<p>N取5005</p>
+<p><strong>Code O(n*10000)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,x[<span class="number">1010</span>],y[<span class="number">1010</span>],dp[<span class="number">1010</span>][<span class="number">10050</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;x[i]&gt;&gt;y[i];</span><br><span class="line">	<span class="built_in">memset</span>(dp,inf,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>][N]=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">-5000</span>;j&lt;=<span class="number">5000</span>;j++)</span><br><span class="line">			dp[i][j+N]=min(dp[i<span class="number">-1</span>][j-(x[i]-y[i])+N],dp[i<span class="number">-1</span>][j+(x[i]-y[i])+N]+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> sum=inf,cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=<span class="number">5000</span>;j++)<span class="comment">//枚举绝对值，保证第一组解一定差值最小</span></span><br><span class="line">		<span class="keyword">if</span>(dp[n][j+N]!=inf||dp[n][(-j)+N]!=inf)&#123;</span><br><span class="line">			<span class="keyword">if</span>(dp[n][j+N]&gt;dp[n][(-j)+N]) <span class="built_in">cout</span>&lt;&lt;dp[n][(-j)+N]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;dp[n][j+N]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -291,7 +275,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/20/postoffice/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/21/Domino/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,18 +289,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/20/distance/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/21/Nic-tasks/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          字串距离(待批阅)
+          尼克的任务(待批阅)
         
       </div>
     </a>
   
   
-    <a href="/2018/08/20/Nic-Job/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">尼克的任务(待批阅)</div>
+    <a href="/2018/08/21/postoffice/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">邮局(待批阅)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -434,15 +418,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分治</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,6 +450,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
@@ -470,7 +462,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,14 +471,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
             
             <div class="clearfix"></div>
