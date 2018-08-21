@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>花店橱窗布置 | Copen</title>
+  <title>花店橱窗布置(待批阅) | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="问题描述 　　假设你想以最美观的方式布置花店的橱窗。现在你有F束不同品种的花束，同时你也有至少同样数量的花瓶被按顺序摆成一行。这些花瓶的位置固定于架子上，并从1至V顺序编号，V是花瓶的数目，从左至右排列，则最左边的是花瓶1，最右边的是花瓶V。花束可以移动，并且每束花用1至F间的整数唯一标识。标识花束的整数决定了花束在花瓶中的顺序，如果I＜J，则令花束I必须放在花束J左边的花瓶中。">
 <meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="花店橱窗布置">
+<meta property="og:title" content="花店橱窗布置(待批阅)">
 <meta property="og:url" content="http://copenlife.top/2018/08/19/Flowershop/index.html">
 <meta property="og:site_name" content="Copen">
 <meta property="og:description" content="问题描述 　　假设你想以最美观的方式布置花店的橱窗。现在你有F束不同品种的花束，同时你也有至少同样数量的花瓶被按顺序摆成一行。这些花瓶的位置固定于架子上，并从1至V顺序编号，V是花瓶的数目，从左至右排列，则最左边的是花瓶1，最右边的是花瓶V。花束可以移动，并且每束花用1至F间的整数唯一标识。标识花束的整数决定了花束在花瓶中的顺序，如果I＜J，则令花束I必须放在花束J左边的花瓶中。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.tsinsen.com/RequireFile.do?fid=TJQA3ehb">
-<meta property="og:updated_time" content="2018-08-20T15:19:32.910Z">
+<meta property="og:updated_time" content="2018-08-21T03:18:44.217Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="花店橱窗布置">
+<meta name="twitter:title" content="花店橱窗布置(待批阅)">
 <meta name="twitter:description" content="问题描述 　　假设你想以最美观的方式布置花店的橱窗。现在你有F束不同品种的花束，同时你也有至少同样数量的花瓶被按顺序摆成一行。这些花瓶的位置固定于架子上，并从1至V顺序编号，V是花瓶的数目，从左至右排列，则最左边的是花瓶1，最右边的是花瓶V。花束可以移动，并且每束花用1至F间的整数唯一标识。标识花束的整数决定了花束在花瓶中的顺序，如果I＜J，则令花束I必须放在花束J左边的花瓶中。">
 <meta name="twitter:image" content="http://www.tsinsen.com/RequireFile.do?fid=TJQA3ehb">
   
@@ -156,7 +156,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      花店橱窗布置
+      花店橱窗布置(待批阅)
     </h1>
   
 
@@ -211,8 +211,10 @@
 <ul>
 <li>题目中是有负数的，如果dp[i][j]应该是一个负数，但是却按照之前的写法，由于dp[i][j-1]一开始没有被更新过，所以dp[i][j-1]=0,那么取max，dp[i][j]的值自然就被更新成0了。</li>
 </ul>
-<p>以上就是这一题全部的解答过程，其实这题真的不难，我看别人的报告写的都很简略，可能是只有我不会。。。所以我写的非常详细，希望借助此题稍稍提高一点点动规素养。</p>
-<p><strong>Code O(n^m)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int a[110][110],dp[110][110];</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	for(int i=1;i&lt;=n;i++)</span><br><span class="line">		for(int j=1;j&lt;=m;j++)</span><br><span class="line">			cin&gt;&gt;a[i][j];</span><br><span class="line">	for(int i=1;i&lt;=n;i++) </span><br><span class="line">		for(int j=i;j&lt;=m;j++)&#123;</span><br><span class="line">				if(j-1&gt;=i)dp[i][j]=max(dp[i][j-1],dp[i-1][j-1]+a[i][j]);</span><br><span class="line">				else dp[i][j]=dp[i-1][j-1]+a[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">	cout&lt;&lt;dp[n][m]&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上就是这一题全部的解答过程，其实这题真的不难，我看别人的报告写的都很简略，可能是只有我不会。。。所以我写的非常详细。</p>
+<p><strong><font color="CornflowerBlue"> 本题的方法总结:</font></strong></p>
+<p>一旦遇到多个物品，多个选择放置这样类似的题目时，一定要想到背包问题的原型。</p>
+<p><strong>Code O(n*m)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int a[110][110],dp[110][110];</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	for(int i=1;i&lt;=n;i++)</span><br><span class="line">		for(int j=1;j&lt;=m;j++)</span><br><span class="line">			cin&gt;&gt;a[i][j];</span><br><span class="line">	for(int i=1;i&lt;=n;i++) </span><br><span class="line">		for(int j=i;j&lt;=m;j++)&#123;</span><br><span class="line">				if(j-1&gt;=i)dp[i][j]=max(dp[i][j-1],dp[i-1][j-1]+a[i][j]);</span><br><span class="line">				else dp[i][j]=dp[i-1][j-1]+a[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">	cout&lt;&lt;dp[n][m]&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -307,18 +309,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/20/Postoffice/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/20/Nic-Job/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          邮局
+          尼克的任务(待批阅)
         
       </div>
     </a>
   
   
     <a href="/2018/08/19/Huiwenword/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">回文词</div>
+      <div class="article-nav-title">回文词(待批阅)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -452,7 +454,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
+                <a href="javascript:void(0)" class="js-tag color1">排序二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -464,10 +466,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
@@ -476,7 +474,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,6 +483,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
               </li>
              
               <li class="article-tag-list-item">

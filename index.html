@@ -151,7 +151,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/20/distance/">字串距离</a>
+      <a class="article-title" href="/2018/08/20/distance/">字串距离(待批阅)</a>
     </h1>
   
 
@@ -234,19 +234,19 @@
 
 
   
-    <article id="post-Postoffice" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-postoffice" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/20/Postoffice/">邮局</a>
+      <a class="article-title" href="/2018/08/20/postoffice/">邮局(待批阅)</a>
     </h1>
   
 
         
-        <a href="/2018/08/20/Postoffice/" class="archive-article-date">
+        <a href="/2018/08/20/postoffice/" class="archive-article-date">
   	<time datetime="2018-08-20T08:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
 </a>
         
@@ -260,7 +260,7 @@
 <p>　　一些村庄建在一条笔直的高速公路边上。我们用一条坐标轴来描述这条高速公路，每一个村庄的坐标都是整数，没有两个村庄坐标相同。两个村庄间的距离，定义为它们的坐标值差的绝对值。我们需要在一些村庄建立邮局――当然，并不是每一个村庄都必须建立邮局 邮局必须被建在村庄里，因此它的坐标和它所在村庄坐标相同。每个村庄便用离它最近的那个邮局，建立这些邮局的原则是：所有村庄到各自所使用的邮局的距离总和最小。</p>
 </blockquote>
         
-          <a class="article-more-a" href="/2018/08/20/Postoffice/#more">more >></a>
+          <a class="article-more-a" href="/2018/08/20/postoffice/#more">more >></a>
         
       
 
@@ -295,7 +295,120 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/20/Postoffice/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/20/postoffice/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Nic-Job" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/20/Nic-Job/">尼克的任务(待批阅)</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/20/Nic-Job/" class="archive-article-date">
+  	<time datetime="2018-08-20T08:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Problem</strong></p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>　　尼克每天上班之前都连接上英特网，接收他的上司发来的邮件，这些邮件包含了尼克主管的部门当天要完成的全部任务，每个任务由一个开始时刻与一个持续时间构成。</p>
+<p>尼克的一个工作日为N分钟，从第一分钟开始到第N分钟结束。当尼克到达单位后他就开始干活。如果在同一时刻有多个任务需要完戍，尼克可以任选其中的一个来做，而其余的则由他的同事完成，反之如果只有一个任务，则该任务必需由尼克去完成，假如某些任务开始时刻尼克正在工作，则这些任务也由尼克的同事完成。如果某任务于第P分钟开始，持续时间为T分钟，则该任务将在第P+T-1分钟结束。</p>
+<p>写一个程序计算尼克应该如何选取任务，才能获得最大的空暇时间。</p>
+<p><em>输入格式</em></p>
+<p>　　输入数据第一行含两个用空格隔开的整数N和K(1≤N≤10000，1≤K≤10000)，N表示尼克的工作时间，单位为分钟，K表示任务总数。</p>
+<p>接下来共有K行，每一行有两个用空格隔开的整数P和T，表示该任务从第P分钟开始，持续时间为T分钟，其中1≤P≤N，1≤P+T-1≤N。</p>
+<p><em>输出格式</em></p>
+<p>　　仅一行，包含一个整数，表示尼克可能获得的最大空暇时间。</p>
+</blockquote>
+<p><strong>Analysis</strong></p>
+<p>我觉得这题我的思路还挺清晰的。</p>
+<p>首先像这种很明显是线性动规，所有的工作看成数轴上的一段区间。</p>
+<p>一开始我的想法是定义dp[i]表示1-i所能获得的最大空闲时间，然而这样做并不能满足无后效性，因为选择一样工作会导致之后的一些时间不能做其他工作，在之后的处理中，之前的处理会对之后有影响。</p>
+<p>想起来以前做过一道题和这题很像，都是之前会对之后有影响。当时是从后往前进行动规的，因为只考虑当前点之后的情况，对于下一次操作没有任何影响。</p>
+<p>于是可以换个思路，dp[i]表示i-n所能获得最大空闲时间。</p>
+<ul>
+<li>dp[i]=dp[i+1]+1 (没有任务从i开始)</li>
+<li>dp[i]=max(dp[i+time[j]]) (选择第j个任务，就相当于是占用了time[j]个时间)</li>
+</ul>
+<p>这里有一个注意点就是题目中说</p>
+<p>“如果某任务于第P分钟开始，持续时间为T分钟，则该任务将在第P+T-1分钟结束。”</p>
+<p>要把时间看成一个区间，1开始持续2分钟意思是占用了1和2两个时间，一开始我以为是1开始，2结束，然后2还可以继续使用，方程写成了dp[i]=max(dp[i+time[j]-1]);</p>
+<p><strong><font color="CornflowerBlue"> 本题的方法总结:</font></strong></p>
+<p>当之前的情况对之后一段连续的区间有影响时，可以考虑从后往前进行状态转移。</p>
+<p><strong>Code O(n*m)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k,dp[<span class="number">10010</span>];</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; task[<span class="number">10010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!task[i].size()) dp[i]=dp[i+<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;task[i].size();j++) dp[i]=max(dp[i],dp[i+task[i][j]]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">		task[x].push_back(y);</span><br><span class="line">	&#125;</span><br><span class="line">	work();</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/动态规划初步//" class="article-tag-list-link color2">动态规划初步</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/20/Nic-Job/">展开全文 >></a>
         </p>
       
 
@@ -332,7 +445,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/19/Flowershop/">花店橱窗布置</a>
+      <a class="article-title" href="/2018/08/19/Flowershop/">花店橱窗布置(待批阅)</a>
     </h1>
   
 
@@ -422,7 +535,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/19/Huiwenword/">回文词</a>
+      <a class="article-title" href="/2018/08/19/Huiwenword/">回文词(待批阅)</a>
     </h1>
   
 
@@ -512,7 +625,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/19/LCS/">最长公共子序列</a>
+      <a class="article-title" href="/2018/08/19/LCS/">最长公共子序列(待批阅)</a>
     </h1>
   
 
@@ -596,19 +709,19 @@
 
 
   
-    <article id="post-Numbertriangle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-NumTriangle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/19/Numbertriangle/">数字三角形</a>
+      <a class="article-title" href="/2018/08/19/NumTriangle/">数字三角形(待批阅)</a>
     </h1>
   
 
         
-        <a href="/2018/08/19/Numbertriangle/" class="archive-article-date">
+        <a href="/2018/08/19/NumTriangle/" class="archive-article-date">
   	<time datetime="2018-08-19T02:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
 </a>
         
@@ -621,7 +734,7 @@
 <p>　　给定一个由n 行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形的顶至底的一条路径，使该路径经过的数字总和最大 。</p>
 </blockquote>
         
-          <a class="article-more-a" href="/2018/08/19/Numbertriangle/#more">more >></a>
+          <a class="article-more-a" href="/2018/08/19/NumTriangle/#more">more >></a>
         
       
 
@@ -656,7 +769,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/19/Numbertriangle/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/19/NumTriangle/">展开全文 >></a>
         </p>
       
 
@@ -693,7 +806,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/17/借教室/">借教室</a>
+      <a class="article-title" href="/2018/08/17/借教室/">借教室(待批阅)</a>
     </h1>
   
 
@@ -710,7 +823,6 @@
 <blockquote>
 <p><em>问题描述</em></p>
 <p>　　在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。</p>
-</blockquote>
         
           <a class="article-more-a" href="/2018/08/17/借教室/#more">more >></a>
         
@@ -730,15 +842,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前缀和优化</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">线段树优化</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前缀和优化</a>
         		</li>
       		
 		</ul>
@@ -796,7 +908,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/17/聪明的质检员/">聪明的质检员</a>
+      <a class="article-title" href="/2018/08/17/聪明的质检员/">聪明的质检员(待批阅)</a>
     </h1>
   
 
@@ -812,8 +924,7 @@
         <p><strong>Problem from NOIP2011T</strong></p>
 <blockquote>
 <p><em>问题描述</em></p>
-<p>　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。</p>
-</blockquote>
+<p>　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。<br>
         
           <a class="article-more-a" href="/2018/08/17/聪明的质检员/#more">more >></a>
         
@@ -891,7 +1002,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/17/麦森数/">麦森数</a>
+      <a class="article-title" href="/2018/08/17/麦森数/">麦森数(已批阅)</a>
     </h1>
   
 
@@ -907,8 +1018,7 @@
         <p><strong>Problem  From：NOIP2003P</strong></p>
 <blockquote>
 <p><em>问题描述</em></p>
-<p>　　形如2^P-1的素数称为麦森数，这时P一定也是个素数。但反过来不一定，即如果P是个素数，2^P-1不一定也是素数。</p>
-</blockquote>
+<p>　　形如2^P-1的素数称为麦森数，这时P一定也是个素数。但反过来不一定，即如果P是个素数，2^P-1不一定也是素数。<br>
         
           <a class="article-more-a" href="/2018/08/17/麦森数/#more">more >></a>
         
@@ -979,104 +1089,9 @@
 
 
   
-    <article id="post-关押罪犯" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/17/关押罪犯/">关押罪犯</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/17/关押罪犯/" class="archive-article-date">
-  	<time datetime="2018-08-17T15:21:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Problem  From：NOIP2010T</strong></p>
-<blockquote>
-<p>问题描述</p>
-<p>　　S 城现有两座监狱，一共关押着N　　名罪犯，编号分别为1~N。他们之间的关系自然也极不和谐。很多罪犯之间甚至积怨已久，如果客观条件具备则随时可能爆发冲突。我们用“怨气值”（一个正整数值）来表示某两名罪犯之间的仇恨程度，怨气值越大，则这两名罪犯之间的积怨越多。如果两名怨气值为c　　的罪犯被关押在同一监狱，他们俩之间会发生摩擦，并造成影响力为c 的冲突事件。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/08/17/关押罪犯/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二分图</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">并查集</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分治算法初步//" class="article-tag-list-link color2">分治算法初步</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/17/关押罪犯/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1179,7 +1194,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
+                <a href="javascript:void(0)" class="js-tag color1">排序二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1191,10 +1206,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
@@ -1203,7 +1214,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1212,6 +1223,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
               </li>
              
               <li class="article-tag-list-item">

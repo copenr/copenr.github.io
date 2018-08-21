@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>聪明的质检员 | Copen</title>
+  <title>聪明的质检员(待批阅) | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Problem from NOIP2011T  问题描述 　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。">
 <meta name="keywords" content="分治,前缀和优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="聪明的质检员">
+<meta property="og:title" content="聪明的质检员(待批阅)">
 <meta property="og:url" content="http://copenlife.top/2018/08/17/聪明的质检员/index.html">
 <meta property="og:site_name" content="Copen">
 <meta property="og:description" content="Problem from NOIP2011T  问题描述 　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-20T14:59:48.997Z">
+<meta property="og:updated_time" content="2018-08-21T02:07:23.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="聪明的质检员">
+<meta name="twitter:title" content="聪明的质检员(待批阅)">
 <meta name="twitter:description" content="Problem from NOIP2011T  问题描述 　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
@@ -154,7 +154,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      聪明的质检员
+      聪明的质检员(待批阅)
     </h1>
   
 
@@ -170,11 +170,7 @@
         <p><strong>Problem from NOIP2011T</strong></p>
 <blockquote>
 <p><em>问题描述</em></p>
-<p>　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。</p>
-</blockquote>
-<a id="more"></a>
-<blockquote>
-<p>检验矿产的流程是：</p>
+<p>　　小 T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n 个矿石，从1到n 逐一编号，每个矿石都有自己的重量wi 以及价值vi。<br><a id="more"></a><br>检验矿产的流程是：</p>
 <p>　　1、给定m 个区间[Li，Ri]；</p>
 <p>　　2、选出一个参数W；</p>
 <p>　　3、对于一个区间[Li，Ri]，计算矿石在这个区间上的检验值Yi ：</p>
@@ -189,7 +185,7 @@
 </blockquote>
 <p><strong>Analysis</strong></p>
 <p>题目意思就是，每次找一个参照值mid，m个区间每个区间内都记录w&gt;=mid的矿产的个数和价值和，然和相乘累加得到sum，求出|sum-S|的最小值。</p>
-<p>可以看出二分性质，在区间内二分参照值，求出sum。</p>
+<p>在[0,max]区间内二分参照值，求出sum。</p>
 <p>情况如下：</p>
 <ul>
 <li>sum&gt;S,要尽量把sum减小使得更接近S，需要把参照值变大。</li>
@@ -197,13 +193,6 @@
 <li>sum=S，直接输出0</li>
 </ul>
 <p>然后我就直接写一个裸的二分，没有优化：</p>
-<hr>
-<h5 id="课后修改"><a href="#课后修改" class="headerlink" title=" 课后修改"></a><font color="OrangeRed"> 课后修改</font></h5><p>二分性质分析：</p>
-<ul>
-<li>单调性：其实这一题是可能会有两个点满足题意，一个 sum1&gt; S,一个 sum2&lt; S ，不过绝对值是一定的，所以绝对值算具有单调性，当&gt;mid1或&lt;mid2时，都在正解的上方。</li>
-<li>连续性：对于任意一个mid,都有sum与之对应。</li>
-</ul>
-<hr>
 <p><strong>Code O(logmax·m·n) max是质量最大值，m是区间总数，n是矿产总数</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	ll w,v;</span><br><span class="line">&#125;a[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span> <span class="params">(node p,node q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> p.w&lt;q.w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll n,m,s;</span><br><span class="line">ll x[<span class="number">200010</span>],y[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) ch=getchar();</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">work</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	ll sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		ll sum1=<span class="number">0</span>,sum2=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=x[i];j&lt;=y[i];j++)</span><br><span class="line">			<span class="keyword">if</span>(a[j].w&gt;=k) sum1++,sum2+=a[j].v;</span><br><span class="line">		sum+=sum1*sum2;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;s;	</span><br><span class="line">	ll l=<span class="number">0</span>,r=<span class="number">0</span>;</span><br><span class="line">	ll ans=inf;	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i].w=read(),a[i].v=read(),r=max(r,a[i].w);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) x[i]=read(),y[i]=read();</span><br><span class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">		ll mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		ll sum=work(mid);</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">abs</span>(sum-s)&lt;ans) id=mid,ans=<span class="built_in">abs</span>(sum-s);</span><br><span class="line">		<span class="keyword">if</span>(sum&gt;s) l=mid+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>题目中给出m，n的范围，m*n是肯定过不了的，所以在计算sum时需要优化。</p>
 <p>我们发现每次都要在一个区间内求大于mid的个数和价值，这样就会重复计算，比如[1,4]和[2,6]有公共部分。</p>
@@ -217,6 +206,15 @@
 <li>在一些累加计算的地方，比如求和，魔法阵。大部分是a1·a2+a1·a2+…+a1·an+a2·a3+…+an-1·an之类的，从前往后每次记录sum，直接乘就好了；</li>
 <li>可能还有其他的一时想不起来了，以后慢慢写。</li>
 </ul>
+<hr>
+<h4 id="课后修改"><a href="#课后修改" class="headerlink" title=" 课后修改"></a><font color="OrangeRed"> 课后修改</font></h4><p>分析：</p>
+<ul>
+<li>sum-S的值，当选择的参照w越大时，sum越小，sum-S越小；当选泽的参照w越小时，sum越大，sum-S越大。这就相当于f(w)=sum-S，是一个单调递减的函数，我们要找的就是在0-max区间内f(w)最接近临界值所对应的整数w值。</li>
+<li>我的区间定义是从[0,max]中所有w值都可以取到，因为如果w&gt;max说明sum=0，w&lt;0说明所有石头都可以取到。</li>
+<li>一样的问题,ans无用更新太多，正确解法是是保证f(l)&gt;=0，f(r)&lt;0，最后把[l,r]区间长度缩为2，计算左右端点即可。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">l=<span class="number">0</span>,r=max+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(l+<span class="number">1</span>&lt;r)&#123;<span class="comment">//这里我开始想错了，应该是保证最后l+1=r。</span></span><br><span class="line">	ll mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	ll sum=work(mid);</span><br><span class="line">	<span class="keyword">if</span>(sum-s&gt;=<span class="number">0</span>) l=mid;</span><br><span class="line">	<span class="keyword">else</span> r=mid; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> suml=work(l),sumr=work(r);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;min(suml-s,s-sumr)&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
 
       
 
@@ -319,14 +317,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          借教室
+          借教室(待批阅)
         
       </div>
     </a>
   
   
     <a href="/2018/08/17/麦森数/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">麦森数</div>
+      <div class="article-nav-title">麦森数(已批阅)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -460,7 +458,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
+                <a href="javascript:void(0)" class="js-tag color1">排序二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,10 +470,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
@@ -484,7 +478,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,6 +487,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>最长公共子序列 | Copen</title>
+  <title>最长公共子序列(待批阅) | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="问题描述 　　序列Z=是序列X=的子序列，相应的递增下标序列为&amp;lt;2，3，5，7&amp;gt;。 　　一般地，给定一个序列X=，则另一个序列Z=是X的子序列，是指存在一个严格递增的下标序列〈i1,i2,…,ik〉使得对于所有j=1,2,…,k使Z中第j个元素zj与X中第ij个元素相同。">
 <meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最长公共子序列">
+<meta property="og:title" content="最长公共子序列(待批阅)">
 <meta property="og:url" content="http://copenlife.top/2018/08/19/LCS/index.html">
 <meta property="og:site_name" content="Copen">
 <meta property="og:description" content="问题描述 　　序列Z=是序列X=的子序列，相应的递增下标序列为&amp;lt;2，3，5，7&amp;gt;。 　　一般地，给定一个序列X=，则另一个序列Z=是X的子序列，是指存在一个严格递增的下标序列〈i1,i2,…,ik〉使得对于所有j=1,2,…,k使Z中第j个元素zj与X中第ij个元素相同。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-20T14:14:46.450Z">
+<meta property="og:updated_time" content="2018-08-21T03:19:14.661Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="最长公共子序列">
+<meta name="twitter:title" content="最长公共子序列(待批阅)">
 <meta name="twitter:description" content="问题描述 　　序列Z=是序列X=的子序列，相应的递增下标序列为&amp;lt;2，3，5，7&amp;gt;。 　　一般地，给定一个序列X=，则另一个序列Z=是X的子序列，是指存在一个严格递增的下标序列〈i1,i2,…,ik〉使得对于所有j=1,2,…,k使Z中第j个元素zj与X中第ij个元素相同。">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
@@ -154,7 +154,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      最长公共子序列
+      最长公共子序列(待批阅)
     </h1>
   
 
@@ -199,7 +199,7 @@
 </ul>
 <p>设s={z1,z2..zk}是s1={x0,x1…xi},s2={y0,y1…yj}的最长公共子序列，且xi!=yj，通过上面的推断，子序列一定在(i,j-1)和(i-1,j)之中，所以得到第二个式子。</p>
 </blockquote>
-<p>一开始的<font color="Orangered">错误:</font></p>
+<p>一开始的 <strong><font color="Orangered">错误:</font></strong></p>
 <ul>
 <li>如果i=0或者j=0的话,dp[i][j]最大为1，要特殊处理一下<br><strong>Code O(n^2)</strong><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1010</span>][<span class="number">1010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">string</span> s1,s2;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s1&gt;&gt;s2;</span><br><span class="line">	<span class="keyword">int</span> l1=s1.size(),l2=s2.size();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l1;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;l2;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i==<span class="number">0</span>||j==<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(s1[i]==s2[j]) dp[i][j]=<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span> dp[i][j]=dp[max(<span class="number">0</span>,i<span class="number">-1</span>)][max(<span class="number">0</span>,j<span class="number">-1</span>)];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(s1[i]==s2[j]) dp[i][j]=dp[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(s1[i]!=s2[j]) dp[i][j]=max(dp[i][j<span class="number">-1</span>],dp[i<span class="number">-1</span>][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[l1<span class="number">-1</span>][l2<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -304,14 +304,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          回文词
+          回文词(待批阅)
         
       </div>
     </a>
   
   
-    <a href="/2018/08/19/Numbertriangle/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数字三角形</div>
+    <a href="/2018/08/19/NumTriangle/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数字三角形(待批阅)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -445,7 +445,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
+                <a href="javascript:void(0)" class="js-tag color1">排序二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -457,10 +457,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
@@ -469,7 +465,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,6 +474,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
               </li>
              
               <li class="article-tag-list-item">

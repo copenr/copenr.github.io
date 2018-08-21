@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>邮局 | Copen</title>
+  <title>邮局(待批阅) | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Problem  问题描述 　　一些村庄建在一条笔直的高速公路边上。我们用一条坐标轴来描述这条高速公路，每一个村庄的坐标都是整数，没有两个村庄坐标相同。两个村庄间的距离，定义为它们的坐标值差的绝对值。我们需要在一些村庄建立邮局――当然，并不是每一个村庄都必须建立邮局 邮局必须被建在村庄里，因此它的坐标和它所在村庄坐标相同。每个村庄便用离它最近的那个邮局，建立这些邮局的原则是：所有村庄到各自所使用的">
 <meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="邮局">
-<meta property="og:url" content="http://copenlife.top/2018/08/20/Postoffice/index.html">
+<meta property="og:title" content="邮局(待批阅)">
+<meta property="og:url" content="http://copenlife.top/2018/08/20/postoffice/index.html">
 <meta property="og:site_name" content="Copen">
 <meta property="og:description" content="Problem  问题描述 　　一些村庄建在一条笔直的高速公路边上。我们用一条坐标轴来描述这条高速公路，每一个村庄的坐标都是整数，没有两个村庄坐标相同。两个村庄间的距离，定义为它们的坐标值差的绝对值。我们需要在一些村庄建立邮局――当然，并不是每一个村庄都必须建立邮局 邮局必须被建在村庄里，因此它的坐标和它所在村庄坐标相同。每个村庄便用离它最近的那个邮局，建立这些邮局的原则是：所有村庄到各自所使用的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-20T14:14:46.759Z">
+<meta property="og:updated_time" content="2018-08-21T03:18:50.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="邮局">
+<meta name="twitter:title" content="邮局(待批阅)">
 <meta name="twitter:description" content="Problem  问题描述 　　一些村庄建在一条笔直的高速公路边上。我们用一条坐标轴来描述这条高速公路，每一个村庄的坐标都是整数，没有两个村庄坐标相同。两个村庄间的距离，定义为它们的坐标值差的绝对值。我们需要在一些村庄建立邮局――当然，并不是每一个村庄都必须建立邮局 邮局必须被建在村庄里，因此它的坐标和它所在村庄坐标相同。每个村庄便用离它最近的那个邮局，建立这些邮局的原则是：所有村庄到各自所使用的">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
@@ -147,19 +147,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Postoffice" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-postoffice" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      邮局
+      邮局(待批阅)
     </h1>
   
 
         
-        <a href="/2018/08/20/Postoffice/" class="archive-article-date">
+        <a href="/2018/08/20/postoffice/" class="archive-article-date">
   	<time datetime="2018-08-20T08:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
 </a>
         
@@ -208,9 +208,9 @@
 <p>一开始初始值赋的不好，错了样例,因为我只把dp[1][1]赋值为0，把所有dp[i][1]都赋初值之后才对。</p>
 <p>还有一个点就是动规方程里面一开始写成了dis[k][i]，后来发现必须写dis[k+1][i],因为k这个点被dp[k][j-1]包含在内了。</p>
 <p>我又写了一篇很长但其实题目并不是太难的的解题报告，希望又能进步一点点。</p>
-<p><strong>另附：Code  O(n^ 3+m·n^2)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[<span class="number">310</span>],dis[<span class="number">310</span>][<span class="number">310</span>];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">310</span>][<span class="number">40</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update_dis</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//dis更新取中间点，其实很怕这里超时，因为三层循环，但是暂时没想到优化方法</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			<span class="keyword">if</span>(i==j) dis[i][j]=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;=j;k++) dis[i][j]+=<span class="built_in">abs</span>(a[(i+j)&gt;&gt;<span class="number">1</span>]-a[k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dp,inf,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[i][<span class="number">1</span>]=dis[<span class="number">1</span>][i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=min(i,m);j++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i<span class="number">-1</span>;k&gt;=j;k--)</span><br><span class="line">			dp[i][j]=min(dp[i][j],dp[k][j<span class="number">-1</span>]+dis[k+<span class="number">1</span>][i]);<span class="comment">//就是这里一开始写错了，转移错了。。。</span></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">	update_dis();</span><br><span class="line">	work();</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n][m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Conclusion</strong>：</p>
-<p>我知道动规和递推递归联系密切，但是我觉得我的动规思维还不是很明了，所以还要多做些题目找点感觉，最怕动规题了。。。</p>
+<p><strong><font color="CornflowerBlue"> 本题的方法总结:</font></strong></p>
+<p>把一段区间看成一个点就好更新了。</p>
+<p><strong>另附：Code  O(n\^3+m*n^2)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[<span class="number">310</span>],dis[<span class="number">310</span>][<span class="number">310</span>];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">310</span>][<span class="number">40</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update_dis</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//dis更新取中间点，其实很怕这里超时，因为三层循环，但是暂时没想到优化方法</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			<span class="keyword">if</span>(i==j) dis[i][j]=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;=j;k++) dis[i][j]+=<span class="built_in">abs</span>(a[(i+j)&gt;&gt;<span class="number">1</span>]-a[k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dp,inf,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[i][<span class="number">1</span>]=dis[<span class="number">1</span>][i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=min(i,m);j++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i<span class="number">-1</span>;k&gt;=j;k--)</span><br><span class="line">			dp[i][j]=min(dp[i][j],dp[k][j<span class="number">-1</span>]+dis[k+<span class="number">1</span>][i]);<span class="comment">//就是这里一开始写错了，转移错了。。。</span></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">	update_dis();</span><br><span class="line">	work();</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n][m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -291,7 +291,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/20/Postoffice/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/20/postoffice/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,14 +309,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          字串距离
+          字串距离(待批阅)
         
       </div>
     </a>
   
   
-    <a href="/2018/08/19/Flowershop/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">花店橱窗布置</div>
+    <a href="/2018/08/20/Nic-Job/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">尼克的任务(待批阅)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -450,7 +450,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
+                <a href="javascript:void(0)" class="js-tag color1">排序二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,10 +462,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
@@ -474,7 +470,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,6 +479,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
               </li>
              
               <li class="article-tag-list-item">
