@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Copen">
 <meta property="og:description" content="Problem  问题描述 　　和所有人一样，奶牛喜欢变化。它们正在设想新造型的牧场。奶牛建筑师Hei想建造围有漂亮白色栅栏的三角形牧场。她拥有N(3≤N≤40)块木板，每块的长度Li(1≤Li≤40)都是整数，她想用所有的木板围成一个三角形使得牧场面积最大。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T14:53:54.717Z">
+<meta property="og:updated_time" content="2018-08-21T14:57:09.720Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三角形牧场(待批阅)">
 <meta name="twitter:description" content="Problem  问题描述 　　和所有人一样，奶牛喜欢变化。它们正在设想新造型的牧场。奶牛建筑师Hei想建造围有漂亮白色栅栏的三角形牧场。她拥有N(3≤N≤40)块木板，每块的长度Li(1≤Li≤40)都是整数，她想用所有的木板围成一个三角形使得牧场面积最大。">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#a0cfe4,#C6C6C6);
     }
   </style>
   
@@ -44,11 +44,11 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #C0D9D9"></div>
+<div class="overlay" style="background: #F0F8FF"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/img/mypic.jpg" class="js-avatar">
+			<img src="/img/IMG_0283.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Copen</a></h1>
@@ -93,14 +93,14 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #C0D9D9"></div>
+  	<div class="overlay js-overlay" style="background: #F0F8FF"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/img/mypic.jpg" class="js-avatar">
+				<img src="/img/IMG_0283.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Copen</h1>
@@ -193,7 +193,7 @@
 <p>说这个是因为计算面积时，海伦公式里有一个p=(a+b+c)/2，可能是个小数。</p>
 <p><strong><font color="cornflowerblue"> 本题的方法总结</font></strong></p>
 <p>动规不记录最优解，而是记录一个状态是否可行，可行的状态会有多个，最后更新最优解。</p>
-<p><strong>Code</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">50</span>],len;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1610</span>][<span class="number">1610</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x+y&gt;z&amp;&amp;x+z&gt;y&amp;&amp;y+z&gt;x) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">helen</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y,<span class="keyword">double</span> z)</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> p=<span class="keyword">double</span>(len)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">sqrt</span>(p*(p-x)*(p-y)*(p-z));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i],len+=a[i];</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=len;j&gt;=<span class="number">0</span>;j--)<span class="comment">//注意枚举顺序，否则状态重复更新</span></span><br><span class="line">		    <span class="keyword">for</span>(<span class="keyword">int</span> k=len;k&gt;=<span class="number">0</span>;k--)</span><br><span class="line">				<span class="keyword">if</span>((j&gt;=a[i]&amp;&amp;dp[j-a[i]][k])||(k&gt;=a[i]&amp;&amp;dp[j][k-a[i]])) dp[j][k]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">double</span> ans=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=len;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=len;j++)</span><br><span class="line">			<span class="keyword">if</span>(dp[i][j]&amp;&amp;len-i-j&gt;<span class="number">0</span>&amp;&amp;check(i,j,len-i-j))</span><br><span class="line">				ans=max(ans,helen(i,j,len-i-j)*<span class="number">100</span>);</span><br><span class="line">	<span class="keyword">if</span>(ans&gt;<span class="number">0</span>) <span class="built_in">cout</span>&lt;&lt;<span class="keyword">int</span>(ans)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"-1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Code O(n*len\^2+len\^2)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">50</span>],len;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1610</span>][<span class="number">1610</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x+y&gt;z&amp;&amp;x+z&gt;y&amp;&amp;y+z&gt;x) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">helen</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y,<span class="keyword">double</span> z)</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> p=<span class="keyword">double</span>(len)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">sqrt</span>(p*(p-x)*(p-y)*(p-z));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i],len+=a[i];</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=len;j&gt;=<span class="number">0</span>;j--)<span class="comment">//注意枚举顺序，否则状态重复更新</span></span><br><span class="line">		    <span class="keyword">for</span>(<span class="keyword">int</span> k=len;k&gt;=<span class="number">0</span>;k--)</span><br><span class="line">				<span class="keyword">if</span>((j&gt;=a[i]&amp;&amp;dp[j-a[i]][k])||(k&gt;=a[i]&amp;&amp;dp[j][k-a[i]])) dp[j][k]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">double</span> ans=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=len;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=len;j++)</span><br><span class="line">			<span class="keyword">if</span>(dp[i][j]&amp;&amp;len-i-j&gt;<span class="number">0</span>&amp;&amp;check(i,j,len-i-j))</span><br><span class="line">				ans=max(ans,helen(i,j,len-i-j)*<span class="number">100</span>);</span><br><span class="line">	<span class="keyword">if</span>(ans&gt;<span class="number">0</span>) <span class="built_in">cout</span>&lt;&lt;<span class="keyword">int</span>(ans)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"-1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -412,19 +412,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分治</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分治</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">树结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -436,11 +436,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">排序二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+                <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">排序二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -452,15 +456,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
               </li>
              
               <li class="article-tag-list-item">
