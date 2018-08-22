@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>最长公共子序列(待批阅) | Copen</title>
+  <title>Tag: 随笔 | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述 　　序列Z=是序列X=的子序列，相应的递增下标序列为&amp;lt;2，3，5，7&amp;gt;。 　　一般地，给定一个序列X=，则另一个序列Z=是X的子序列，是指存在一个严格递增的下标序列〈i1,i2,…,ik〉使得对于所有j=1,2,…,k使Z中第j个元素zj与X中第ij个元素相同。">
-<meta name="keywords" content="动态规划">
-<meta property="og:type" content="article">
-<meta property="og:title" content="最长公共子序列(待批阅)">
-<meta property="og:url" content="http://copenlife.top/2018/08/19/LCS/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Copen">
+<meta property="og:url" content="http://copenlife.top/tags/随笔/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="问题描述 　　序列Z=是序列X=的子序列，相应的递增下标序列为&amp;lt;2，3，5，7&amp;gt;。 　　一般地，给定一个序列X=，则另一个序列Z=是X的子序列，是指存在一个严格递增的下标序列〈i1,i2,…,ik〉使得对于所有j=1,2,…,k使Z中第j个元素zj与X中第ij个元素相同。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T03:19:14.661Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="最长公共子序列(待批阅)">
-<meta name="twitter:description" content="问题描述 　　序列Z=是序列X=的子序列，相应的递增下标序列为&amp;lt;2，3，5，7&amp;gt;。 　　一般地，给定一个序列X=，则另一个序列Z=是X的子序列，是指存在一个严格递增的下标序列〈i1,i2,…,ik〉使得对于所有j=1,2,…,k使Z中第j个元素zj与X中第ij个元素相同。">
+<meta name="twitter:title" content="Copen">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,204 +142,128 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LCS" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      最长公共子序列(待批阅)
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/08/11/Reputation记录/" class="archive-article-date">
+  	<time datetime="2018-08-11T14:50:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-11</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/08/11/Reputation记录/">About Reputation</a>
     </h1>
   
 
-        
-        <a href="/2018/08/19/LCS/" class="archive-article-date">
-  	<time datetime="2018-08-19T02:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><em>问题描述</em></p>
-<p>　　序列Z=是序列X=的子序列，相应的递增下标序列为&lt;2，3，5，7&gt;。</p>
-<p>　　一般地，给定一个序列X=，则另一个序列Z=是X的子序列，是指存在一个严格递增的下标序列〈i1,i2,…,ik〉使得对于所有j=1,2,…,k使Z中第j个元素zj与X中第ij个元素相同。</p>
-</blockquote>
-<a id="more"></a>
-<blockquote>
-<p>给定2个序列X和Y，当另一序列Z既是X的子序列又是Y的子序列时，称Z是序列X和Y的公共子序列。</p>
-<p>你的任务是：给定2个序列X、Y，求X和Y的最长公共子序列Z的长度。</p>
-<p><em>输入格式</em></p>
-<p>　　输入共有两行，每行为一个由大写字母构成的长度不超过200的字符串，表示序列X和Y。(ABCBDAB  BDCABA)</p>
-<p><em>输出格式</em></p>
-<p>输出只有一个整数表示最长公共子序列的长度。(4)</p>
-</blockquote>
-<p><strong>Analysis</strong></p>
-<p>一开始题目理解错了，以为子序列是连续的，其实那是子串，子序列只需要下标递增即可。</p>
-<p>令dp[i][j]表示s1的前i个字符,s2的前j个字符中的最长公共子序列。</p>
-<ul>
-<li>dp[i][j]=dp[i-1][j-1]+1 (s1[i]=s2[j])</li>
-<li>dp[i][j]=max(dp[i-1][j],dp[i][j-1]) (s1[i]!=s2[j])</li>
-</ul>
-<p>证明过程我自己也很模糊，所以去网上看了一下，原来这个是一种名叫LCS的算法，网上有很多证明，我大概写了一下自己的理解：</p>
-<blockquote>
-<p>设s={z1,z2..zk}是s1={x0,x1…xi},s2={y0,y1…yj}的最长公共子序列，且xi=yj，</p>
-<ul>
-<li>如果把xi作为zk,yj也是zk,那么dp(i,j)=dp(i-1,j-1)+1。</li>
-<li>如果把xi作为zk，y不作为zk，dp(i,j)=dp(i,j-1),如果在(i-1,j-1)的最长公共子序列之后还能找到一个y和xi对应，那么dp(i,j-1)和dp(i-1,j-1)+1值相等，否则dp(i,j-1)&lt;dp(i-1,j-1)+1。</li>
-<li>如果把yi作为zk，证明方法同上。</li>
-<li>所以当s1[i]=s2[j]时，dp[i][j]最大为dp[i-1][j-1]+1。</li>
-</ul>
-<p>设s={z1,z2..zk}是s1={x0,x1…xi},s2={y0,y1…yj}的最长公共子序列，且xi!=yj，通过上面的推断，子序列一定在(i,j-1)和(i-1,j)之中，所以得到第二个式子。</p>
-</blockquote>
-<p>一开始的 <strong><font color="Orangered">错误:</font></strong></p>
-<ul>
-<li>如果i=0或者j=0的话,dp[i][j]最大为1，要特殊处理一下<br><strong>Code O(n^2)</strong><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1010</span>][<span class="number">1010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">string</span> s1,s2;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s1&gt;&gt;s2;</span><br><span class="line">	<span class="keyword">int</span> l1=s1.size(),l2=s2.size();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l1;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;l2;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i==<span class="number">0</span>||j==<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(s1[i]==s2[j]) dp[i][j]=<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span> dp[i][j]=dp[max(<span class="number">0</span>,i<span class="number">-1</span>)][max(<span class="number">0</span>,j<span class="number">-1</span>)];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(s1[i]==s2[j]) dp[i][j]=dp[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(s1[i]!=s2[j]) dp[i][j]=max(dp[i][j<span class="number">-1</span>],dp[i<span class="number">-1</span>][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[l1<span class="number">-1</span>][l2<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>Conclusion</strong></p>
-<p>在之前分析动规方程时经常迷迷糊糊混了过去，以后要弄清楚了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Taylor</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/动态规划初步//" class="article-tag-list-link color2">动态规划初步</a>
+        			<a href="/categories/Taylor//" class="article-tag-list-link color2">Taylor</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/19/LCS/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2018/08/19/Huiwenword/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          回文词(待批阅)
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/08/19/NumTriangle/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数字三角形(待批阅)</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/08/11/Meet Taylor/" class="archive-article-date">
+  	<time datetime="2018-08-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-11</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/08/11/Meet Taylor/">Red - Taylor Swift</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Taylor</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Taylor//" class="article-tag-list-link color2">Taylor</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -367,9 +286,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
