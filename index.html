@@ -144,6 +144,123 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Buy-low!" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/22/Buy-low!/">Buy low!Buy low!(待批阅)</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/22/Buy-low!/" class="archive-article-date">
+  	<time datetime="2018-08-22T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Problem</strong></p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>“低价购买”这条建议是在奶牛股票市场取得成功的一半规则。要想被认为是伟大的投资者，你必须遵循以下的问题建议:“低价购买；再低价购买”。每次你购买一支股票,你必须用低于你上次购买它的价格购买它。买的次数越多越好!你的目标是在遵循以上建议的前提下，求你最多能购买股票的次数。你将被给出一段时间内一支股票每天的出售价(216范围内的正整数)，你可以选择在哪些天购买这支股票。每次购买都必须遵循“低价购买；再低价购买”的原则。写一个程序计算最大购买次数。</p>
+</blockquote>
+<blockquote>
+<p>　　这里是某支股票的价格清单：</p>
+<p><img src="http://www.tsinsen.com/RequireFile.do?fid=FN2an9L9" alt=""></p>
+<p>　　最优秀的投资者可以购买最多4次股票，可行方案中的一种是：</p>
+<p><img src="http://www.tsinsen.com/RequireFile.do?fid=GGFLE83f" alt=""></p>
+</blockquote>
+<blockquote>
+<p><em>输入格式</em></p>
+<p>第1行: N (1 &lt;= N &lt;= 5000)，股票发行天数</p>
+<p>第2行: N个数，是每天的股票价格。</p>
+<p><em>输出格式</em></p>
+<p>输出仅一行包含两个数:最大购买次数和拥有最大购买次数的方案数(&lt;=231)当二种方案“看起来一样”时（就是说它们构成的价格队列一样的时候）,这2种方案被认为是相同的。</p>
+</blockquote>
+<p><strong>Analysis</strong></p>
+<p>读完题目就知道这是让求最长下降子序列，但是当我很块写完后却发现，这道题还让输出方案数，而且方案不能相同。</p>
+<ul>
+<li>dp[i]=max(dp[i],dp[j]+1) a[j]&gt;a[i]</li>
+</ul>
+<p>然后我就在原来的程序上做了修改，当我们已经求出dp[i]后，我们只要枚举1~i-1所有的dp值，找到dp[j]=dp[i]-1 &amp;&amp; a[j]&gt;a[i]时说明i可以由j扩展来，如果不考虑方案相同可以直接全部累加，但是要考虑方案不同，我是这样想的：</p>
+<p>如果多个相同数字满足条件，就加上这些数字中sum值最大的；如果只有一个数字满足条件，直接加上即可。</p>
+<p>因为相同的数字一定是后面的优于前面的(选择更多)，所以从后往前枚举可以直接更新，一开始我用一个vhash记录每个数字有没有多个满足条件。</p>
+<p>最后出解的时候想了很多方式都很麻烦，最后发现直接把<font color="Orangered">a[n+1]定义为0，</font>这样枚举时枚举到n+1，那么dp[n+1]一定是最长下降子序列+1，而sum[n+1]自然是最长下降子序列数目。</p>
+<p><strong>于是就写出了如下的程序 O(n^2)：</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">5010</span>],dp[<span class="number">5010</span>],vhash[<span class="number">1000010</span>];</span><br><span class="line">ll sum[<span class="number">5010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">    a[++n]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        dp[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> maxv=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;i;j++)</span><br><span class="line">         	<span class="keyword">if</span>(a[j]&gt;a[i]) dp[i]=max(dp[i],dp[j]+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(dp[i]==<span class="number">1</span>) sum[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(vhash,<span class="number">0</span>,<span class="keyword">sizeof</span>(vhash));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i<span class="number">-1</span>;j&gt;=<span class="number">1</span>;j--) </span><br><span class="line">            <span class="keyword">if</span>(!vhash[a[j]]&amp;&amp;a[j]&gt;a[i]&amp;&amp;dp[j]+<span class="number">1</span>==dp[i]) &#123;</span><br><span class="line">                vhash[a[j]]=<span class="number">1</span>;</span><br><span class="line">                sum[i]+=sum[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;dp[n]<span class="number">-1</span>&lt;&lt;<span class="string">" "</span>&lt;&lt;sum[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由于我的时间复杂度算的很粗略，考虑不周TLE了，每次要把vhash清零，有时还要枚举两次j，n最大为5000，完全有可能n^3/2*(memset复杂度)。</p>
+<p>然后我束手无策，思考能不能不记录vhash或者避免每次清零。后来有这样一种方法：</p>
+<p>满足dp[j]=dp[i]-1 &amp;&amp; a[j]&gt;a[i]条件的a[j]一定是从小到大排序的（包括相等），否则dp[i]一定不是最优。</p>
+<p>所以无需记录vhash，只需要记录上一个a[j]的值，下一次比它小就行了。</p>
+<p><strong>Code O(n^2n)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">5010</span>],dp[<span class="number">5010</span>],vhash[<span class="number">1000010</span>];</span><br><span class="line">ll sum[<span class="number">5010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    a[++n]=<span class="number">0</span>;<span class="comment">//最后一位定义为0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        dp[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> maxv=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;i;j++)</span><br><span class="line">         	<span class="keyword">if</span>(a[j]&gt;a[i]) dp[i]=max(dp[i],dp[j]+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(dp[i]==<span class="number">1</span>) sum[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">        	<span class="keyword">int</span> last=<span class="number">-1</span>;<span class="comment">//last就是记录上一个值</span></span><br><span class="line">        	<span class="keyword">for</span>(<span class="keyword">int</span> j=i<span class="number">-1</span>;j&gt;=<span class="number">1</span>;j--) </span><br><span class="line">            	<span class="keyword">if</span>(a[j]&gt;a[i]&amp;&amp;dp[j]+<span class="number">1</span>==dp[i]&amp;&amp;a[j]!=last) &#123;</span><br><span class="line">                	last=a[j];</span><br><span class="line">                	sum[i]+=sum[j];</span><br><span class="line">            	&#125;</span><br><span class="line">        	&#125;</span><br><span class="line">    	&#125;	</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;dp[n]<span class="number">-1</span>&lt;&lt;<span class="string">" "</span>&lt;&lt;sum[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/动态规划初步//" class="article-tag-list-link color2">动态规划初步</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/22/Buy-low!/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Triangle-pasture" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -963,96 +1080,6 @@
 
 
   
-    <article id="post-NumTriangle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/19/NumTriangle/">数字三角形(待批阅)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/19/NumTriangle/" class="archive-article-date">
-  	<time datetime="2018-08-19T02:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><em>问题描述</em></p>
-<p>　　给定一个由n 行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形的顶至底的一条路径，使该路径经过的数字总和最大 。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/08/19/NumTriangle/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/动态规划初步//" class="article-tag-list-link color2">动态规划初步</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/19/NumTriangle/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1142,15 +1169,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分治</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,6 +1201,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
@@ -1183,10 +1214,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">并查集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
              
               <li class="article-tag-list-item">
