@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.tsinsen.com/RequireFile.do?fid=Ggb4j9aH">
 <meta property="og:image" content="http://www.tsinsen.com/RequireFile.do?fid=42nAjAJh">
-<meta property="og:updated_time" content="2018-08-21T10:20:58.724Z">
+<meta property="og:updated_time" content="2018-09-02T02:42:36.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多米诺骨牌(待批阅)">
 <meta name="twitter:description" content="问题描述 　　多米诺骨牌有上下2个方块组成，每个方块中有1~6个点。现有排成行的n个多米诺骨牌如图所示。">
@@ -195,6 +195,12 @@
 </ul>
 <p>N取5005</p>
 <p><strong>Code O(n*10000)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,x[<span class="number">1010</span>],y[<span class="number">1010</span>],dp[<span class="number">1010</span>][<span class="number">10050</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;x[i]&gt;&gt;y[i];</span><br><span class="line">	<span class="built_in">memset</span>(dp,inf,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>][N]=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">-5000</span>;j&lt;=<span class="number">5000</span>;j++)</span><br><span class="line">			dp[i][j+N]=min(dp[i<span class="number">-1</span>][j-(x[i]-y[i])+N],dp[i<span class="number">-1</span>][j+(x[i]-y[i])+N]+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> sum=inf,cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=<span class="number">5000</span>;j++)<span class="comment">//枚举绝对值，保证第一组解一定差值最小</span></span><br><span class="line">		<span class="keyword">if</span>(dp[n][j+N]!=inf||dp[n][(-j)+N]!=inf)&#123;</span><br><span class="line">			<span class="keyword">if</span>(dp[n][j+N]&gt;dp[n][(-j)+N]) <span class="built_in">cout</span>&lt;&lt;dp[n][(-j)+N]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;dp[n][j+N]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="课后修改"><a href="#课后修改" class="headerlink" title=" 课后修改"></a><font color="Orangered"> 课后修改</font></h5><p>这个杨老师称作存在性背包。</p>
+<p>要求用滚动数组写一下。</p>
+<p>观察方程发现i的更新只与i-1有关，所以数组只需记录两行。</p>
+<p>直接求余2就行了，dp[1]由dp[0]更新,dp[2]由dp[1],dp[3]由dp[0]更新，这样就能实现滚动更新了。</p>
+<p>优点：大大减少空间复杂度。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,x[<span class="number">1010</span>],y[<span class="number">1010</span>],dp[<span class="number">2</span>][<span class="number">10050</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;x[i]&gt;&gt;y[i];</span><br><span class="line">	<span class="built_in">memset</span>(dp,inf,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>][N]=<span class="number">0</span>;<span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">-5000</span>;j&lt;=<span class="number">5000</span>;j++)</span><br><span class="line">			dp[i%<span class="number">2</span>][j+N]=min(dp[(i<span class="number">-1</span>)%<span class="number">2</span>][j-(x[i]-y[i])+N],dp[(i<span class="number">-1</span>)%<span class="number">2</span>][j+(x[i]-y[i])+N]+<span class="number">1</span>);<span class="comment">//滚动数组</span></span><br><span class="line">	<span class="keyword">int</span> sum=inf,cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=<span class="number">5000</span>;j++)</span><br><span class="line">		<span class="keyword">if</span>(dp[n%<span class="number">2</span>][j+N]!=inf||dp[n%<span class="number">2</span>][(-j)+N]!=inf)&#123;</span><br><span class="line">			<span class="keyword">if</span>(dp[n%<span class="number">2</span>][j+N]&gt;dp[n%<span class="number">2</span>][(-j)+N]) <span class="built_in">cout</span>&lt;&lt;dp[n%<span class="number">2</span>][(-j)+N]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;dp[n%<span class="number">2</span>][j+N]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -289,18 +295,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/21/Nic-tasks/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/21/Nic-Job/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          尼克的任务(待批阅)
+          尼克的任务(已批阅)
         
       </div>
     </a>
   
   
     <a href="/2018/08/21/postoffice/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">邮局(待批阅)</div>
+      <div class="article-nav-title">邮局(已批阅)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -422,6 +428,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">动态规划优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
               </li>
              
@@ -430,7 +440,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">排序二叉树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -442,11 +468,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">排序二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color5">拓扑排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,7 +484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,14 +497,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高精度</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">线段树优化</a>
               </li>
             
             <div class="clearfix"></div>
