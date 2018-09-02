@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>数字三角形(待批阅) | Copen</title>
+  <title>test1:末日传说 | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述 　　给定一个由n 行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形的顶至底的一条路径，使该路径经过的数字总和最大 。">
-<meta name="keywords" content="动态规划">
+  <meta name="description" content="Analysis 我完全是因为第二题不会写，第一题信心爆棚我才写这一题的。 一开始题目没读懂，好不容易知道是全排列，求逆序对。 数据最大100000，两层循环都是不可能的，在我的认知范围内，只可能是递推，二分，贪心，还有一些比较高深这道题看不出来那样做的算法。 然后先写了一个dfs，把所有的全排列以及它对应的逆序对个数打了表，妄图寻找规律。 失败*1。 之后把所有逆序对个数第一次出现对应的全排列输">
+<meta name="keywords" content="数学,枚举">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数字三角形(待批阅)">
-<meta property="og:url" content="http://copenlife.top/2018/08/19/Num-triangle/index.html">
+<meta property="og:title" content="test1:末日传说">
+<meta property="og:url" content="http://copenlife.top/2018/08/26/Last-Legend/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="问题描述 　　给定一个由n 行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形的顶至底的一条路径，使该路径经过的数字总和最大 。">
+<meta property="og:description" content="Analysis 我完全是因为第二题不会写，第一题信心爆棚我才写这一题的。 一开始题目没读懂，好不容易知道是全排列，求逆序对。 数据最大100000，两层循环都是不可能的，在我的认知范围内，只可能是递推，二分，贪心，还有一些比较高深这道题看不出来那样做的算法。 然后先写了一个dfs，把所有的全排列以及它对应的逆序对个数打了表，妄图寻找规律。 失败*1。 之后把所有逆序对个数第一次出现对应的全排列输">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-02T03:12:49.835Z">
+<meta property="og:updated_time" content="2018-09-02T05:57:35.970Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数字三角形(待批阅)">
-<meta name="twitter:description" content="问题描述 　　给定一个由n 行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形的顶至底的一条路径，使该路径经过的数字总和最大 。">
+<meta name="twitter:title" content="test1:末日传说">
+<meta name="twitter:description" content="Analysis 我完全是因为第二题不会写，第一题信心爆棚我才写这一题的。 一开始题目没读懂，好不容易知道是全排列，求逆序对。 数据最大100000，两层循环都是不可能的，在我的认知范围内，只可能是递推，二分，贪心，还有一些比较高深这道题看不出来那样做的算法。 然后先写了一个dfs，把所有的全排列以及它对应的逆序对个数打了表，妄图寻找规律。 失败*1。 之后把所有逆序对个数第一次出现对应的全排列输">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,58 +147,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Num-triangle" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Last-Legend" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      数字三角形(待批阅)
+      test1:末日传说
     </h1>
   
 
         
-        <a href="/2018/08/19/Num-triangle/" class="archive-article-date">
-  	<time datetime="2018-08-19T02:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
+        <a href="/2018/08/26/Last-Legend/" class="archive-article-date">
+  	<time datetime="2018-08-26T14:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p><em>问题描述</em></p>
-<p>　　给定一个由n 行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形的顶至底的一条路径，使该路径经过的数字总和最大 。</p>
-</blockquote>
-<a id="more"></a>
-<blockquote>
-<p>7</p>
-<p>3 8</p>
-<p>8 1 0</p>
-<p>2 7 4 4</p>
-<p>4 5 2 6 5</p>
-<p>编程任务 ：对于给定的由n 行数字组成的数字三角形，编程计算从三角形的顶至底的路径经过的数字和的最大值 。</p>
-<p>**每一步可沿直线向下或右斜线向下走。</p>
-<p>**1&lt;三角形行数&lt;100；</p>
-<p>**三角形中的数字为整数0，1，…，99；</p>
-</blockquote>
-<p><strong>Analysis</strong></p>
-<p>这是学习动规时候做的第一道题目，每一个点都可以正下和右下扩展，也就是每个点都是有正上和左上扩展来的，所以得到</p>
-<ul>
-<li>dp[i][j]=a[i][j] (i=1&amp;&amp;j=1)</li>
-<li>dp[i][j]=max(dp[i-1][j],dp[i-1][j-1])+a[i][j]</li>
-</ul>
-<p>为了使得最后出解更方便，可以从下向上进行状态转移，也就是</p>
-<ul>
-<li>dp[i][j]=a[i][j]  (i=n)</li>
-<li>dp[i][j]=max(dp[i+1][j],dp[i+1][j+1])+a[i][j] (i&lt;&gt;n)</li>
-</ul>
-<p><strong><font color="Orangered"> 课后修改</font></strong> </p>
-<p>对于状态的分析要清晰。</p>
-<p>我的第一个方程dp[i][j]表示从(1,1)走到(i,j)的最大数字和。</p>
-<p>第二个方程dp[i][j]表示从最底层走到(i,j)的最大数字和。</p>
-<p><strong>Code O(n^2/2)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">1010</span>][<span class="number">1010</span>],dp[<span class="number">1010</span>][<span class="number">1010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;a[i][j];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[n][i]=a[n][i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">            dp[i][j]=max(dp[i+<span class="number">1</span>][j],dp[i+<span class="number">1</span>][j+<span class="number">1</span>])+a[i][j];</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;dp[<span class="number">1</span>][<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p><strong>Analysis</strong></p>
+<p>我完全是因为第二题不会写，第一题信心爆棚我才写这一题的。</p>
+<p>一开始题目没读懂，好不容易知道是全排列，求逆序对。</p>
+<p>数据最大100000，两层循环都是不可能的，在我的认知范围内，只可能是递推，二分，贪心，还有一些比较高深这道题看不出来那样做的算法。</p>
+<p>然后先写了一个dfs，把所有的全排列以及它对应的逆序对个数打了表，妄图寻找规律。</p>
+<p>失败*1。</p>
+<p>之后把所有逆序对个数第一次出现对应的全排列输出了一下，妄图寻找规律。</p>
+<p>失败*2。</p>
+<p>盯着这张n=9的表，我开始了思考。</p>
+<p>首先，数字的排列一开始是1-n，之后是从高位开始调换，保证从大到小。</p>
+<p>那么如果后k位数发生变化，最多产生多少组逆序对？</p>
+<p>答案很显然，sum=(k-1)+(k-2)+…+1。</p>
+<p>而且sum一定是第一次出现，不然后k+1位发生变化，数字排列肯定比当前的大。</p>
+<p>那么sum1-sum2之间的数字肯定都是在k1-k2变化这一范围内。</p>
+<p>讲的有些抽象，意思就是找到m所属变化的位置，也就是找到k的值，前n-k位不变，直接输出，而且如果m刚好是sum，后面k位就是从n开始输出。</p>
+<p>之后我就开始考虑后k位的变化。这里有打完表猜的成分，盯着表看了好久，感觉像是求出sum和m的差值，然后从n-k位开始，往后找到一个数字调到最前面。</p>
+<p>又比较抽象（打表找规律的后果），意思如下：</p>
+<p>n=7,m=8;</p>
+<p>1 2 6 5 4 3 sum=6;</p>
+<p>1 6 5 4 3 2 sum=10;</p>
+<p>8一定是在这两组数之间。</p>
+<p>然后把第二组数的 4 调到6 前面，即为1 4 6 5 3 2，这就是答案。</p>
+<p>全凭运气。。。</p>
+<p>证明其实很简单，假设减少k个逆序对，一定是把一个数字往前调k位，这样就保证前k个数字都少了一组逆序对，选择数字一定是选择调到最大数字的前面，这样才可以保证m是第一次出现。</p>
+<p>综上，题目得解。</p>
+<p><strong>Code O(n^2)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[<span class="number">50010</span>];</span><br><span class="line"><span class="keyword">int</span> sum1=<span class="number">0</span>,sum2=<span class="number">0</span>;<span class="comment">//m在sum1-sum2之间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">                sum1+=i;</span><br><span class="line">                <span class="keyword">if</span>(sum1&gt;=k) <span class="keyword">return</span> i;</span><br><span class="line">                sum2=sum1;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> t=a[y];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=y;i&gt;=x;i--) a[i]=a[i<span class="number">-1</span>];</span><br><span class="line">        a[x<span class="number">-1</span>]=t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">        <span class="keyword">int</span> t=work(m);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n-t;i&lt;=n;i++) a[i]=n+n-t-i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=sum1-sum2;i++)</span><br><span class="line">                <span class="keyword">if</span>(sum1-i==m)&#123;</span><br><span class="line">                        change(n-t+<span class="number">1</span>,n-t+i);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;<span class="comment">//把一个数上调</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cout</span>&lt;&lt;a[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -212,7 +206,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">枚举</a>
         		</li>
       		
 		</ul>
@@ -224,7 +222,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/动态规划初步//" class="article-tag-list-link color2">动态规划初步</a>
+        			<a href="/categories/实战测试//" class="article-tag-list-link color5">实战测试</a>
         		</li>
       		
 		</ul>
@@ -279,7 +277,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/19/Num-triangle/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/08/26/Last-Legend/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +291,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/19/LCS/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/26/Clever-AmyZhi/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          最长公共子序列(已批阅)
+          Test1:机智的AmyZhi
         
       </div>
     </a>
   
   
-    <a href="/2018/08/17/借教室/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">借教室(已批阅)</div>
+    <a href="/2018/08/22/Buy-low!/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Buy low!Buy low!(已批阅)</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -511,6 +511,120 @@
 
 
   
+    <article id="post-Last-Legend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/26/Last-Legend/">test1:末日传说</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/26/Last-Legend/" class="archive-article-date">
+  	<time datetime="2018-08-26T14:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Analysis</strong></p>
+<p>我完全是因为第二题不会写，第一题信心爆棚我才写这一题的。</p>
+<p>一开始题目没读懂，好不容易知道是全排列，求逆序对。</p>
+<p>数据最大100000，两层循环都是不可能的，在我的认知范围内，只可能是递推，二分，贪心，还有一些比较高深这道题看不出来那样做的算法。</p>
+<p>然后先写了一个dfs，把所有的全排列以及它对应的逆序对个数打了表，妄图寻找规律。</p>
+<p>失败*1。</p>
+<p>之后把所有逆序对个数第一次出现对应的全排列输出了一下，妄图寻找规律。</p>
+<p>失败*2。</p>
+<p>盯着这张n=9的表，我开始了思考。</p>
+<p>首先，数字的排列一开始是1-n，之后是从高位开始调换，保证从大到小。</p>
+<p>那么如果后k位数发生变化，最多产生多少组逆序对？</p>
+<p>答案很显然，sum=(k-1)+(k-2)+…+1。</p>
+<p>而且sum一定是第一次出现，不然后k+1位发生变化，数字排列肯定比当前的大。</p>
+<p>那么sum1-sum2之间的数字肯定都是在k1-k2变化这一范围内。</p>
+<p>讲的有些抽象，意思就是找到m所属变化的位置，也就是找到k的值，前n-k位不变，直接输出，而且如果m刚好是sum，后面k位就是从n开始输出。</p>
+<p>之后我就开始考虑后k位的变化。这里有打完表猜的成分，盯着表看了好久，感觉像是求出sum和m的差值，然后从n-k位开始，往后找到一个数字调到最前面。</p>
+<p>又比较抽象（打表找规律的后果），意思如下：</p>
+<p>n=7,m=8;</p>
+<p>1 2 6 5 4 3 sum=6;</p>
+<p>1 6 5 4 3 2 sum=10;</p>
+<p>8一定是在这两组数之间。</p>
+<p>然后把第二组数的 4 调到6 前面，即为1 4 6 5 3 2，这就是答案。</p>
+<p>全凭运气。。。</p>
+<p>证明其实很简单，假设减少k个逆序对，一定是把一个数字往前调k位，这样就保证前k个数字都少了一组逆序对，选择数字一定是选择调到最大数字的前面，这样才可以保证m是第一次出现。</p>
+<p>综上，题目得解。</p>
+<p><strong>Code O(n^2)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[<span class="number">50010</span>];</span><br><span class="line"><span class="keyword">int</span> sum1=<span class="number">0</span>,sum2=<span class="number">0</span>;<span class="comment">//m在sum1-sum2之间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">                sum1+=i;</span><br><span class="line">                <span class="keyword">if</span>(sum1&gt;=k) <span class="keyword">return</span> i;</span><br><span class="line">                sum2=sum1;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> t=a[y];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=y;i&gt;=x;i--) a[i]=a[i<span class="number">-1</span>];</span><br><span class="line">        a[x<span class="number">-1</span>]=t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">        <span class="keyword">int</span> t=work(m);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n-t;i&lt;=n;i++) a[i]=n+n-t-i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=sum1-sum2;i++)</span><br><span class="line">                <span class="keyword">if</span>(sum1-i==m)&#123;</span><br><span class="line">                        change(n-t+<span class="number">1</span>,n-t+i);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;<span class="comment">//把一个数上调</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cout</span>&lt;&lt;a[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">枚举</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/实战测试//" class="article-tag-list-link color5">实战测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/26/Last-Legend/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Buy-low!" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -965,100 +1079,6 @@
 
 
   
-    <article id="post-Copy-Books" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/Copy-Books/">书的复制(待批阅)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/21/Copy-Books/" class="archive-article-date">
-  	<time datetime="2018-08-21T07:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Problem</strong></p>
-<blockquote>
-<p>问题描述</p>
-<p>现在要把m本有顺序的书分给k给人复制（抄写），每一个人的抄写速度都一样，一本书不允许给两个（或以上）的人抄写，分给每一个人的书，必须是连续的，比如不能把第一、第三、第四本书给同一个人抄写。<br>
-        
-          <a class="article-more-a" href="/2018/08/21/Copy-Books/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前缀和优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/动态规划初步//" class="article-tag-list-link color2">动态规划初步</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/21/Copy-Books/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1156,15 +1176,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">枚举</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前缀和优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1177,10 +1201,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,15 +1220,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">二分图</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">并查集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
              
               <li class="article-tag-list-item">
