@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://copenlife.top">
-  <title>Test3:小X的佛光 | Copen</title>
+  <title>Test3:小X的密室 | Copen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem  小 X所在的城市 X城是一个含有 N个节点的无向图，同时由于 X国是一 个发展中国家 ，为了节约城市建设的经费 ，X国首相在建造 X城时只建造 N – 1条边，使得城市的各个地点能够相互到达。">
-<meta name="keywords" content="树结构,lca">
+  <meta name="description" content="Problem  小 X 正困在一个密室里，他希望尽快逃出密室。">
+<meta name="keywords" content="状压">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Test3:小X的佛光">
-<meta property="og:url" content="http://copenlife.top/2018/09/24/X's-magic/index.html">
+<meta property="og:title" content="Test3:小X的密室">
+<meta property="og:url" content="http://copenlife.top/2018/09/24/X-Room/index.html">
 <meta property="og:site_name" content="Copen">
-<meta property="og:description" content="Problem  小 X所在的城市 X城是一个含有 N个节点的无向图，同时由于 X国是一 个发展中国家 ，为了节约城市建设的经费 ，X国首相在建造 X城时只建造 N – 1条边，使得城市的各个地点能够相互到达。">
+<meta property="og:description" content="Problem  小 X 正困在一个密室里，他希望尽快逃出密室。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-24T06:16:42.598Z">
+<meta property="og:updated_time" content="2018-09-24T06:16:42.690Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Test3:小X的佛光">
-<meta name="twitter:description" content="Problem  小 X所在的城市 X城是一个含有 N个节点的无向图，同时由于 X国是一 个发展中国家 ，为了节约城市建设的经费 ，X国首相在建造 X城时只建造 N – 1条边，使得城市的各个地点能够相互到达。">
+<meta name="twitter:title" content="Test3:小X的密室">
+<meta name="twitter:description" content="Problem  小 X 正困在一个密室里，他希望尽快逃出密室。">
   
     <link rel="alternative" href="/atom.xml" title="Copen" type="application/atom+xml">
   
@@ -147,19 +147,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-X&#39;s-magic" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-X-Room" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Test3:小X的佛光
+      Test3:小X的密室
     </h1>
   
 
         
-        <a href="/2018/09/24/X's-magic/" class="archive-article-date">
+        <a href="/2018/09/24/X-Room/" class="archive-article-date">
   	<time datetime="2018-09-24T01:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-24</time>
 </a>
         
@@ -169,17 +169,25 @@
       
         <p><strong>Problem</strong></p>
 <blockquote>
-<p>小 X所在的城市 X城是一个含有 N个节点的无向图，同时由于 X国是一 个发展中国家 ，为了节约城市建设的经费 ，X国首相在建造 X城时只建造 N – 1条边，使得城市的各个地点能够相互到达。<br><a id="more"></a><br>小 X计划蒸发 Q天的学水，每一天会有一名学水从 A地走到 B地，并在沿 途各个地点留下一水塘。此后，小 X会从 C地走到 B地，并用佛光蒸发沿途的水塘。 由于X城是一个学佛横行的市，学水留下塘即使没有被小X蒸 发，也会在第二天之前被其他学佛蒸发殆尽。</p>
-<p>现在，小 X想要知道，他每一天能够蒸发多少水塘呢？</p>
+<p>小 X 正困在一个密室里，他希望尽快逃出密室。<br><a id="more"></a><br>　　密室中有 N 个房间，初始时，小 X 在 1 号房间，而出口在 N 号房间。</p>
+<p>　　密室的每一个房间中可能有着一些钥匙和一些传送门，一个传送门会单向地创造一条从房间 X 到房间 Y 的通道。另外，想要通过某个传送门，就必须具备一些种类的钥匙（每种钥匙都要有才能通过）。幸运的是，钥匙在打开传送门的封印后，并不会消失。</p>
+<p>　　然而，通过密室的传送门需要耗费大量的时间，因此，小 X 希望通过尽可能少的传送门到达出口，你能告诉小 X 这个数值吗？</p>
+<p>　　另外，小 X 有可能不能逃出这个密室，如果是这样，请输出 “No Solution”。</p>
 </blockquote>
 <p><strong>Analysis</strong></p>
-<p>题目抽象为：有一棵树，当前有三个节点a,b,c，求a到b和a到c路径的交集部分。</p>
-<p>对于一个数据结构学得一般化的人来说，即便我看出来是树，也写不出什么程序。</p>
-<p>所以我直接打了一个DFS（50分），vhash标记一下两条路径上的点，如果vhash为2，说明是重复经过的点，记录一下就行了。</p>
-<p>能力有限，lca暂时没写出来，我先回去研究研究以前写的倍增再说。</p>
-<p><a href="https://blog.csdn.net/xh_0319/article/details/78108738?locationNum=4&amp;fps=1" target="_blank" rel="noopener">标算详解</a></p>
-<p><strong>Code</strong></p>
-<p>DFS<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q,num,a,b,c,path[<span class="number">100010</span>],vhash[<span class="number">100010</span>];</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; edge[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> cnt,<span class="keyword">int</span> fa)</span></span>&#123;<span class="comment">//因为是树，所以只要当前扩展出的点不是当前点的父亲就可以保证不重复</span></span><br><span class="line">	<span class="keyword">if</span>(now==b)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++) vhash[path[i]]++;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edge[now].size();i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(edge[now][i]!=fa) &#123;</span><br><span class="line">			path[cnt+<span class="number">1</span>]=edge[now][i];</span><br><span class="line">			dfs(edge[now][i],cnt+<span class="number">1</span>,now);</span><br><span class="line">			path[cnt+<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;q&gt;&gt;num;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y; </span><br><span class="line">		edge[x].push_back(y);</span><br><span class="line">		edge[y].push_back(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(q--)&#123;<span class="comment">//多组数据中间的memset写了很多</span></span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">		<span class="built_in">memset</span>(path,<span class="number">0</span>,<span class="keyword">sizeof</span>(path));</span><br><span class="line">		path[<span class="number">1</span>]=a;</span><br><span class="line">		dfs(a,<span class="number">1</span>,a);</span><br><span class="line">		<span class="built_in">memset</span>(path,<span class="number">0</span>,<span class="keyword">sizeof</span>(path));</span><br><span class="line">		path[<span class="number">1</span>]=c;</span><br><span class="line">		dfs(c,<span class="number">1</span>,c);</span><br><span class="line">		<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		    <span class="keyword">if</span>(vhash[i]==<span class="number">2</span>) ans++; </span><br><span class="line">		    vhash[i]=<span class="number">0</span>;</span><br><span class="line">		    &#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>题目抽象为：从1开始走到n，每一条边都对于当前状态有一个钥匙的要求，在每一个点都可以得到一些钥匙。</p>
+<p>而且每条边的权值都是1，直接BFS。</p>
+<p>但是最多有10种钥匙，状态数过多，已开始没有想到二进制状压，发现前10个点都不需要考虑钥匙，于是就立马写了一个50分的BFS。</p>
+<p>第二天，得知状压后，自己写了一下，思路其实差不多：</p>
+<p>10位二进制，第i位为1表示当前已有第i种钥匙。</p>
+<p>每次判断这条边能否经过，把当前已有的钥匙have和边需要的钥匙need进行或运算，得到的值如果和have相等，说明可以通过。</p>
+<p>每次到一个点，只需要把已有的钥匙have和这个点有的钥匙key进行或运算，就可以得到当前的状态。</p>
+<p><font color="Orangered">Wrong</font></p>
+<p>一开始我的vhash只记录了点是否到过，是一维的。但是这道题和普通的BFS不一样的点就在于每个点还自带一个钥匙状态，也就是说同一个点如果钥匙状态不同，是可以重复入队的。否则就可能出现本身需要多绕路但有解的情况，被我的程序判成了No Solution。</p>
+<p><strong>Code O(n)</strong></p>
+<p>普通BFS就不放了，状压就是在它基础上改的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> point,need;<span class="comment">//point指向的点，need需要的钥匙</span></span><br><span class="line">	node(<span class="keyword">int</span> point_,<span class="keyword">int</span> need_):point(point_),need(need_)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stud</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> point,have,cnt;<span class="comment">//point当前点，have已有钥匙，cnt步数</span></span><br><span class="line">	stud(<span class="keyword">int</span> point_,<span class="keyword">int</span> have_,<span class="keyword">int</span> cnt_):point(point_),have(have_),cnt(cnt_)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k;</span><br><span class="line"><span class="keyword">int</span> key[<span class="number">5010</span>],vhash[<span class="number">5010</span>][<span class="number">1050</span>];<span class="comment">//vhash记录点和钥匙状态</span></span><br><span class="line"><span class="built_in">vector</span> &lt;node&gt; edge[<span class="number">6010</span>];</span><br><span class="line"><span class="built_in">queue</span> &lt;stud&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">()</span></span>&#123;</span><br><span class="line">	q.push(stud(<span class="number">1</span>,key[<span class="number">1</span>],<span class="number">0</span>));</span><br><span class="line">	vhash[<span class="number">1</span>][key[<span class="number">1</span>]]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		<span class="keyword">int</span> k=q.front().point,have=q.front().have,step=q.front().cnt;</span><br><span class="line">		q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edge[k].size();i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> x=edge[k][i].need|have;</span><br><span class="line">			<span class="keyword">if</span>(x==have&amp;&amp;!vhash[edge[k][i].point][have|key[edge[k][i].point]])&#123;</span><br><span class="line">				vhash[edge[k][i].point][have|key[edge[k][i].point]]=<span class="number">1</span>;</span><br><span class="line">				q.push(stud(edge[k][i].point,have|key[edge[k][i].point],step+<span class="number">1</span>));</span><br><span class="line">				<span class="keyword">if</span>(edge[k][i].point==n)&#123;</span><br><span class="line">					<span class="built_in">cout</span>&lt;&lt;step+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"No Solution"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++)&#123;</span><br><span class="line">			<span class="keyword">int</span> x;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">			key[i]+=x&lt;&lt;(k-j);<span class="comment">//二进制压缩</span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y,z;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		<span class="keyword">int</span> need=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;z);</span><br><span class="line">			need+=z&lt;&lt;(k-j);</span><br><span class="line">		&#125;</span><br><span class="line">		edge[x].push_back(node(y,need));</span><br><span class="line">	&#125;</span><br><span class="line">	BFS();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>开始时的95分：vhash只开一维记录点</p>
 
       
 
@@ -193,11 +201,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">lca</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">状压</a>
         		</li>
       		
 		</ul>
@@ -264,7 +268,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/09/24/X's-magic/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://copenlife.top/2018/09/24/X-Room/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -279,8 +283,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2018/09/24/X's-Room/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Test3:小X的密室</div>
+    <a href="/2018/09/24/X-magic/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Test3:小X的佛光</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -454,11 +458,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+                <a href="javascript:void(0)" class="js-tag color4">哈希表</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">哈希表</a>
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
               </li>
              
               <li class="article-tag-list-item">
