@@ -1,71 +1,74 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>单词查找树 | Mercury</title>
-  <meta name="author" content="Copen">
-  
-  <meta name="description" content="Problem
-
-在进行方法分析的时候，通常需要检测一个单词是否在我们的单词列表里。为了提高查找和定位的速度，通常都画出与单词列表所对应的单词查找树，其特点如下：">
-  
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="单词查找树"/>
-  <meta property="og:site_name" content="Mercury"/>
-
+  <meta name="description" content="Problem  在进行方法分析的时候，通常需要检测一个单词是否在我们的单词列表里。为了提高查找和定位的速度，通常都画出与单词列表所对应的单词查找树，其特点如下：">
+<meta name="keywords" content="树结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单词查找树">
+<meta property="og:url" content="http://copenlife.top/2018/09/05/word-tree/index.html">
+<meta property="og:site_name" content="Mercury">
+<meta property="og:description" content="Problem  在进行方法分析的时候，通常需要检测一个单词是否在我们的单词列表里。为了提高查找和定位的速度，通常都画出与单词列表所对应的单词查找树，其特点如下：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-05T14:07:46.164Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单词查找树">
+<meta name="twitter:description" content="Problem  在进行方法分析的时候，通常需要检测一个单词是否在我们的单词列表里。为了提高查找和定位的速度，通常都画出与单词列表所对应的单词查找树，其特点如下：">
   
-    <meta property="og:image" content=""/>
+    <link rel="icon" href="Always like this">
   
-
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Mercury" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 
+<body style="
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Mercury</a></h1>
-  <h2><a href="/">Always like this.</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">Copen</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://github.com/copenr" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+          
+            <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn iconfont icon-weibo"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/archives" class="nav-menu ">ARCHIVE</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
 </nav>
-<div class="clearfix"></div>
-</header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-09-05T12:48:00.000Z"><a href="/2018/09/05/word-tree/">2018-09-05</a></time>
-      
-      
-  
-    <h1 class="title">单词查找树</h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><strong>Problem</strong></p>
-<blockquote>
-<p>在进行方法分析的时候，通常需要检测一个单词是否在我们的单词列表里。为了提高查找和定位的速度，通常都画出与单词列表所对应的单词查找树，其特点如下：<br><a id="more"></a></p>
+    <div id="main"><section class="article">
+  <h2 class="title">单词查找树</h2>
+  <p class="sub">9月 5, 2018</p>
+  <article class="content">
+    </p>
 <p>（1）根结点不包含字母，除根结点外每一个结点都仅包含一个大写英文字母；</p>
 <p>（2）从根结点到某一结点，路径上经过的字母依次连起来所构成的字母序列，称为该结点对应的单词。单词列表中的每个单词，都是该单词查找树某个结点所对应的单词；</p>
 <p>（3）在满足上述条件上，该单词查找树的结点数最少。</p>
@@ -77,179 +80,31 @@
 <p>但是这样很麻烦，每次还要记录上自己属于哪一个分支。</p>
 <p>之后想了想，这里直接用树的性质解决一下，先把单词排个序，然后直接找和上一个单词有多少位不一样即可。因为已经排过序了，所以肯定是相关性最大的在一起。</p>
 <p><strong>Code O(n*len)</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> tree[<span class="number">10010</span>],st;</span><br><span class="line"><span class="keyword">int</span> cnt=<span class="number">0</span>,sum=<span class="number">1</span>,vhash[<span class="number">30</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minus_</span><span class="params">(<span class="built_in">string</span> a,<span class="built_in">string</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len=min(a.size(),b.size());</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">-1</span>;<span class="comment">//ans是最后相等的位置</span></span><br><span class="line">	<span class="keyword">while</span>(a[ans+<span class="number">1</span>]==b[ans+<span class="number">1</span>]&amp;&amp;ans+<span class="number">1</span>&lt;len) ans++;</span><br><span class="line">	<span class="keyword">return</span> b.size()-ans<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">	sum+=tree[<span class="number">1</span>].size();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=cnt;i++) sum+=minus_(tree[i<span class="number">-1</span>],tree[i]);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;st) tree[++cnt]=st;</span><br><span class="line">	sort(tree+<span class="number">1</span>,tree+cnt+<span class="number">1</span>);</span><br><span class="line">	work();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2018/09/05/DLR-LDR/" class="link f-fl">⟵求后序遍历</a>
+    
+    
+      <a href="/2018/09/05/root-child/" class="link f-fr">找树的根和孩子⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  
+  
+    
       
-    </div>
-    <footer>
+        · <a href="https://github.com/copenr" target="_blank" class="nav-icn">GitHub</a>
       
-        
-  
-  <div class="categories">
-    <a href="/categories/树的存储和遍历/">树的存储和遍历</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/树结构/">树结构</a>
-  </div>
-
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
     
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">留言</h1>
-
-  
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-comments" data-href="http://copenlife.top/2018/09/05/word-tree/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+        · <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn">weibo</a>
       
+    
   
-</section>
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:copenlife.top">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/categories/分治算法初步/">分治算法初步</a><small>10</small></li>
-  
-    <li><a href="/categories/动态规划初步/">动态规划初步</a><small>11</small></li>
-  
-    <li><a href="/categories/图的存储和遍历/">图的存储和遍历</a><small>4</small></li>
-  
-    <li><a href="/categories/实战测试/">实战测试</a><small>9</small></li>
-  
-    <li><a href="/categories/拓扑序与关键路径/">拓扑序与关键路径</a><small>3</small></li>
-  
-    <li><a href="/categories/树的存储和遍历/">树的存储和遍历</a><small>11</small></li>
-  
-    <li><a href="/categories/贪心算法基础/">贪心算法基础</a><small>2</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/tags/lca/">lca</a><small>1</small></li>
-  
-    <li><a href="/tags/二分图/">二分图</a><small>1</small></li>
-  
-    <li><a href="/tags/二进制/">二进制</a><small>1</small></li>
-  
-    <li><a href="/tags/分治/">分治</a><small>10</small></li>
-  
-    <li><a href="/tags/前缀和优化/">前缀和优化</a><small>3</small></li>
-  
-    <li><a href="/tags/动态规划/">动态规划</a><small>12</small></li>
-  
-    <li><a href="/tags/动态规划优化/">动态规划优化</a><small>1</small></li>
-  
-    <li><a href="/tags/哈希表/">哈希表</a><small>1</small></li>
-  
-    <li><a href="/tags/图论/">图论</a><small>4</small></li>
-  
-    <li><a href="/tags/并查集/">并查集</a><small>1</small></li>
-  
-    <li><a href="/tags/拓扑排序/">拓扑排序</a><small>4</small></li>
-  
-    <li><a href="/tags/排序二叉树/">排序二叉树</a><small>1</small></li>
-  
-    <li><a href="/tags/数学/">数学</a><small>9</small></li>
-  
-    <li><a href="/tags/枚举/">枚举</a><small>2</small></li>
-  
-    <li><a href="/tags/树结构/">树结构</a><small>13</small></li>
-  
-    <li><a href="/tags/模拟/">模拟</a><small>1</small></li>
-  
-    <li><a href="/tags/状压/">状压</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树/">线段树</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树优化/">线段树优化</a><small>1</small></li>
-  
-    <li><a href="/tags/贪心/">贪心</a><small>3</small></li>
-  
-    <li><a href="/tags/随笔/">随笔</a><small>3</small></li>
-  
-    <li><a href="/tags/高精度/">高精度</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-</aside>
-    <div class="clearfix"></div>
+  <span class="copyright">All rights reserved @Copen</span>
+</footer>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2018 Copen
-  
-</div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
 </body>
 </html>

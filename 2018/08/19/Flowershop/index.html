@@ -1,73 +1,76 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>花店橱窗布置(已批阅) | Mercury</title>
-  <meta name="author" content="Copen">
-  
-  <meta name="description" content="问题描述
-　　假设你想以最美观的方式布置花店的橱窗。现在你有F束不同品种的花束，同时你也有至少同样数量的花瓶被按顺序摆成一行。这些花瓶的位置固定于架子上，并从1至V顺序编号，V是花瓶的数目，从左至右排列，则最左边的是花瓶1，最右边的是花瓶V。花束可以移动，并且每束花用1至F间的整数唯一标识。标识花束的整数决定了花束在花瓶中的顺序，如果I＜J，则令花束I必须放在花束J左边的花瓶中。">
-  
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="花店橱窗布置(已批阅)"/>
-  <meta property="og:site_name" content="Mercury"/>
-
+  <meta name="description" content="问题描述 　　假设你想以最美观的方式布置花店的橱窗。现在你有F束不同品种的花束，同时你也有至少同样数量的花瓶被按顺序摆成一行。这些花瓶的位置固定于架子上，并从1至V顺序编号，V是花瓶的数目，从左至右排列，则最左边的是花瓶1，最右边的是花瓶V。花束可以移动，并且每束花用1至F间的整数唯一标识。标识花束的整数决定了花束在花瓶中的顺序，如果I＜J，则令花束I必须放在花束J左边的花瓶中。">
+<meta name="keywords" content="动态规划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="花店橱窗布置(已批阅)">
+<meta property="og:url" content="http://copenlife.top/2018/08/19/Flowershop/index.html">
+<meta property="og:site_name" content="Mercury">
+<meta property="og:description" content="问题描述 　　假设你想以最美观的方式布置花店的橱窗。现在你有F束不同品种的花束，同时你也有至少同样数量的花瓶被按顺序摆成一行。这些花瓶的位置固定于架子上，并从1至V顺序编号，V是花瓶的数目，从左至右排列，则最左边的是花瓶1，最右边的是花瓶V。花束可以移动，并且每束花用1至F间的整数唯一标识。标识花束的整数决定了花束在花瓶中的顺序，如果I＜J，则令花束I必须放在花束J左边的花瓶中。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.tsinsen.com/RequireFile.do?fid=TJQA3ehb">
+<meta property="og:updated_time" content="2018-09-02T03:08:59.268Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="花店橱窗布置(已批阅)">
+<meta name="twitter:description" content="问题描述 　　假设你想以最美观的方式布置花店的橱窗。现在你有F束不同品种的花束，同时你也有至少同样数量的花瓶被按顺序摆成一行。这些花瓶的位置固定于架子上，并从1至V顺序编号，V是花瓶的数目，从左至右排列，则最左边的是花瓶1，最右边的是花瓶V。花束可以移动，并且每束花用1至F间的整数唯一标识。标识花束的整数决定了花束在花瓶中的顺序，如果I＜J，则令花束I必须放在花束J左边的花瓶中。">
+<meta name="twitter:image" content="http://www.tsinsen.com/RequireFile.do?fid=TJQA3ehb">
   
-    <meta property="og:image" content=""/>
+    <link rel="icon" href="Always like this">
   
-
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Mercury" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 
+<body style="
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Mercury</a></h1>
-  <h2><a href="/">Always like this.</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">Copen</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://github.com/copenr" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+          
+            <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn iconfont icon-weibo"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/archives" class="nav-menu ">ARCHIVE</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
 </nav>
-<div class="clearfix"></div>
-</header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-08-19T08:25:00.000Z"><a href="/2018/08/19/Flowershop/">2018-08-19</a></time>
-      
-      
-  
-    <h1 class="title">花店橱窗布置(已批阅)</h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <blockquote>
-<p><em>问题描述</em></p>
-<p>　　假设你想以最美观的方式布置花店的橱窗。现在你有F束不同品种的花束，同时你也有至少同样数量的花瓶被按顺序摆成一行。这些花瓶的位置固定于架子上，并从1至V顺序编号，V是花瓶的数目，从左至右排列，则最左边的是花瓶1，最右边的是花瓶V。花束可以移动，并且每束花用1至F间的整数唯一标识。标识花束的整数决定了花束在花瓶中的顺序，如果I＜J，则令花束I必须放在花束J左边的花瓶中。</p>
-</blockquote>
-<a id="more"></a>
-<blockquote>
+    <div id="main"><section class="article">
+  <h2 class="title">花店橱窗布置(已批阅)</h2>
+  <p class="sub">8月 19, 2018</p>
+  <article class="content">
+    <blockquote>
 <p>　　例如，假设一束杜鹃花的标识数为1，一束秋海棠的标识数为2，一束康乃馨的标识数为3，所有的花束在放入花瓶时必须保持其标识数的顺序，即：杜鹃花必须放在秋海棠左边的花瓶中，秋海棠必须放在康乃馨左边的花瓶中。如果花瓶的数目大于花束的数目。则多余的花瓶必须空置，且每个花瓶中只能放一束花。</p>
 <p>每一个花瓶都具有各自的特点。因此，当各个花瓶中放入不同的花束时，会产生不同的美学效果，并以美学值（一个整数）来表示，空置花瓶的美学值为零。</p>
 <p>在上述例子中，花瓶与花束的不同搭配所具有的美学值，如下表所示。<br><img src="http://www.tsinsen.com/RequireFile.do?fid=TJQA3ehb" alt=""></p>
@@ -108,179 +111,31 @@
 <p><strong><font color="CornflowerBlue"> 本题的方法总结:</font></strong></p>
 <p>一旦遇到多个物品，多个选择放置这样类似的题目时，一定要想到背包问题的原型。</p>
 <p><strong>Code O(n*m)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int a[110][110],dp[110][110];</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	for(int i=1;i&lt;=n;i++)</span><br><span class="line">		for(int j=1;j&lt;=m;j++)</span><br><span class="line">			cin&gt;&gt;a[i][j];</span><br><span class="line">	for(int i=1;i&lt;=n;i++) </span><br><span class="line">		for(int j=i;j&lt;=m;j++)&#123;</span><br><span class="line">				if(j-1&gt;=i)dp[i][j]=max(dp[i][j-1],dp[i-1][j-1]+a[i][j]);</span><br><span class="line">				else dp[i][j]=dp[i-1][j-1]+a[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">	cout&lt;&lt;dp[n][m]&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2018/08/20/distance/" class="link f-fl">⟵字串距离(已批阅)</a>
+    
+    
+      <a href="/2018/08/19/Huiwen-word/" class="link f-fr">回文词(已批阅)⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  
+  
+    
       
-    </div>
-    <footer>
+        · <a href="https://github.com/copenr" target="_blank" class="nav-icn">GitHub</a>
       
-        
-  
-  <div class="categories">
-    <a href="/categories/动态规划初步/">动态规划初步</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/动态规划/">动态规划</a>
-  </div>
-
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
     
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">留言</h1>
-
-  
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-comments" data-href="http://copenlife.top/2018/08/19/Flowershop/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+        · <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn">weibo</a>
       
+    
   
-</section>
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:copenlife.top">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/categories/分治算法初步/">分治算法初步</a><small>10</small></li>
-  
-    <li><a href="/categories/动态规划初步/">动态规划初步</a><small>11</small></li>
-  
-    <li><a href="/categories/图的存储和遍历/">图的存储和遍历</a><small>4</small></li>
-  
-    <li><a href="/categories/实战测试/">实战测试</a><small>9</small></li>
-  
-    <li><a href="/categories/拓扑序与关键路径/">拓扑序与关键路径</a><small>3</small></li>
-  
-    <li><a href="/categories/树的存储和遍历/">树的存储和遍历</a><small>11</small></li>
-  
-    <li><a href="/categories/贪心算法基础/">贪心算法基础</a><small>2</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/tags/lca/">lca</a><small>1</small></li>
-  
-    <li><a href="/tags/二分图/">二分图</a><small>1</small></li>
-  
-    <li><a href="/tags/二进制/">二进制</a><small>1</small></li>
-  
-    <li><a href="/tags/分治/">分治</a><small>10</small></li>
-  
-    <li><a href="/tags/前缀和优化/">前缀和优化</a><small>3</small></li>
-  
-    <li><a href="/tags/动态规划/">动态规划</a><small>12</small></li>
-  
-    <li><a href="/tags/动态规划优化/">动态规划优化</a><small>1</small></li>
-  
-    <li><a href="/tags/哈希表/">哈希表</a><small>1</small></li>
-  
-    <li><a href="/tags/图论/">图论</a><small>4</small></li>
-  
-    <li><a href="/tags/并查集/">并查集</a><small>1</small></li>
-  
-    <li><a href="/tags/拓扑排序/">拓扑排序</a><small>4</small></li>
-  
-    <li><a href="/tags/排序二叉树/">排序二叉树</a><small>1</small></li>
-  
-    <li><a href="/tags/数学/">数学</a><small>9</small></li>
-  
-    <li><a href="/tags/枚举/">枚举</a><small>2</small></li>
-  
-    <li><a href="/tags/树结构/">树结构</a><small>13</small></li>
-  
-    <li><a href="/tags/模拟/">模拟</a><small>1</small></li>
-  
-    <li><a href="/tags/状压/">状压</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树/">线段树</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树优化/">线段树优化</a><small>1</small></li>
-  
-    <li><a href="/tags/贪心/">贪心</a><small>3</small></li>
-  
-    <li><a href="/tags/随笔/">随笔</a><small>3</small></li>
-  
-    <li><a href="/tags/高精度/">高精度</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-</aside>
-    <div class="clearfix"></div>
+  <span class="copyright">All rights reserved @Copen</span>
+</footer>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2018 Copen
-  
-</div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
 </body>
 </html>

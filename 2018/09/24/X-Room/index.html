@@ -1,71 +1,74 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>Test3:小X的密室 | Mercury</title>
-  <meta name="author" content="Copen">
-  
-  <meta name="description" content="Problem
-
-小 X 正困在一个密室里，他希望尽快逃出密室。">
-  
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="Test3:小X的密室"/>
-  <meta property="og:site_name" content="Mercury"/>
-
+  <meta name="description" content="Problem  小 X 正困在一个密室里，他希望尽快逃出密室。">
+<meta name="keywords" content="状压">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Test3:小X的密室">
+<meta property="og:url" content="http://copenlife.top/2018/09/24/X-Room/index.html">
+<meta property="og:site_name" content="Mercury">
+<meta property="og:description" content="Problem  小 X 正困在一个密室里，他希望尽快逃出密室。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-24T06:16:42.690Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Test3:小X的密室">
+<meta name="twitter:description" content="Problem  小 X 正困在一个密室里，他希望尽快逃出密室。">
   
-    <meta property="og:image" content=""/>
+    <link rel="icon" href="Always like this">
   
-
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Mercury" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 
+<body style="
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Mercury</a></h1>
-  <h2><a href="/">Always like this.</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">Copen</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://github.com/copenr" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+          
+            <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn iconfont icon-weibo"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/archives" class="nav-menu ">ARCHIVE</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
 </nav>
-<div class="clearfix"></div>
-</header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-09-24T01:42:00.000Z"><a href="/2018/09/24/X-Room/">2018-09-24</a></time>
-      
-      
-  
-    <h1 class="title">Test3:小X的密室</h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><strong>Problem</strong></p>
-<blockquote>
-<p>小 X 正困在一个密室里，他希望尽快逃出密室。<br><a id="more"></a><br>　　密室中有 N 个房间，初始时，小 X 在 1 号房间，而出口在 N 号房间。</p>
+    <div id="main"><section class="article">
+  <h2 class="title">Test3:小X的密室</h2>
+  <p class="sub">9月 24, 2018</p>
+  <article class="content">
+    <br>　　密室中有 N 个房间，初始时，小 X 在 1 号房间，而出口在 N 号房间。</p>
 <p>　　密室的每一个房间中可能有着一些钥匙和一些传送门，一个传送门会单向地创造一条从房间 X 到房间 Y 的通道。另外，想要通过某个传送门，就必须具备一些种类的钥匙（每种钥匙都要有才能通过）。幸运的是，钥匙在打开传送门的封印后，并不会消失。</p>
 <p>　　然而，通过密室的传送门需要耗费大量的时间，因此，小 X 希望通过尽可能少的传送门到达出口，你能告诉小 X 这个数值吗？</p>
 <p>　　另外，小 X 有可能不能逃出这个密室，如果是这样，请输出 “No Solution”。</p>
@@ -84,179 +87,29 @@
 <p>普通BFS就不放了，状压就是在它基础上改的。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> point,need;<span class="comment">//point指向的点，need需要的钥匙</span></span><br><span class="line">	node(<span class="keyword">int</span> point_,<span class="keyword">int</span> need_):point(point_),need(need_)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stud</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> point,have,cnt;<span class="comment">//point当前点，have已有钥匙，cnt步数</span></span><br><span class="line">	stud(<span class="keyword">int</span> point_,<span class="keyword">int</span> have_,<span class="keyword">int</span> cnt_):point(point_),have(have_),cnt(cnt_)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k;</span><br><span class="line"><span class="keyword">int</span> key[<span class="number">5010</span>],vhash[<span class="number">5010</span>][<span class="number">1050</span>];<span class="comment">//vhash记录点和钥匙状态</span></span><br><span class="line"><span class="built_in">vector</span> &lt;node&gt; edge[<span class="number">6010</span>];</span><br><span class="line"><span class="built_in">queue</span> &lt;stud&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">()</span></span>&#123;</span><br><span class="line">	q.push(stud(<span class="number">1</span>,key[<span class="number">1</span>],<span class="number">0</span>));</span><br><span class="line">	vhash[<span class="number">1</span>][key[<span class="number">1</span>]]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		<span class="keyword">int</span> k=q.front().point,have=q.front().have,step=q.front().cnt;</span><br><span class="line">		q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edge[k].size();i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> x=edge[k][i].need|have;</span><br><span class="line">			<span class="keyword">if</span>(x==have&amp;&amp;!vhash[edge[k][i].point][have|key[edge[k][i].point]])&#123;</span><br><span class="line">				vhash[edge[k][i].point][have|key[edge[k][i].point]]=<span class="number">1</span>;</span><br><span class="line">				q.push(stud(edge[k][i].point,have|key[edge[k][i].point],step+<span class="number">1</span>));</span><br><span class="line">				<span class="keyword">if</span>(edge[k][i].point==n)&#123;</span><br><span class="line">					<span class="built_in">cout</span>&lt;&lt;step+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"No Solution"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++)&#123;</span><br><span class="line">			<span class="keyword">int</span> x;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">			key[i]+=x&lt;&lt;(k-j);<span class="comment">//二进制压缩</span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y,z;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		<span class="keyword">int</span> need=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;z);</span><br><span class="line">			need+=z&lt;&lt;(k-j);</span><br><span class="line">		&#125;</span><br><span class="line">		edge[x].push_back(node(y,need));</span><br><span class="line">	&#125;</span><br><span class="line">	BFS();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>开始时的95分：vhash只开一维记录点</p>
-
+  </article>
+  <footer class="f-cf">
+    
+    
+      <a href="/2018/09/24/X-magic/" class="link f-fr">Test3:小X的佛光⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  
+  
+    
       
-    </div>
-    <footer>
+        · <a href="https://github.com/copenr" target="_blank" class="nav-icn">GitHub</a>
       
-        
-  
-  <div class="categories">
-    <a href="/categories/实战测试/">实战测试</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/状压/">状压</a>
-  </div>
-
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
     
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">留言</h1>
-
-  
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-comments" data-href="http://copenlife.top/2018/09/24/X-Room/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+        · <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn">weibo</a>
       
+    
   
-</section>
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:copenlife.top">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/categories/分治算法初步/">分治算法初步</a><small>10</small></li>
-  
-    <li><a href="/categories/动态规划初步/">动态规划初步</a><small>11</small></li>
-  
-    <li><a href="/categories/图的存储和遍历/">图的存储和遍历</a><small>4</small></li>
-  
-    <li><a href="/categories/实战测试/">实战测试</a><small>9</small></li>
-  
-    <li><a href="/categories/拓扑序与关键路径/">拓扑序与关键路径</a><small>3</small></li>
-  
-    <li><a href="/categories/树的存储和遍历/">树的存储和遍历</a><small>11</small></li>
-  
-    <li><a href="/categories/贪心算法基础/">贪心算法基础</a><small>2</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/tags/lca/">lca</a><small>1</small></li>
-  
-    <li><a href="/tags/二分图/">二分图</a><small>1</small></li>
-  
-    <li><a href="/tags/二进制/">二进制</a><small>1</small></li>
-  
-    <li><a href="/tags/分治/">分治</a><small>10</small></li>
-  
-    <li><a href="/tags/前缀和优化/">前缀和优化</a><small>3</small></li>
-  
-    <li><a href="/tags/动态规划/">动态规划</a><small>12</small></li>
-  
-    <li><a href="/tags/动态规划优化/">动态规划优化</a><small>1</small></li>
-  
-    <li><a href="/tags/哈希表/">哈希表</a><small>1</small></li>
-  
-    <li><a href="/tags/图论/">图论</a><small>4</small></li>
-  
-    <li><a href="/tags/并查集/">并查集</a><small>1</small></li>
-  
-    <li><a href="/tags/拓扑排序/">拓扑排序</a><small>4</small></li>
-  
-    <li><a href="/tags/排序二叉树/">排序二叉树</a><small>1</small></li>
-  
-    <li><a href="/tags/数学/">数学</a><small>9</small></li>
-  
-    <li><a href="/tags/枚举/">枚举</a><small>2</small></li>
-  
-    <li><a href="/tags/树结构/">树结构</a><small>13</small></li>
-  
-    <li><a href="/tags/模拟/">模拟</a><small>1</small></li>
-  
-    <li><a href="/tags/状压/">状压</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树/">线段树</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树优化/">线段树优化</a><small>1</small></li>
-  
-    <li><a href="/tags/贪心/">贪心</a><small>3</small></li>
-  
-    <li><a href="/tags/随笔/">随笔</a><small>3</small></li>
-  
-    <li><a href="/tags/高精度/">高精度</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-</aside>
-    <div class="clearfix"></div>
+  <span class="copyright">All rights reserved @Copen</span>
+</footer>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2018 Copen
-  
-</div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
 </body>
 </html>

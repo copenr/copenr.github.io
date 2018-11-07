@@ -1,286 +1,238 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
-  <title>动态规划 | Mercury</title>
-  <meta name="author" content="Copen">
-  
-  
+  <title>标签: 动态规划 | Mercury</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Mercury">
+<meta property="og:url" content="http://copenlife.top/tags/动态规划/index.html">
+<meta property="og:site_name" content="Mercury">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mercury">
   
-  <meta property="og:site_name" content="Mercury"/>
-
+    <link rel="icon" href="Always like this">
   
-    <meta property="og:image" content=""/>
-  
-
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Mercury" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 
+<body style="
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Mercury</a></h1>
-  <h2><a href="/">Always like this.</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">Copen</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://github.com/copenr" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+          
+            <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn iconfont icon-weibo"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/archives" class="nav-menu ">ARCHIVE</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
 </nav>
-<div class="clearfix"></div>
-</header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">动态规划</h2>
-
-
-  <div class="archive">
+    <div id="main">
+  
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-09-01T08:54:00.000Z"><a href="/2018/09/01/Bamboo/">2018-09-01</a></time>
-            
-              <h1 class="title"><a href="/2018/09/01/Bamboo/">Test2:接竹竿</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-08-22T02:36:00.000Z"><a href="/2018/08/22/Buy-low!/">2018-08-22</a></time>
-            
-              <h1 class="title"><a href="/2018/08/22/Buy-low!/">Buy low!Buy low!(已批阅)</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-08-21T13:36:00.000Z"><a href="/2018/08/21/Triangle-pasture/">2018-08-21</a></time>
-            
-              <h1 class="title"><a href="/2018/08/21/Triangle-pasture/">三角形牧场(已批阅)</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-08-21T09:22:00.000Z"><a href="/2018/08/21/Nic-Job/">2018-08-21</a></time>
-            
-              <h1 class="title"><a href="/2018/08/21/Nic-Job/">尼克的任务(已批阅)</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-08-21T08:44:00.000Z"><a href="/2018/08/21/Domino/">2018-08-21</a></time>
-            
-              <h1 class="title"><a href="/2018/08/21/Domino/">多米诺骨牌(待批阅)</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-08-21T08:22:00.000Z"><a href="/2018/08/21/postoffice/">2018-08-21</a></time>
-            
-              <h1 class="title"><a href="/2018/08/21/postoffice/">邮局(已批阅)</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-08-21T07:22:00.000Z"><a href="/2018/08/21/Copy-Books/">2018-08-21</a></time>
-            
-              <h1 class="title"><a href="/2018/08/21/Copy-Books/">书的复制(待批阅)</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-08-20T09:41:00.000Z"><a href="/2018/08/20/distance/">2018-08-20</a></time>
-            
-              <h1 class="title"><a href="/2018/08/20/distance/">字串距离(已批阅)</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-08-19T08:25:00.000Z"><a href="/2018/08/19/Flowershop/">2018-08-19</a></time>
-            
-              <h1 class="title"><a href="/2018/08/19/Flowershop/">花店橱窗布置(已批阅)</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2018-08-19T07:23:00.000Z"><a href="/2018/08/19/Huiwen-word/">2018-08-19</a></time>
-            
-              <h1 class="title"><a href="/2018/08/19/Huiwen-word/">回文词(已批阅)</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+    <div class="project-card project-card-continuous">
+  
+  <div class="ctnWrap">
+    <a href="/2018/09/01/Bamboo/" class="title">Test2:接竹竿</a>
+    <section class="desc">
+  <p><strong>Problem</strong></p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>一天，神犇和 LCR 在玩扑克牌。他们玩的是一种叫做“接竹竿”的游戏。<br>
+</section>
+    <p class="sub">9月 1, 2018</p>
   </div>
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:copenlife.top">
-  </form>
 </div>
-
   
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
+    
+    <div class="project-card project-card-continuous">
   
-    <li><a href="/categories/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/categories/分治算法初步/">分治算法初步</a><small>10</small></li>
-  
-    <li><a href="/categories/动态规划初步/">动态规划初步</a><small>11</small></li>
-  
-    <li><a href="/categories/图的存储和遍历/">图的存储和遍历</a><small>4</small></li>
-  
-    <li><a href="/categories/实战测试/">实战测试</a><small>9</small></li>
-  
-    <li><a href="/categories/拓扑序与关键路径/">拓扑序与关键路径</a><small>3</small></li>
-  
-    <li><a href="/categories/树的存储和遍历/">树的存储和遍历</a><small>11</small></li>
-  
-    <li><a href="/categories/贪心算法基础/">贪心算法基础</a><small>2</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/tags/lca/">lca</a><small>1</small></li>
-  
-    <li><a href="/tags/二分图/">二分图</a><small>1</small></li>
-  
-    <li><a href="/tags/二进制/">二进制</a><small>1</small></li>
-  
-    <li><a href="/tags/分治/">分治</a><small>10</small></li>
-  
-    <li><a href="/tags/前缀和优化/">前缀和优化</a><small>3</small></li>
-  
-    <li><a href="/tags/动态规划/">动态规划</a><small>12</small></li>
-  
-    <li><a href="/tags/动态规划优化/">动态规划优化</a><small>1</small></li>
-  
-    <li><a href="/tags/哈希表/">哈希表</a><small>1</small></li>
-  
-    <li><a href="/tags/图论/">图论</a><small>4</small></li>
-  
-    <li><a href="/tags/并查集/">并查集</a><small>1</small></li>
-  
-    <li><a href="/tags/拓扑排序/">拓扑排序</a><small>4</small></li>
-  
-    <li><a href="/tags/排序二叉树/">排序二叉树</a><small>1</small></li>
-  
-    <li><a href="/tags/数学/">数学</a><small>9</small></li>
-  
-    <li><a href="/tags/枚举/">枚举</a><small>2</small></li>
-  
-    <li><a href="/tags/树结构/">树结构</a><small>13</small></li>
-  
-    <li><a href="/tags/模拟/">模拟</a><small>1</small></li>
-  
-    <li><a href="/tags/状压/">状压</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树/">线段树</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树优化/">线段树优化</a><small>1</small></li>
-  
-    <li><a href="/tags/贪心/">贪心</a><small>3</small></li>
-  
-    <li><a href="/tags/随笔/">随笔</a><small>3</small></li>
-  
-    <li><a href="/tags/高精度/">高精度</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-</aside>
-    <div class="clearfix"></div>
+  <div class="ctnWrap">
+    <a href="/2018/08/22/Buy-low!/" class="title">Buy low!Buy low!(已批阅)</a>
+    <section class="desc">
+  <p><strong>Problem</strong></p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>“低价购买”这条建议是在奶牛股票市场取得成功的一半规则。要想被认为是伟大的投资者，你必须遵循以下的问题建议:“低价购买；再低价购买”。每次你购买一支股票,你必须用低于你上次购买它的价格购买它。<br>
+</section>
+    <p class="sub">8月 22, 2018</p>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2018 Copen
-  
 </div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+  
+    
+    <div class="project-card project-card-continuous">
+  
+  <div class="ctnWrap">
+    <a href="/2018/08/21/Triangle-pasture/" class="title">三角形牧场(已批阅)</a>
+    <section class="desc">
+  <p><strong>Problem</strong></p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>　　和所有人一样，奶牛喜欢变化。它们正在设想新造型的牧场。奶牛建筑师Hei想建造围有漂亮白色栅栏的三角形牧场。她拥有N(3≤N≤40)块木板，每块的长度Li(1≤Li≤40)都是整数，她想用所有的木板围成一个三角形使得牧场面积最大。</p>
+</section>
+    <p class="sub">8月 21, 2018</p>
+  </div>
+</div>
+  
+    
+    <div class="project-card project-card-continuous">
+  
+  <div class="ctnWrap">
+    <a href="/2018/08/21/Nic-Job/" class="title">尼克的任务(已批阅)</a>
+    <section class="desc">
+  <p><strong>Problem</strong></p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>　　尼克每天上班之前都连接上英特网，接收他的上司发来的邮件，这些邮件包含了尼克主管的部门当天要完成的全部任务，每个任务由一个开始时刻与一个持续时间构成。<br>
+</section>
+    <p class="sub">8月 21, 2018</p>
+  </div>
+</div>
+  
+    
+    <div class="project-card project-card-continuous">
+  
+  <div class="ctnWrap">
+    <a href="/2018/08/21/Domino/" class="title">多米诺骨牌(待批阅)</a>
+    <section class="desc">
+  <blockquote>
+<p><em>问题描述</em></p>
+<p>　　多米诺骨牌有上下2个方块组成，每个方块中有1~6个点。现有排成行的n个多米诺骨牌如图所示。<br>
+</section>
+    <p class="sub">8月 21, 2018</p>
+  </div>
+</div>
+  
+    
+    <div class="project-card project-card-continuous">
+  
+  <div class="ctnWrap">
+    <a href="/2018/08/21/postoffice/" class="title">邮局(已批阅)</a>
+    <section class="desc">
+  <p><strong>Problem</strong></p>
+<blockquote>
+<p><em>问题描述</em></p>
+<p>　　一些村庄建在一条笔直的高速公路边上。我们用一条坐标轴来描述这条高速公路，每一个村庄的坐标都是整数，没有两个村庄坐标相同。两个村庄间的距离，定义为它们的坐标值差的绝对值。我们需要在一些村庄建立邮局――当然，并不是每一个村庄都必须建立邮局 邮局必须被建在村庄里，因此它的坐标和它所在村庄坐标相同。每个村庄便用离它最近的那个邮局，建立这些邮局的原则是：所有村庄到各自所使用的邮局的距离总和最小。</p>
+</blockquote>
+</section>
+    <p class="sub">8月 21, 2018</p>
+  </div>
+</div>
+  
+    
+    <div class="project-card project-card-continuous">
+  
+  <div class="ctnWrap">
+    <a href="/2018/08/21/Copy-Books/" class="title">书的复制(待批阅)</a>
+    <section class="desc">
+  <p><strong>Problem</strong></p>
+<blockquote>
+<p>问题描述</p>
+<p>现在要把m本有顺序的书分给k给人复制（抄写），每一个人的抄写速度都一样，一本书不允许给两个（或以上）的人抄写，分给每一个人的书，必须是连续的，比如不能把第一、第三、第四本书给同一个人抄写。<br>
+</section>
+    <p class="sub">8月 21, 2018</p>
+  </div>
+</div>
+  
+    
+    <div class="project-card project-card-continuous">
+  
+  <div class="ctnWrap">
+    <a href="/2018/08/20/distance/" class="title">字串距离(已批阅)</a>
+    <section class="desc">
+  <p><strong>Problem</strong></p>
+<blockquote>
+<p>问题描述</p>
+<p>　　设有字符串X，我们称在X的头尾及中间插入任意多个空格后构成的新字符串为X的扩展串，如字符串X为”abcbcd”，则字符串“abcb□cd”，“□a□bcbcd□”和“abcb□cd□”都是X的扩展串，这里“□”代表空格字符。<br>
+</section>
+    <p class="sub">8月 20, 2018</p>
+  </div>
+</div>
+  
+    
+    <div class="project-card project-card-continuous">
+  
+  <div class="ctnWrap">
+    <a href="/2018/08/19/Flowershop/" class="title">花店橱窗布置(已批阅)</a>
+    <section class="desc">
+  <blockquote>
+<p><em>问题描述</em></p>
+<p>　　假设你想以最美观的方式布置花店的橱窗。现在你有F束不同品种的花束，同时你也有至少同样数量的花瓶被按顺序摆成一行。这些花瓶的位置固定于架子上，并从1至V顺序编号，V是花瓶的数目，从左至右排列，则最左边的是花瓶1，最右边的是花瓶V。花束可以移动，并且每束花用1至F间的整数唯一标识。标识花束的整数决定了花束在花瓶中的顺序，如果I＜J，则令花束I必须放在花束J左边的花瓶中。</p>
+</blockquote>
+</section>
+    <p class="sub">8月 19, 2018</p>
+  </div>
+</div>
+  
+    
+    <div class="project-card project-card-continuous">
+  
+  <div class="ctnWrap">
+    <a href="/2018/08/19/Huiwen-word/" class="title">回文词(已批阅)</a>
+    <section class="desc">
+  <blockquote>
+<p><em>问题描述</em></p>
+<p>回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。</p>
+</blockquote>
+</section>
+    <p class="sub">8月 19, 2018</p>
+  </div>
+</div>
+  
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/tags/动态规划/page/2/">2</a><a class="extend next" rel="next" href="/tags/动态规划/page/2/"><span class="iconfont icon-arrow-right"></span></a>
+  </nav>
 
 
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
+</div>
+    <footer id="footer" class="f-cf">
+  
+  
+    
+      
+        · <a href="https://github.com/copenr" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+      
+        · <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn">weibo</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Copen</span>
+</footer>
+  </div>
 </body>
 </html>

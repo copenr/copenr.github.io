@@ -1,73 +1,74 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>回文词(已批阅) | Mercury</title>
-  <meta name="author" content="Copen">
-  
-  <meta name="description" content="问题描述
-回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。">
-  
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="回文词(已批阅)"/>
-  <meta property="og:site_name" content="Mercury"/>
-
+  <meta name="description" content="问题描述 回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。">
+<meta name="keywords" content="动态规划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回文词(已批阅)">
+<meta property="og:url" content="http://copenlife.top/2018/08/19/Huiwen-word/index.html">
+<meta property="og:site_name" content="Mercury">
+<meta property="og:description" content="问题描述 回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-02T03:14:50.003Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="回文词(已批阅)">
+<meta name="twitter:description" content="问题描述 回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。">
   
-    <meta property="og:image" content=""/>
+    <link rel="icon" href="Always like this">
   
-
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Mercury" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 
+<body style="
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Mercury</a></h1>
-  <h2><a href="/">Always like this.</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">Copen</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://github.com/copenr" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+          
+            <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn iconfont icon-weibo"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/archives" class="nav-menu ">ARCHIVE</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
 </nav>
-<div class="clearfix"></div>
-</header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-08-19T07:23:00.000Z"><a href="/2018/08/19/Huiwen-word/">2018-08-19</a></time>
-      
-      
-  
-    <h1 class="title">回文词(已批阅)</h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <blockquote>
-<p><em>问题描述</em></p>
-<p>回文词是一种对称的字符串－－也就是说，一个回文词，从左到右读和从右到左读得到的结果是一样的。任意给定一个字符串，通过若干字符，都可以变成一个回文词。你的任务是写一个程序，求出将给定的字符串变成回文词所需插入的最少字符数。</p>
-</blockquote>
-<a id="more"></a>
-<blockquote>
+    <div id="main"><section class="article">
+  <h2 class="title">回文词(已批阅)</h2>
+  <p class="sub">8月 19, 2018</p>
+  <article class="content">
+    <blockquote>
 <p>比如字符串“Ab3bd”，在插入两个字符后可以变成一个回文词（“dAb3Ad”，“Adb3bdA”)。然而，插入两个以下的字符无法使它变成一个回文词。</p>
 </blockquote>
 <p><strong>Analysis</strong></p>
@@ -86,179 +87,31 @@
 <p>我写了两种枚举方法，我觉得枚举区间长度和其中一个端点，比枚举区间的两个端点要更清晰，因为枚举两个端点还要考虑之前的状态一定要全部计算完毕，所以枚举的顺序就要多考虑一点，但是枚举区间长度所牵涉到的状态全部是会被计算完毕的。</p>
 <h6 id="Code-1-枚举端点-O-len-2-2"><a href="#Code-1-枚举端点-O-len-2-2" class="headerlink" title="Code 1 枚举端点 O(len^2/2)"></a>Code 1 枚举端点 O(len^2/2)</h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">5010</span>][<span class="number">5010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;=</span><br><span class="line">	<span class="built_in">string</span> st;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;st;</span><br><span class="line">	<span class="keyword">int</span> len=st.size();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)<span class="comment">//i从大往小，因为可以发现有关i的状态会牵涉到i+1</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;len;j++)</span><br><span class="line">			<span class="keyword">if</span>(st[i]==st[j]) dp[i][j]=dp[i+<span class="number">1</span>][j<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">else</span> dp[i][j]=min(dp[i+<span class="number">1</span>][j],dp[i][j<span class="number">-1</span>])+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[<span class="number">0</span>][len<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h6 id="Code-2-枚举长度-O-len-2-2"><a href="#Code-2-枚举长度-O-len-2-2" class="headerlink" title="Code 2 枚举长度 O(len^2/2)"></a>Code 2 枚举长度 O(len^2/2)</h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">5010</span>][<span class="number">5010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">string</span> st;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;st;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i+k&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(st[i]==st[i+k]) dp[i][i+k]=dp[i+<span class="number">1</span>][i+k<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">else</span> dp[i][i+k]=min(dp[i+<span class="number">1</span>][i+k],dp[i][i+k<span class="number">-1</span>])+<span class="number">1</span>;</span><br><span class="line">		&#125; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[<span class="number">0</span>][n<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2018/08/19/Flowershop/" class="link f-fl">⟵花店橱窗布置(已批阅)</a>
+    
+    
+      <a href="/2018/08/19/LCS/" class="link f-fr">最长公共子序列(已批阅)⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  
+  
+    
       
-    </div>
-    <footer>
+        · <a href="https://github.com/copenr" target="_blank" class="nav-icn">GitHub</a>
       
-        
-  
-  <div class="categories">
-    <a href="/categories/动态规划初步/">动态规划初步</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/动态规划/">动态规划</a>
-  </div>
-
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
     
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">留言</h1>
-
-  
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-comments" data-href="http://copenlife.top/2018/08/19/Huiwen-word/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+        · <a href="https://weibo.com/5254792241" target="_blank" class="nav-icn">weibo</a>
       
+    
   
-</section>
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:copenlife.top">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/categories/分治算法初步/">分治算法初步</a><small>10</small></li>
-  
-    <li><a href="/categories/动态规划初步/">动态规划初步</a><small>11</small></li>
-  
-    <li><a href="/categories/图的存储和遍历/">图的存储和遍历</a><small>4</small></li>
-  
-    <li><a href="/categories/实战测试/">实战测试</a><small>9</small></li>
-  
-    <li><a href="/categories/拓扑序与关键路径/">拓扑序与关键路径</a><small>3</small></li>
-  
-    <li><a href="/categories/树的存储和遍历/">树的存储和遍历</a><small>11</small></li>
-  
-    <li><a href="/categories/贪心算法基础/">贪心算法基础</a><small>2</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Taylor/">Taylor</a><small>2</small></li>
-  
-    <li><a href="/tags/lca/">lca</a><small>1</small></li>
-  
-    <li><a href="/tags/二分图/">二分图</a><small>1</small></li>
-  
-    <li><a href="/tags/二进制/">二进制</a><small>1</small></li>
-  
-    <li><a href="/tags/分治/">分治</a><small>10</small></li>
-  
-    <li><a href="/tags/前缀和优化/">前缀和优化</a><small>3</small></li>
-  
-    <li><a href="/tags/动态规划/">动态规划</a><small>12</small></li>
-  
-    <li><a href="/tags/动态规划优化/">动态规划优化</a><small>1</small></li>
-  
-    <li><a href="/tags/哈希表/">哈希表</a><small>1</small></li>
-  
-    <li><a href="/tags/图论/">图论</a><small>4</small></li>
-  
-    <li><a href="/tags/并查集/">并查集</a><small>1</small></li>
-  
-    <li><a href="/tags/拓扑排序/">拓扑排序</a><small>4</small></li>
-  
-    <li><a href="/tags/排序二叉树/">排序二叉树</a><small>1</small></li>
-  
-    <li><a href="/tags/数学/">数学</a><small>9</small></li>
-  
-    <li><a href="/tags/枚举/">枚举</a><small>2</small></li>
-  
-    <li><a href="/tags/树结构/">树结构</a><small>13</small></li>
-  
-    <li><a href="/tags/模拟/">模拟</a><small>1</small></li>
-  
-    <li><a href="/tags/状压/">状压</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树/">线段树</a><small>1</small></li>
-  
-    <li><a href="/tags/线段树优化/">线段树优化</a><small>1</small></li>
-  
-    <li><a href="/tags/贪心/">贪心</a><small>3</small></li>
-  
-    <li><a href="/tags/随笔/">随笔</a><small>3</small></li>
-  
-    <li><a href="/tags/高精度/">高精度</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-</aside>
-    <div class="clearfix"></div>
+  <span class="copyright">All rights reserved @Copen</span>
+</footer>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2018 Copen
-  
-</div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
 </body>
 </html>
